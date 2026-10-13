@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bridging Tradition and Technology | Anamika Shrivastava</title>
+<meta name="description" content="Bridging Tradition and Technology: a design research project on modernizing training practices in Indian akhāṛās, with AI-assisted motion tracking for wrestling training. By Anamika Shrivastava and team.">
+<meta name="theme-color" content="#0d1914">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317231f'/%3E%3Cpath d='M16 50 32 14l16 36M23 38h18' fill='none' stroke='%23f6f3ed' stroke-width='5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..700&family=Instrument+Sans:wght@400;600;800&display=swap">
+<style>:root{--ink:#17231f;--green:#2c5b49;--bg:#0d1914;--cream:#fcf9f0;--or:#b84f00;--orb:#ff7d00;--gr:#237744;--lt:#f1ede4;--ring:#ffd9a0;box-sizing:border-box}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{margin:0;background:var(--bg);color:var(--lt);font-family:'Instrument Sans',system-ui,sans-serif;line-height:1.5}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--ring);outline-offset:4px}
+.paper :focus-visible{outline-color:var(--or)}
+.skip{position:absolute;left:1rem;top:-4rem;background:var(--lt);color:var(--ink);padding:.6rem 1rem;z-index:30;font-weight:600}
+.skip:focus{top:1rem}
+.prog{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--ring);transform-origin:0 50%;transform:scaleX(0);z-index:20}
+.top{position:fixed;left:0;right:0;top:0;z-index:15;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.9rem clamp(1rem,3vw,2rem);background:linear-gradient(to bottom,rgba(13,25,20,.94),rgba(13,25,20,0))}
+.btn{white-space:nowrap;font:600 .8rem 'Instrument Sans',system-ui,sans-serif;color:var(--lt);background:rgba(13,25,20,.7);border:1px solid rgba(241,237,228,.55);padding:.5rem .85rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
+.btn:hover{background:var(--lt);color:var(--ink)}
+.btn[aria-pressed="true"],.btn[aria-expanded="true"]{background:var(--lt);color:var(--ink)}
+.btn svg{width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tr{display:flex;gap:.6rem}
+.intro{min-height:62vh;min-height:62svh;display:flex;flex-direction:column;justify-content:flex-end;gap:1rem;padding:7rem clamp(1rem,4vw,3rem) 3rem;max-width:1320px;margin:0 auto}
+.intro h1{margin:0;font:250 clamp(3rem,9vw,8.5rem)/.88 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 78;letter-spacing:-.035em}
+.intro .tag{margin:0;font-size:clamp(1.05rem,1.8vw,1.5rem);max-width:40rem;color:#f3e3c3}
+.intro .hint{margin:0;font-size:.82rem;color:#cdd9d1;letter-spacing:.03em}
+.intro kbd{font:600 .72rem 'Instrument Sans',system-ui,sans-serif;border:1px solid rgba(241,237,228,.5);padding:.05rem .35rem}
+main{max-width:1320px;margin:0 auto;padding:0 clamp(1rem,4vw,3rem) 9rem}
+.sl{position:relative;margin:0 0 clamp(4rem,11vh,8rem);scroll-margin-top:3.5rem}
+.sl:focus{outline:none}
+.sl:focus-visible .fr{outline:3px solid var(--ring);outline-offset:6px}
+.sn{display:flex;align-items:baseline;gap:.5rem;margin:0 0 .7rem;font:600 .78rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#cdd9d1}
+.sn b{font:300 1.6rem 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.02em;color:var(--lt)}
+.fr{position:relative;background:var(--cream);box-shadow:0 30px 80px -20px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.04);border-radius:4px;overflow:hidden}
+.fr button.z{all:unset;display:block;position:relative;width:100%;cursor:zoom-in}
+.fr button.z:focus-visible{outline:3px solid var(--ring);outline-offset:-3px}
+.fr img.pg{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--cream)}
+.zb{position:absolute;right:.8rem;bottom:.8rem;font:600 .75rem 'Instrument Sans',system-ui,sans-serif;background:rgba(13,25,20,.86);color:var(--lt);padding:.35rem .7rem;opacity:0;transform:translateY(4px);transition:opacity .25s,transform .25s;pointer-events:none}
+.fr:hover .zb,.fr button.z:focus-visible .zb{opacity:1;transform:none}
+@media (hover:none){.zb{opacity:1;transform:none}}
+/* reveal */
+.js .sl .fr{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .sl.in .fr{opacity:1;transform:none}
+.js .sl .sn{opacity:0;transition:opacity .6s .1s}.js .sl.in .sn{opacity:1}
+.js .sl .stg>*{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.js .sl.in .stg>*{opacity:1;transform:none;transition-delay:calc(var(--i,0)*70ms + .25s)}
+.calm .sl .fr,.calm .sl .sn,.calm .sl .stg>*{opacity:1!important;transform:none!important;transition:none!important}
+.calm html,html:has(.calm){scroll-behavior:auto}
+/* rail */
+.rail{position:fixed;left:.9rem;top:50%;transform:translateY(-50%);z-index:12;display:none}
+.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+.rail a{display:block;width:14px;height:3px;background:rgba(241,237,228,.35);border-radius:2px;transition:width .2s,background .2s}
+.rail a:hover,.rail a:focus-visible,.rail a[aria-current="true"]{width:30px;background:var(--lt)}
+.rail a[aria-current="true"]{background:var(--ring)}
+@media (min-width:1180px) and (min-height:760px){.rail{display:block}}
+/* bottom pager */
+.pager{position:fixed;right:clamp(.6rem,2vw,1.4rem);bottom:clamp(.6rem,2vw,1.4rem);z-index:14;display:flex;align-items:center;background:rgba(13,25,20,.9);border:1px solid rgba(241,237,228,.5);backdrop-filter:blur(6px)}
+.pager button{all:unset;cursor:pointer;display:grid;place-items:center;width:2.8rem;height:2.6rem;color:var(--lt)}
+.pager button:hover{background:var(--lt);color:var(--ink)}
+.pager button:focus-visible{outline:3px solid var(--ring);outline-offset:-3px}
+.pager svg{width:1.1rem;height:1.1rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pager output{min-width:5.4rem;text-align:center;font:600 .85rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.06em}
+/* menu */
+.menu{position:fixed;inset:0;z-index:25;background:rgba(7,13,10,.94);overflow:auto;padding:5rem clamp(1rem,4vw,3rem) 3rem}
+.menu[hidden]{display:none}
+.menu h2{margin:0 0 1.2rem;font:250 clamp(2rem,5vw,3.6rem)/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 78;letter-spacing:-.03em}
+.menu ol{list-style:none;margin:0 auto;padding:0;max-width:1100px;columns:3 18rem;column-gap:2.5rem}
+.menu li{break-inside:avoid}
+.menu a{display:flex;gap:.9rem;padding:.55rem 0;border-top:1px solid rgba(241,237,228,.2);color:var(--lt);text-decoration:none;font-size:.92rem}
+.menu a:hover{color:var(--ring)}
+.menu a b{font:300 1.05rem 'Bricolage Grotesque',system-ui,sans-serif;min-width:2rem;color:#cdd9d1}
+.menu .x{position:fixed;top:1rem;right:clamp(1rem,3vw,2rem)}
+/* zoom viewer */
+.zm{position:fixed;inset:0;z-index:40;background:#050a08;display:flex;flex-direction:column}
+.zm[hidden]{display:none}
+.zbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 1rem;background:#0b1511;border-bottom:1px solid rgba(241,237,228,.15)}
+.zbar .t{font:600 .85rem 'Instrument Sans',system-ui,sans-serif;color:#cdd9d1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.zbar .g{display:flex;gap:.4rem;flex:none}
+.zst{position:relative;flex:1;overflow:hidden;touch-action:none;cursor:grab;outline:none}
+.zst.dragging{cursor:grabbing}
+.zst img{position:absolute;left:50%;top:50%;max-width:none;user-select:none;-webkit-user-drag:none;transform-origin:50% 50%;will-change:transform;background:var(--cream)}
+.zh{position:absolute;left:50%;bottom:1rem;transform:translateX(-50%);font-size:.78rem;color:#cdd9d1;background:rgba(7,13,10,.8);padding:.3rem .7rem;pointer-events:none;white-space:nowrap}
+.calm .zst img{transition:none}
+/* ===== native slides ===== */
+.paper{padding:clamp(1.1rem,3.4vw,3.2rem);color:#1a1a19;font-size:clamp(.92rem,1.25vw,1.12rem);line-height:1.5}
+.paper h2.pt{margin:0 0 clamp(1.2rem,3vw,2.4rem);padding-bottom:.5rem;font:400 clamp(1.7rem,3.6vw,2.9rem)/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 75;text-transform:uppercase;letter-spacing:.01em;color:var(--or);border-bottom:2px solid var(--orb);display:inline-block;padding-right:3rem}
+.paper h3{margin:0 0 .6rem;font:700 1.05em 'Instrument Sans',system-ui,sans-serif;color:var(--gr)}
+.paper p{margin:0 0 .8em}.paper p:last-child{margin-bottom:0}
+.paper ul{margin:0;padding-left:1.15em}.paper li{margin:0 0 .45em}
+.card{border:1.5px solid var(--gr);border-radius:22px;padding:1.2rem 1.4rem;background:rgba(255,255,255,.4)}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:clamp(1.2rem,3vw,2.4rem)}
+.hd .pt{margin:0;order:2}.brand{margin:0;font:600 .9rem/1.2 'Instrument Sans',system-ui,sans-serif;color:var(--or)}
+.ov{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(1.2rem,4vw,3.5rem);align-items:start}
+.eyebrow{font:700 .85rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.08em;margin:0 0 .5rem;padding-left:.8rem;border-left:2px solid var(--gr);color:var(--gr)}
+.lead{font-size:1.12em;max-width:34rem}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem 2rem;margin:1.6rem 0 0;padding-top:1.3rem;border-top:1px solid rgba(26,26,25,.3)}
+.facts dt{font:700 .78rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.1em;color:var(--gr);margin-bottom:.2rem}.facts dd{margin:0}
+.ov-r{margin:0}.ov-r img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 40%;border-radius:18px;border:3px solid var(--gr)}
+.ov-r figcaption{margin-top:.8rem;font:700 clamp(1.3rem,2.4vw,2rem)/1.05 'Instrument Sans',system-ui,sans-serif;color:var(--gr)}
+.pd{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"why init" "why nat" "hmw hmw";gap:1.1rem clamp(1rem,4vw,3rem)}
+.c-why{grid-area:why;align-self:center}.c-init{grid-area:init}.c-nat{grid-area:nat}
+.hmw{grid-area:hmw;margin:1rem 0 0;padding-top:1.1rem;border-top:1px solid rgba(26,26,25,.3);display:flex;gap:1.5rem;flex-wrap:wrap}
+.hmw span{font:700 .85rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.08em;color:var(--or)}.hmw strong{flex:1;min-width:16rem}
+.sr3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.src{display:flex;flex-direction:column;gap:.8rem}.src h3{text-align:center;font-size:1.08em}
+.src .sb{flex:1;font-size:.95em}.src .sb p.lb{font-weight:700;color:var(--gr)}
+.lnk{align-self:flex-start;color:var(--gr);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.lnk:hover{color:var(--or)}
+.notes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem}
+.note{background:#fdeeb0;padding:1rem 1rem 1.6rem;box-shadow:0 8px 18px -8px rgba(0,0,0,.35);transition:transform .25s,box-shadow .25s;position:relative;clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%)}
+.note.hot{background:#ff9aa0}
+.note h3{color:#1a1a19;font-size:.98em}.note p{font-size:.92em}
+.note:hover{transform:translateY(-4px) rotate(-.6deg);box-shadow:0 16px 28px -10px rgba(0,0,0,.4)}
+.mos{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.mo{background:#e4f1e8;padding:0 1.2rem 1.4rem;box-shadow:0 8px 18px -10px rgba(0,0,0,.4)}
+.mo h3{margin:0 0 1rem;display:flex;justify-content:center;transform:translateY(-1.6rem);margin-bottom:-.2rem}
+.mo h3 span{display:grid;place-items:center;width:4.4rem;height:4.4rem;border-radius:50%;background:var(--gr);color:#fff;font:600 1.9rem 'Bricolage Grotesque',system-ui,sans-serif}
+.mo{margin-top:2rem}
+.mx{display:grid;grid-template-columns:auto 1fr 1fr auto;grid-template-rows:auto 1fr 1fr auto;gap:1rem;align-items:stretch}
+.ax{font:700 .9rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.06em;color:#1a1a19}
+.a-t{grid-column:2/4;grid-row:1;text-align:center}.a-b{grid-column:2/4;grid-row:4;text-align:center}
+.a-l{grid-column:1;grid-row:2/4;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;align-self:center}
+.a-r{grid-column:4;grid-row:2/4;writing-mode:vertical-rl;text-align:center;align-self:center}
+.q{background:#e4f1e8;padding:1.2rem 1.4rem;box-shadow:0 8px 18px -10px rgba(0,0,0,.4)}
+.q1{grid-column:2;grid-row:2}.q2{grid-column:3;grid-row:2}.q3{grid-column:2;grid-row:3}.q4{grid-column:3;grid-row:3}
+.sf{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(1rem,3vw,2.5rem);align-items:center}
+.sf-i{width:clamp(5rem,12vw,11rem);height:auto}
+.fail{border-color:#d63a3a}.fail h3{color:#d63a3a;text-align:center}.fail li{color:#c42f2f}
+.rec h3{text-align:center}
+.imp{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.ic{padding:1.3rem 1.4rem;box-shadow:0 8px 18px -10px rgba(0,0,0,.4)}
+.ic h3{color:#1a1a19;font-size:1.1em;margin-bottom:.8rem}
+.ic-a{background:#f9b27c}.ic-b{background:#d5e6da}.ic-c{background:#f6e57d}
+.fs .ic{border-radius:22px}.fs .ic-a{background:#d5e6da}.fs .ic-b{background:#faeec2}.fs .ic-c{background:#f9b27c}
+.ic{transition:transform .25s}.ic:hover{transform:translateY(-4px)}
+@media (max-width:900px){
+ .ov,.pd,.sf{grid-template-columns:1fr}.pd{grid-template-areas:"init" "nat" "why" "hmw"}.c-why{align-self:stretch}
+ .sr3,.imp{grid-template-columns:1fr}.notes{grid-template-columns:1fr 1fr}.mos{grid-template-columns:1fr 1fr;gap:2.6rem 1rem}
+ .sf-i{margin:0 auto}.facts{grid-template-columns:1fr}
+}
+@media (max-width:560px){.btn{font-size:.72rem;padding:.45rem .6rem}.top{padding:.6rem .7rem}.tr{gap:.4rem}.notes,.mos{grid-template-columns:1fr}.mx{gap:.6rem}.ax{font-size:.72rem}.q{padding:.8rem .9rem;font-size:.85rem}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .sl .fr,.js .sl .sn,.js .sl .stg>*{opacity:1;transform:none;transition:none}.note,.ic,.zb{transition:none}}
+
+/* intro cover + entrance */
+.intro{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:clamp(1.5rem,4vw,4rem)}
+.intro .itx{display:flex;flex-direction:column;gap:1rem;min-width:0;flex:1 1 auto}
+.icov{margin:0;flex:0 0 min(38vw,30rem);align-self:center;transform:rotate(2.5deg);box-shadow:0 30px 70px -20px rgba(0,0,0,.7),0 0 0 6px var(--cream);background:var(--cream)}
+.icov img{display:block;width:100%;height:auto}
+.js .intro h1 span{display:inline-block;opacity:0;transform:translateY(.5em);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.js .intro h1 span:nth-child(2){animation-delay:.12s}.js .intro h1 span:nth-child(3){animation-delay:.24s}
+.js .intro .tag,.js .intro .hint{opacity:0;animation:rise .8s .5s cubic-bezier(.2,.7,.2,1) forwards}.js .intro .hint{animation-delay:.7s}
+.js .icov{opacity:0;animation:cov 1.1s .35s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+@keyframes cov{from{opacity:0;transform:translateY(40px) rotate(7deg) scale(.94)}to{opacity:1;transform:rotate(2.5deg)}}
+.js .icov img{animation:flt 7s ease-in-out 1.6s infinite}@keyframes flt{50%{transform:translateY(-6px)}}
+@media (max-width:860px){.intro{flex-direction:column;align-items:flex-start}.icov{flex:none;width:min(86vw,26rem);align-self:flex-start}}
+/* frames: hover lift, alternate slide-in, sheen */
+.js .sl:nth-of-type(odd):not(.in) .fr{transform:translate(-28px,26px) scale(.985)}.js .sl:nth-of-type(even):not(.in) .fr{transform:translate(28px,26px) scale(.985)}
+.fr{transition:box-shadow .35s,transform .35s}
+@media (hover:hover){.js .sl.in .fr:hover{transform:translateY(-5px);box-shadow:0 40px 90px -20px rgba(0,0,0,.7),0 0 0 1px rgba(255,217,160,.35)}}
+.fr button.z::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.22) 50%,transparent 60%);transform:translateX(-120%);pointer-events:none}
+@media (hover:hover){.fr:hover button.z::after{transform:translateX(120%);transition:transform .9s}}
+.js .sl .stgi{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.js .sl.in .stgi{opacity:1;transform:none;transition-delay:calc(var(--i,0)*60ms + .3s)}
+.calm .sl .stgi,.calm .intro h1 span,.calm .intro .tag,.calm .intro .hint,.calm .icov,.calm .icov img{opacity:1!important;transform:none!important;transition:none!important;animation:none!important}
+.calm .icov{transform:rotate(2.5deg)!important}
+@media (prefers-reduced-motion:reduce){.js .sl .stgi,.js .intro h1 span,.js .intro .tag,.js .intro .hint,.js .icov,.js .icov img{opacity:1;transform:none;animation:none;transition:none}.js .icov{transform:rotate(2.5deg)}.fr button.z::after{display:none}}
+
+/* ===== one cohesive page ===== */
+main{max-width:none;margin:0;padding:0;background:var(--cream);color:#1a1a19}
+.sl{max-width:1240px;margin:0 auto;padding:clamp(2.6rem,7vh,5rem) clamp(1rem,4vw,3rem);border-top:1px solid rgba(23,35,31,.12)}
+.sl:first-child{border-top:0}
+.sl .st{margin:0 0 clamp(1rem,2.4vw,1.8rem);padding-bottom:.5rem;font:400 clamp(1.5rem,3.2vw,2.5rem)/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 75;text-transform:uppercase;letter-spacing:.01em;color:var(--or);border-bottom:2px solid var(--orb);display:inline-block;max-width:100%}
+.fr{background:transparent;box-shadow:none;border-radius:0}
+.fr:not(.paper){box-shadow:0 18px 50px -24px rgba(23,35,31,.55),0 0 0 1px rgba(23,35,31,.1);border-radius:6px;overflow:hidden;background:#fff}
+.paper.fr{padding:0}
+.paper.fr>.pt{display:inline-block}
+.js .sl:nth-of-type(odd):not(.in) .fr,.js .sl:nth-of-type(even):not(.in) .fr{transform:translateY(26px)}
+@media (hover:hover){.js .sl.in .fr:not(.paper):hover{transform:translateY(-4px);box-shadow:0 30px 70px -26px rgba(23,35,31,.6),0 0 0 1px rgba(184,79,0,.4)}.js .sl.in .fr.paper:hover{transform:none;box-shadow:none}}
+.sl:focus-visible .fr{outline-color:var(--or)}
+.fr.bad{min-height:12rem;display:grid;place-items:center;background:#f1ead6}.fr.bad::after{content:"Image unavailable. Please reload the page.";font:600 .9rem 'Instrument Sans',sans-serif;color:#6b4a1a;padding:1rem}.fr.bad img{display:none}
+.end{background:var(--bg);color:var(--lt);padding:clamp(3rem,9vh,6rem) clamp(1rem,4vw,3rem);display:flex;flex-wrap:wrap;gap:1.4rem;justify-content:space-between;align-items:center;max-width:none}
+.end p{margin:0;font:250 clamp(1.8rem,4vw,3.2rem)/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 78;letter-spacing:-.03em}
+.eb{display:flex;gap:.7rem;flex-wrap:wrap}
+.end .btn{font-size:.9rem;padding:.7rem 1.1rem}
+.zm .zbar .t{max-width:60vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.rail a{background:rgba(23,35,31,.28)}.rail a:hover,.rail a:focus-visible,.rail a[aria-current="true"]{background:#17231f}.rail a[aria-current="true"]{background:var(--orb)}
+.team{list-style:none;margin:1.4rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.7rem}.team li{padding:.65rem 1.1rem;border:1.5px solid var(--gr);border-radius:999px;background:rgba(255,255,255,.55);font-weight:600}.team li.me{background:var(--gr);color:#fff}
+.vqs{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}.vq{margin:0;background:#fff;border:1px solid rgba(23,35,31,.15);border-radius:6px;overflow:hidden;box-shadow:0 18px 40px -26px rgba(23,35,31,.5)}.vph{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.4rem}.vph img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:6px}.vq blockquote{margin:0;padding:1.1rem 1.2rem 1.3rem}.vq p{margin:0 0 .8rem;font-size:1rem;line-height:1.55}.vq footer{font:700 .78rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gr)}
+@media(max-width:860px){.vqs,.vph{grid-template-columns:1fr}}.sl.cont{border-top:0;padding-top:0}
+.sl .part{margin:0 0 1.6rem;font:600 .8rem/1.2 "Instrument Sans",system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:var(--gr);display:block;width:fit-content;padding:.5rem .9rem}
+.sl.cont .fr{margin-top:1.2rem}
+</style></head>
+<body>
+<a class="skip" href="#main">Skip to the project</a>
+<div class="prog" id="prog" aria-hidden="true"></div>
+<header class="top"><a class="btn" href="index.html#gal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 12H6M11 7l-5 5 5 5"/></svg><span>Back to the exhibition</span></a>
+<div class="tr"><button class="btn" id="menub" type="button" aria-expanded="false" aria-controls="menu">Contents</button><button class="btn" id="mot" type="button" aria-pressed="false">Reduce motion</button></div></header>
+<nav class="rail" aria-label="Section marks"><ol><li><a href="#snteam" aria-label="Team" title="Team"></a></li><li><a href="#sdrm03" aria-label="Wrestling Intro" title="Wrestling Intro"></a></li><li><a href="#sdrm04" aria-label="Community Introduction" title="Community Introduction"></a></li><li><a href="#sdrm05" aria-label="Community History" title="Community History"></a></li><li><a href="#sdrm06" aria-label="Community Story · A Day Inside the Akhāra" title="Community Story · A Day Inside the Akhāra"></a></li><li><a href="#sdrm07" aria-label="Present State" title="Present State"></a></li><li><a href="#sdrm08" aria-label="Research Methodology" title="Research Methodology"></a></li><li><a href="#sdrm09" aria-label="Research Methods" title="Research Methods"></a></li><li><a href="#sdrm10" aria-label="Identified Problems" title="Identified Problems"></a></li><li><a href="#sdrm11" aria-label="Problem Statement" title="Problem Statement"></a></li><li><a href="#sdrm12" aria-label="Secondary Research" title="Secondary Research"></a></li><li><a href="#sdrm14" aria-label="How Might We" title="How Might We"></a></li><li><a href="#sdrm15" aria-label="Research Objectives" title="Research Objectives"></a></li><li><a href="#sdrm16" aria-label="Ideation to Solution" title="Ideation to Solution"></a></li><li><a href="#sdrm17" aria-label="Prototype &amp; Working" title="Prototype &amp; Working"></a></li><li><a href="#sdrm18" aria-label="User Testing" title="User Testing"></a></li><li><a href="#swos01" aria-label="Indian Wrestling · A Study On" title="Indian Wrestling · A Study On"></a></li><li><a href="#swos03" aria-label="Project Overview" title="Project Overview"></a></li><li><a href="#swos04" aria-label="History of Kushti" title="History of Kushti"></a></li><li><a href="#swos06" aria-label="Problem Statement" title="Problem Statement"></a></li><li><a href="#swos07" aria-label="Qualitative Research Overview" title="Qualitative Research Overview"></a></li><li><a href="#swos08" aria-label="Quantitative Research Objective" title="Quantitative Research Objective"></a></li><li><a href="#swos09" aria-label="Quantitative Research Methodology" title="Quantitative Research Methodology"></a></li><li><a href="#swos10" aria-label="Quantitative Research · Hypotheses" title="Quantitative Research · Hypotheses"></a></li><li><a href="#swos11" aria-label="Research Instrument Design" title="Research Instrument Design"></a></li><li><a href="#swos12" aria-label="Demographic &amp; Training Styles" title="Demographic &amp; Training Styles"></a></li><li><a href="#swos13" aria-label="Demographic &amp; Training Styles" title="Demographic &amp; Training Styles"></a></li><li><a href="#swos14" aria-label="Demographic &amp; Training Styles" title="Demographic &amp; Training Styles"></a></li><li><a href="#swos15" aria-label="Technology Adoption Findings" title="Technology Adoption Findings"></a></li><li><a href="#swos16" aria-label="Key Findings" title="Key Findings"></a></li><li><a href="#swos17" aria-label="Descriptive Analysis" title="Descriptive Analysis"></a></li><li><a href="#swos18" aria-label="Descriptive Analysis" title="Descriptive Analysis"></a></li><li><a href="#swos19" aria-label="Descriptive Analysis" title="Descriptive Analysis"></a></li><li><a href="#swos20" aria-label="Inferential Statistics" title="Inferential Statistics"></a></li><li><a href="#swos21" aria-label="Inferential Statistics" title="Inferential Statistics"></a></li><li><a href="#swos22" aria-label="Design Opportunity &amp; System Concept" title="Design Opportunity &amp; System Concept"></a></li><li><a href="#swos23" aria-label="System Workflow &amp; Prototype Development" title="System Workflow &amp; Prototype Development"></a></li><li><a href="#swos24" aria-label="System Workflow &amp; Prototype Development" title="System Workflow &amp; Prototype Development"></a></li><li><a href="#swos25" aria-label="User Testing &amp; Prototype Evaluation · Phase 1" title="User Testing &amp; Prototype Evaluation · Phase 1"></a></li><li><a href="#swos26" aria-label="User Testing &amp; Prototype Evaluation · Phase 1" title="User Testing &amp; Prototype Evaluation · Phase 1"></a></li><li><a href="#snverb" aria-label="User Testing &amp; Prototype Evaluation · Verbatims" title="User Testing &amp; Prototype Evaluation · Verbatims"></a></li><li><a href="#swos28" aria-label="Limitations &amp; Future Scope" title="Limitations &amp; Future Scope"></a></li><li><a href="#swos29" aria-label="Conclusions" title="Conclusions"></a></li></ol></nav>
+<div class="intro"><div class="itx"><h1 id="pagetop" tabindex="-1"><span>Bridging</span> <span>Tradition</span> <span>and Technology</span></h1><p class="tag">Modernizing training practices in Indian akhāṛās · AI-assisted motion tracking for wrestling training</p>
+<p class="hint">Scroll to read the whole project. Select any image to zoom in.</p></div><figure class="icov" aria-hidden="true"><img src="akhara/wos/s01.webp" alt="" width="2000" height="1125" decoding="async"></figure></div>
+<main id="main" aria-label="Project"><section class="sl" id="snteam" tabindex="-1" aria-label="Team"><div class="fr paper"><h2 class="pt">Team</h2><p class="lead">A Design Research Methods project. I worked on it as part of a team of four, guided by Dr. Nagma Sahi Ansari.</p><ul class="team" aria-label="Team members"><li class="me"><b>Anamika Shrivastava</b></li><li>Aditya Kumar</li><li>Ananya Bijolia</li><li>Nishita Markam</li></ul></div></section>
+<section class="sl" id="sdrm03" tabindex="-1" aria-label="Wrestling Intro"><h2 class="part">Part one · Design Research Methods I</h2><h2 class="st">Wrestling Intro</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s03.webp" alt="Wrestling Intro" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>WRESTLING INTRO
+FREESTYLE
+GREECO-ROMAN YAĞLI
+BÖKH
+PEHLWANI
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+1</p></div></section>
+<section class="sl" id="sdrm04" tabindex="-1" aria-label="Community Introduction"><h2 class="st">Community Introduction</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s04.webp" alt="Community Introduction" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Who Are We Studying?
+Who Are We Designing For?
+COMMUNITY
+COMMUNITY
+INTRODUCTION
+INTRODUCTION
+COMMUNITY
+INTRODUCTION
+Amateur wrestlers (school, college, district
+level)
+Train alongside academics or jobs
+Limited access to coaches &amp; physiotherapy
+Train mostly in shared, community spaces
+Kushti: Traditional Indian wrestling.
+Akhāṛā: The institution and physical space for training, combining a
+gymnasium with a site for spiritual devotion and communal living.
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+2</p></div></section>
+<section class="sl" id="sdrm05" tabindex="-1" aria-label="Community History"><h2 class="st">Community History</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s05.webp" alt="Community History" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>COMMUNITY HISTORY
+COMMUNITYHISTORY
+COMMUNITY HISTORY
+Roots in the Mahābhārata and ancient warrior traditions
+Practiced through akhāṛās and guru–shishya pedagogy
+Combines physical discipline with moral values
+Enabled rural social mobility and identity
+Offers government jobs and Olympic presence
+A living tradition adapting to modern sport
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+3</p></div></section>
+<section class="sl" id="sdrm06" tabindex="-1" aria-label="Community Story · A Day Inside the Akhāra"><h2 class="st">Community Story · A Day Inside the Akhāra</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s06.webp" alt="Community Story · A Day Inside the Akhāra" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>COMMUNITY STORY
+COMMUNITYSTORY
+COMMUNITY STORY
+A Day Inside the Akhāra
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+4</p></div></section>
+<section class="sl" id="sdrm07" tabindex="-1" aria-label="Present State"><h2 class="st">Present State</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s07.webp" alt="Present State" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>PRESENT STATE
+Pressures on Indian Wrestling
+Urban migration - fewer residential
+akhāras
+Looked upon as regressive , lack of
+education and physical roughness.
+Injury stigma - pain often hidden
+Limited medical &amp; safety infrastructure
+Despite existing challenges, wrestling remains one of the few Indian sports offering stable
+government career pathways and sustained Olympic representation, reinforcing its cultural
+relevance, national significance, and future security.
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+5</p></div></section>
+<section class="sl" id="sdrm08" tabindex="-1" aria-label="Research Methodology"><h2 class="st">Research Methodology</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s08.webp" alt="Research Methodology" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>RESEARCH METHODOLOGY
+CROSS-SECTIONAL ETHNOGRAPHY STUDY, BACKED BY AUTO- ETHNOGRAPHY AND VISUAL ANALYSIS.
+DESIGN THINKING PROCESS
+DOUBLE DIAMOND METHOD
+DEFINE
+DISCOVER DEVELOP DELIVER
+PROBLEM
+IDENTIFICATION
+HMW
+SOLUTION
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+5</p></div></section>
+<section class="sl" id="sdrm09" tabindex="-1" aria-label="Research Methods"><h2 class="st">Research Methods</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s09.webp" alt="Research Methods" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Observation
+Immersive
+In- person and virtual interviews
+with wrestlers and coaches
+METHODS
+Research
+1
+2
+3
+Sample Size - 24
+Jai Hanuman Kushti Akhara, Sanpada, Navi
+Mumbai
+VijayPal Kushti Akhara, Bamheta, Uttar Pradesh
+Shree Dinanath Pahalwan Akhada, Chas
+City Park Akhada, Bokaro
+RESEARCH METHODS
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+7</p></div></section>
+<section class="sl" id="sdrm10" tabindex="-1" aria-label="Identified Problems"><h2 class="st">Identified Problems</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s10.webp" alt="Identified Problems" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Poor quality / worn-out mats
+Skin infections due to hygiene issues
+Space constraint
+Lack of injury-related medical guidance
+Disproportionate coach-to-student ratio
+IDENTIFIED
+PROBLEMS
+(ECOSYSTEM VIEW)
+Critical Issues :
+High coach-to-student ratio
+Coaches cannot correct everyone
+Amateurs train alone
+Postural mistakes go unnoticed
+Errors repeat leads to developing
+injuries
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+8</p></div></section>
+<section class="sl" id="sdrm11" tabindex="-1" aria-label="Problem Statement"><h2 class="st">Problem Statement</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s11.webp" alt="Problem Statement" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>PROBLEM STATEMENT
+Amateur wrestlers are at high
+risk of injury during
+unsupervised training due to
+limited guidance, while the
+social stigma surrounding
+sports-related injuries
+discourages open
+participation and
+rehabilitation.
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+9</p></div></section>
+<section class="sl" id="sdrm12" tabindex="-1" aria-label="Secondary Research"><h2 class="st">Secondary Research</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s12.webp" alt="Secondary Research" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>SECONDARY RESEARCH
+What Existing Studies Show:
+High injury incidence in wrestling
+Takedown and stance errors are major
+risk factors
+Requires high endurance and power.
+Training should be very dynamic.
+Injury Reality in Wrestling:
+Wrestling has one of the highest injury rates.
+The majority of injuries occur during practice.
+Postural breakdown leads to knee &amp; shoulder
+injuries
+Injuries often untreated or ignored
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+10</p></div></section>
+<section class="sl cont" id="sdrm13" tabindex="-1" aria-label="Section 11"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s13.webp" alt="Still from a video recorded during the research." width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div></section>
+<section class="sl" id="sdrm14" tabindex="-1" aria-label="How Might We"><h2 class="st">How Might We</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s14.webp" alt="How Might We" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>HOW MIGHT WE
+How might we support amateur wrestlers
+during self-training by providing low-tech,
+real-time posture guidance that reduces
+injury risk without replacing traditional
+coaching methods?
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+11</p></div></section>
+<section class="sl" id="sdrm15" tabindex="-1" aria-label="Research Objectives"><h2 class="st">Research Objectives</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s15.webp" alt="Research Objectives" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>RESEARCH OBJECTIVES
+To study the impact of self-training practices on
+injury risk among amateur wrestlers.
+To identify and analyse foundational postures
+used by amateur wrestlers during self-practice
+that contribute to the development of injury risk.
+To explore design-led approaches for limiting
+the risk of injuries in the identified postural
+studies.
+To design a low-tech solution that enables self-
+monitoring during unsupervised training.
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+12</p></div></section>
+<section class="sl" id="sdrm16" tabindex="-1" aria-label="Ideation to Solution"><h2 class="st">Ideation to Solution</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s16.webp" alt="Ideation to Solution" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>IDEATION TO SOLUTION
+COMPREHENSIVE GUIDE
+TRAINING LOG
+REAL TIME CAMERA TRACKING</p></div></section>
+<section class="sl" id="sdrm17" tabindex="-1" aria-label="Prototype &amp; Working"><h2 class="st">Prototype &amp; Working</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s17.webp" alt="Prototype &amp; Working" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Amateurs corrected posture quickly
+Increased awareness during self-
+training
+No need for constant coach
+presence
+1
+2
+PROTOTYPE &amp; WORKING
+Visual posture detection
+Comparison with reference stance
+Simple red/green feedback
+Works in limited space
+Lighting constraints identified
+How the Prototype Works
+User Testing Insights
+Biggest Benefit: SCALABILITY
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+13</p></div></section>
+<section class="sl" id="sdrm18" tabindex="-1" aria-label="User Testing"><h2 class="st">User Testing</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s18.webp" alt="User Testing" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>USER TESTING
+DESIGN RESEARCH METHODS-I WRESTLING COMMUNITY
+2</p></div></section>
+<section class="sl cont" id="sdrm19" tabindex="-1" aria-label="Section 17"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s19.webp" alt="Still from a video recorded during user testing of the posture prototype." width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div></section>
+<section class="sl cont" id="sdrm20" tabindex="-1" aria-label="Section 18"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/drm/s20.webp" alt="Still from a video recorded during user testing of the posture prototype." width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div></section>
+<section class="sl" id="swos01" tabindex="-1" aria-label="Indian Wrestling · A Study On"><h2 class="part">Part two · Indian Wrestling: A Study On</h2><h2 class="st">Indian Wrestling · A Study On</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s01.webp" alt="Indian Wrestling · A Study On" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>INDIAN
+WRESTLING
+A STUDY ON
+Design Research Methods
+Guided by: Dr. Nagma Sahi Ansari</p></div></section>
+<section class="sl" id="swos03" tabindex="-1" aria-label="Project Overview"><h2 class="st">Project Overview</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s03.webp" alt="Project Overview" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>PROJECT
+OVERVIEW
+AI-ASSISTED MOTION TRACKING FOR
+WRESTLING TRAINING
+OVERVIEW
+This research explores self-training practices and posture-related injury risks among
+amateur wrestlers practicing within traditional akhāṛā environments. The project
+investigates how AI-assisted motion tracking can support safer training through real-time
+corrective feedback.
+PROJECT DURATION
+Qualitative Research (5 months)
+Quantitative Research (5 months)
+FOCUS AREA
+Wrestling Self-Training
+Injury Prevention
+Posture Awareness
+AI-Assisted Motion Tracking
+Real-Time Corrective Feedback</p></div></section>
+<section class="sl" id="swos04" tabindex="-1" aria-label="History of Kushti"><h2 class="st">History of Kushti</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s04.webp" alt="History of Kushti" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>HISTORY OF
+KUSHTI
+THE EVOLUTION OF INDIAN WRESTLING
+Indian wrestling, or kushti, originated from the ancient practice of
+malla-yuddha and evolved through Persian influences into the
+akhāṛā-based pehlwani tradition. Rooted in discipline, hierarchy,
+and embodied learning, wrestling later transitioned into modern
+competitive formats, contributing to India’s international sporting
+identity while continuing to preserve its traditional cultural ethos.
+Over time, it transitioned from mud-pit community-centered
+training rooted in discipline and collective identity to mat-based
+competitive wrestling focused on performance, scientific
+training, and international competition, while still retaining
+elements of its traditional cultural ethos.</p></div></section>
+<section class="sl cont" id="swos05" tabindex="-1" aria-label="Section 22"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s05.webp" alt="Still from a video recorded during the research." width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div></section>
+<section class="sl" id="swos06" tabindex="-1" aria-label="Problem Statement"><h2 class="st">Problem Statement</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s06.webp" alt="Problem Statement" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>PROBLEM STATEMENT
+Wrestling is a high-intensity combat sport associated with
+repetitive biomechanical stress and high injury prevalence,
+particularly affecting the knee, shoulder, and soft tissues.
+Injuries often emerge gradually due to fatigue, posture
+misalignment, and repetitive technical errors during training.
+Within traditional wrestling systems, corrective feedback is
+largely dependent on coach observation. During unsupervised
+practice, technical deviations frequently remain unnoticed,
+increasing long-term injury risk.</p></div></section>
+<section class="sl" id="swos07" tabindex="-1" aria-label="Qualitative Research Overview"><h2 class="st">Qualitative Research Overview</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s07.webp" alt="Qualitative Research Overview" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>QUALITATIVE
+RESEARCH OVERVIEW
+RESEARCH METHODS
+An exploratory ethnographic study was conducted across traditional
+akhāṛā and wrestling training environments to understand behavioural
+patterns, self-training practices, posture awareness, and injury-related
+challenges among amateur wrestlers.
+The qualitative phase incorporated Practice-as-Research (PaR),
+observation, shadowing, contextual inquiry, and auto-ethnographic
+reflection to examine embodied training experiences within wrestling
+communities.
+SAMPLE METHOD
+KEY OBSERVATION
+Independent self-practice and repetitive technical rehearsal
+emerged as recurring behaviours, particularly when coaches
+were unavailable.
+Purposive Sampling (24 amateur wrestlers, and coaches)
+Practice-as-Research (PaR), Observation, Shadowing,
+Contextual Inquiry, Auto-Ethnographic Reflection</p></div></section>
+<section class="sl" id="swos08" tabindex="-1" aria-label="Quantitative Research Objective"><h2 class="st">Quantitative Research Objective</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s08.webp" alt="Quantitative Research Objective" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>QUANTITATIVE RESEARCH
+OBJECTIVE
+AIM OF THE STUDY
+To quantitatively investigate the
+relationship between self-training
+practices, posture-related injury risks, and
+the acceptance of AI-assisted corrective
+feedback systems among amateur Indian
+wrestlers.
+RESEARCH OBJECTIVE
+What is the prevalence of injuries sustained during
+unsupervised self-practice among amateur wrestlers?
+How do posture confidence and feedback availability
+relate to injury occurrence?
+To what extent do technology-related beliefs predict
+willingness to adopt an AI-based training application?
+What socio-cultural barriers within the akhāṛā system
+inhibit injury communication?
+How can a technology-assisted system provide real-
+time corrective feedback while remaining culturally
+non-intrusive?</p></div></section>
+<section class="sl" id="swos09" tabindex="-1" aria-label="Quantitative Research Methodology"><h2 class="st">Quantitative Research Methodology</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s09.webp" alt="Quantitative Research Methodology" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>QUANTITATIVE RESEARCH
+METHODOLOGY
+SAMPLE
+A mixed-method, cross-sectional research approach
+was adopted to quantitatively validate behavioural
+insights identified during the qualitative phase.
+METHODOLOGY
+Survey-based quantitative study
+Mixed-method triangulation
+Purposive Sampling
+78 survey participants
+20 qualitative interviews</p></div></section>
+<section class="sl" id="swos10" tabindex="-1" aria-label="Quantitative Research · Hypotheses"><h2 class="st">Quantitative Research · Hypotheses</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s10.webp" alt="Quantitative Research · Hypotheses" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>QUANTITATIVE RESEARCH
+HYPOTHESES
+H₀₁: Unsupervised self-training does not have a significant impact on injury risk
+among amateur wrestlers.
+H₁₁: Unsupervised self-training significantly increases injury risk due to the
+absence of immediate corrective feedback.
+H₀₂: Wrestlers’ willingness to adopt AI-based training technology is not
+significantly influenced by its perceived usefulness for injury prevention.
+H₁₂: Wrestlers are more willing to adopt AI-based training technology when they
+perceive it as useful for injury prevention.
+RESEARCH QUESTIONS
+How does self-training influence injury risk?
+How does limited corrective feedback affect posture awareness?
+How receptive are wrestlers toward AI-assisted training systems?</p></div></section>
+<section class="sl" id="swos11" tabindex="-1" aria-label="Research Instrument Design"><h2 class="st">Research Instrument Design</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s11.webp" alt="Research Instrument Design" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>RESEARCH
+INSTRUMENT DESIGN
+QUESTION TYPE
+Multiple-choice questions
+5-point Likert scale
+TRAINING EXPOSURE
+Frequency of self-training
+Duration of self-training
+Training intensity
+SELF-TRAINING EXPERIENCE
+Confidence in self-practice
+Challenges in self-practice
+Perceived importance
+INJURY RISK
+Injury occurrence (past 1 year)
+Injury frequency (self-practice
+Injury context
+Cause of injury
+Behavioural impact of injury
+TECHNIQUE AWARENESS
+Error recognition
+Awareness level
+TECHNOLOGY ADOPTION
+Prior exposure to technology
+Comfort with technology
+Perceived usefulness (posture)
+Perceived usefulness (injury
+prevention)
+Willingness to adopt system
+Behavioural intention
+FEEDBACK AVAILABILITY
+Access to correction</p></div></section>
+<section class="sl" id="swos12" tabindex="-1" aria-label="Demographic &amp; Training Styles"><h2 class="st">Demographic &amp; Training Styles</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s12.webp" alt="Demographic &amp; Training Styles" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>DEMOGRAPHIC &amp; TRAINING STYLES
+Distribution of participants across different age groups
+Distribution of participants based on years of wrestling
+experience</p></div></section>
+<section class="sl cont" id="swos13" tabindex="-1" aria-label="Demographic &amp; Training Styles"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s13.webp" alt="Demographic &amp; Training Styles" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>DEMOGRAPHIC &amp; TRAINING STYLES
+Distribution of participants by geographic location</p></div></section>
+<section class="sl cont" id="swos14" tabindex="-1" aria-label="Demographic &amp; Training Styles"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s14.webp" alt="Demographic &amp; Training Styles" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>DEMOGRAPHIC &amp; TRAINING STYLES
+Distribution of participants based on wrestling style practiced Participants’ perspectives on the importance of self-
+training</p></div></section>
+<section class="sl" id="swos15" tabindex="-1" aria-label="Technology Adoption Findings"><h2 class="st">Technology Adoption Findings</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s15.webp" alt="Technology Adoption Findings" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>TECHNOLOGY
+ADOPTION FINDINGS
+FINDINGS
+Positive attitude toward motion tracking
+Interest in posture monitoring systems
+Preference for non-intrusive feedback
+mechanisms</p></div></section>
+<section class="sl" id="swos16" tabindex="-1" aria-label="Key Findings"><h2 class="st">Key Findings</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s16.webp" alt="Key Findings" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>TRAINING EXPOSURE
+DURING SELF-TRAINING
+INJURY OCCURRENCE RISK FACTORS
+DEMOGRAPHIC PROFILE
+KEY FINDINGS</p></div></section>
+<section class="sl" id="swos17" tabindex="-1" aria-label="Descriptive Analysis"><h2 class="st">Descriptive Analysis</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s17.webp" alt="Descriptive Analysis" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>DESCRIPTIVE ANALYSIS
+Total participants in the study: N = 78.
+Majority of participants belonged to the 19–25 age
+group and had 3–5 years of wrestling experience.
+Freestyle wrestling was the most commonly
+practiced style.
+DEMOGRAPHIC PROFILE</p></div></section>
+<section class="sl cont" id="swos18" tabindex="-1" aria-label="Descriptive Analysis"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s18.webp" alt="Descriptive Analysis" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>DESCRIPTIVE ANALYSIS
+TRAINING EXPOSURE DURING SELF-TRAINING
+Participants trained frequently, with an average of
+5.32 training days per week.
+Average daily training duration was 3.15 hours.
+Moderate engagement in self-training practices was
+observed among participants.
+SELF-TRAINING AWARENESS &amp; FEEDBACK
+Participants showed moderate posture confidence
+and body awareness during self-training.
+Delayed recognition of mistakes and inconsistent
+corrective feedback were observed.
+Findings highlighted the importance of immediate
+posture correction during solo practice.</p></div></section>
+<section class="sl cont" id="swos19" tabindex="-1" aria-label="Descriptive Analysis"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s19.webp" alt="Descriptive Analysis" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Participants showed positive attitudes toward AI-
+assisted training systems.
+Most respondents believed AI could improve posture
+and help reduce injuries.
+TECHNOLOGY ACCEPTANCE
+RISK FACTORS
+Injuries occurred most commonly during matches
+and self-practice sessions.
+Fatigue, wrong posture, and lack of guidance
+emerged as the major causes of injuries.
+Knees, shoulders, wrists, and neck were among the
+most commonly affected body areas.
+37.2% of participants reported experiencing injuries
+during self-training.
+28.2% reported avoiding practice due to fear of injury.
+INJURY OCCURRENCE
+DESCRIPTIVE ANALYSIS
+KEY FINDINGS</p></div></section>
+<section class="sl" id="swos20" tabindex="-1" aria-label="Inferential Statistics"><h2 class="st">Inferential Statistics</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s20.webp" alt="Inferential Statistics" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>INFERENTIAL STATISTICS
+r=Correlation between Self_Training_Frequency
+&amp; Injury_Occurrence
+SPEARMAN CORRELATION ANALYSIS
+Correlation coefficient of rₛ = 0.313
+p-value = 0.005
+The relationship was found to be statistically significant.
+This indicates that feedback availability during self-
+training was significantly associated with injury
+occurrence among participants.
+RESULT INTERPRETATION</p></div></section>
+<section class="sl cont" id="swos21" tabindex="-1" aria-label="Inferential Statistics"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s21.webp" alt="Inferential Statistics" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>INFERENTIAL STATISTICS
+SPEARMAN CORRELATION ANALYSIS
+Using Spearman correlation analysis
+correlation coefficient of rₛ = .404
+p-value of &lt; .001
+The relationship was found to be statistically significant.
+This indicates that participants who perceived AI
+systems as useful for injury prevention were more willing
+to adopt AI-based training technology.
+RESULT INTERPRETATION
+r=Correlation between
+Tech_Injury_Prevention_Usefulness and
+AI_Adoption_Willingness</p></div></section>
+<section class="sl" id="swos22" tabindex="-1" aria-label="Design Opportunity &amp; System Concept"><h2 class="st">Design Opportunity &amp; System Concept</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s22.webp" alt="Design Opportunity &amp; System Concept" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>DESIGN OPPORTUNITY
+&amp; SYSTEM CONCEPT
+WHAT’S NEXT?
+How might we support amateur wrestlers during
+independent training through culturally aligned real-time
+corrective feedback?
+HOW MIGHT WE
+Real-time posture correction
+Safer independent training
+Injury prevention support
+Accessible movement
+awareness
+OPPORTUNITY AREAS</p></div></section>
+<section class="sl" id="swos23" tabindex="-1" aria-label="System Workflow &amp; Prototype Development"><h2 class="st">System Workflow &amp; Prototype Development</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s23.webp" alt="System Workflow &amp; Prototype Development" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>SYSTEM
+WORKFLOW &amp;
+PROTOTYPE
+DEVELOPMENT
+Camera-based motion capture
+Pose estimation using MediaPipe
+Skeleton tracking
+Movement analysis
+Real-time feedback generation
+WORKFLOW</p></div></section>
+<section class="sl cont" id="swos24" tabindex="-1" aria-label="System Workflow &amp; Prototype Development"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s24.webp" alt="System Workflow &amp; Prototype Development" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>SYSTEM WORKFLOW &amp; PROTOTYPE
+DEVELOPMENT
+INTERFACE
+A simple to make the user journey easy
+Just setup the timer , upload a reference photo and you
+are good to go.
+The app uses voice assists and commands to do moves
+randomly for a better practice
+At the end returns a report of how the session went.</p></div></section>
+<section class="sl" id="swos25" tabindex="-1" aria-label="User Testing &amp; Prototype Evaluation · Phase 1"><h2 class="st">User Testing &amp; Prototype Evaluation · Phase 1</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s25.webp" alt="User Testing &amp; Prototype Evaluation · Phase 1" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>USER TESTING
+&amp; PROTOTYPE EVALUATION: PHASE - 1
+TESTING OUTCOMES
+Improved posture awareness
+Increased confidence during self-training
+Better recognition of movement deviations
+Positive response toward real-time feedback</p></div></section>
+<section class="sl cont" id="swos26" tabindex="-1" aria-label="User Testing &amp; Prototype Evaluation · Phase 1"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s26.webp" alt="User Testing &amp; Prototype Evaluation · Phase 1" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Increased posture awareness
+Improved confidence during self-training
+Better recognition of movement deviations
+TESTING OUTCOMES</p></div></section>
+<section class="sl" id="snverb" tabindex="-1" aria-label="User Testing &amp; Prototype Evaluation · Verbatims"><div class="fr paper"><h2 class="pt">User Testing &amp; Prototype Evaluation · Verbatims</h2><div class="vqs stg"><figure class="vq"><blockquote><p>After watching Khabib and Jon Jones wrestling has become part of Indian MMA and people are dedicating more time on it. I think app really delivers what it says.</p><footer>Coach</footer></blockquote></figure><figure class="vq"><blockquote><p>We as coach can use technology for betterment of our students and we can use it ourselves to update us with newer technologies and get a step closer to what is being used in first world countries.</p><footer>Coach</footer></blockquote></figure><figure class="vq"><blockquote><p>Shadow practice has been very important since the game shifted to mat, I think in the time of social media this might become a trend and I can see people using it.</p><footer>Coach</footer></blockquote></figure></div><div class="vph stg"><img src="akhara/wos/v27a.webp" alt="A young person standing outdoors at a wrestling training ground." width="800" height="600" loading="lazy" decoding="async"><img src="akhara/wos/v27c.webp" alt="A person standing outdoors at a wrestling training ground." width="800" height="600" loading="lazy" decoding="async"><img src="akhara/wos/v27b.webp" alt="A smiling person standing outdoors at a wrestling training ground." width="800" height="600" loading="lazy" decoding="async"></div></div></section>
+<section class="sl" id="swos28" tabindex="-1" aria-label="Limitations &amp; Future Scope"><h2 class="st">Limitations &amp; Future Scope</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s28.webp" alt="Limitations &amp; Future Scope" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>LIMITATIONS &amp; FUTURE
+SCOPE
+LIMITATIONS FUTURE SCOPE
+Relatively limited sample size
+Testing focused only on selected
+foundational wrestling postures
+Full spectrum of wrestling movements
+and variations not covered
+Limited scope for comprehensive
+biomechanical analysis
+Cultural and contextual constraints
+within traditional wrestling
+communities
+Challenges in capturing diverse
+movement patterns within a single
+study
+Scalability of the system to other sports
+involving independent and repetitive self-
+training practices
+Development of sport-specific AI movement
+and posture analysis models
+Integration of advanced biomechanical
+analysis for injury-risk prediction
+Creation of personalized training feedback
+ecosystems for grassroots and semi-
+professional athletes
+Longitudinal studies to evaluate effectiveness
+across multiple sports and training
+environments</p></div></section>
+<section class="sl" id="swos29" tabindex="-1" aria-label="Conclusions"><h2 class="st">Conclusions</h2><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s29.webp" alt="Conclusions" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>CONCLUSIONS
+INDIAN WRESTLING
+This research explored self-training practices, posture
+awareness, and injury risks among amateur wrestlers
+through qualitative and quantitative research methods
+(n = 78). The findings identified limited corrective
+feedback during independent practice as a major
+challenge contributing to posture-related injuries.
+The developed AI-assisted motion tracking prototype
+demonstrates the potential of real-time posture
+feedback to support safer and more informed self-
+training within traditional wrestling environments.</p></div></section>
+<section class="sl cont" id="swos30" tabindex="-1" aria-label="Section 47"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s30.webp" alt="A wall of photographs, notes and sketches from the research process." width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div></section>
+<section class="sl cont" id="swos31" tabindex="-1" aria-label="Section 48"><div class="fr"><button class="z" type="button"><img class="pg" src="akhara/wos/s31.webp" alt="Section 48" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;)"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>THANKS
+THANKS</p></div></section></main>
+<footer class="end"><p>Bridging Tradition and Technology</p><div class="eb"><a class="btn" id="totop" href="#pagetop"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 12l6-6 6 6"/></svg><span>Back to the top</span></a><a class="btn" href="index.html#gal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 12H6M11 7l-5 5 5 5"/></svg><span>Back to the exhibition</span></a></div></footer>
+<div class="menu" id="menu" hidden role="dialog" aria-modal="true" aria-labelledby="mh"><h2 id="mh">Contents</h2><button class="btn x" id="menux" type="button">Close</button><ol><li><a href="#snteam" data-go="0"><span>Team</span></a></li><li><a href="#sdrm03" data-go="1"><span>Wrestling Intro</span></a></li><li><a href="#sdrm04" data-go="2"><span>Community Introduction</span></a></li><li><a href="#sdrm05" data-go="3"><span>Community History</span></a></li><li><a href="#sdrm06" data-go="4"><span>Community Story · A Day Inside the Akhāra</span></a></li><li><a href="#sdrm07" data-go="5"><span>Present State</span></a></li><li><a href="#sdrm08" data-go="6"><span>Research Methodology</span></a></li><li><a href="#sdrm09" data-go="7"><span>Research Methods</span></a></li><li><a href="#sdrm10" data-go="8"><span>Identified Problems</span></a></li><li><a href="#sdrm11" data-go="9"><span>Problem Statement</span></a></li><li><a href="#sdrm12" data-go="10"><span>Secondary Research</span></a></li><li><a href="#sdrm14" data-go="12"><span>How Might We</span></a></li><li><a href="#sdrm15" data-go="13"><span>Research Objectives</span></a></li><li><a href="#sdrm16" data-go="14"><span>Ideation to Solution</span></a></li><li><a href="#sdrm17" data-go="15"><span>Prototype &amp; Working</span></a></li><li><a href="#sdrm18" data-go="16"><span>User Testing</span></a></li><li><a href="#swos01" data-go="19"><span>Indian Wrestling · A Study On</span></a></li><li><a href="#swos03" data-go="20"><span>Project Overview</span></a></li><li><a href="#swos04" data-go="21"><span>History of Kushti</span></a></li><li><a href="#swos06" data-go="23"><span>Problem Statement</span></a></li><li><a href="#swos07" data-go="24"><span>Qualitative Research Overview</span></a></li><li><a href="#swos08" data-go="25"><span>Quantitative Research Objective</span></a></li><li><a href="#swos09" data-go="26"><span>Quantitative Research Methodology</span></a></li><li><a href="#swos10" data-go="27"><span>Quantitative Research · Hypotheses</span></a></li><li><a href="#swos11" data-go="28"><span>Research Instrument Design</span></a></li><li><a href="#swos12" data-go="29"><span>Demographic &amp; Training Styles</span></a></li><li><a href="#swos13" data-go="30"><span>Demographic &amp; Training Styles</span></a></li><li><a href="#swos14" data-go="31"><span>Demographic &amp; Training Styles</span></a></li><li><a href="#swos15" data-go="32"><span>Technology Adoption Findings</span></a></li><li><a href="#swos16" data-go="33"><span>Key Findings</span></a></li><li><a href="#swos17" data-go="34"><span>Descriptive Analysis</span></a></li><li><a href="#swos18" data-go="35"><span>Descriptive Analysis</span></a></li><li><a href="#swos19" data-go="36"><span>Descriptive Analysis</span></a></li><li><a href="#swos20" data-go="37"><span>Inferential Statistics</span></a></li><li><a href="#swos21" data-go="38"><span>Inferential Statistics</span></a></li><li><a href="#swos22" data-go="39"><span>Design Opportunity &amp; System Concept</span></a></li><li><a href="#swos23" data-go="40"><span>System Workflow &amp; Prototype Development</span></a></li><li><a href="#swos24" data-go="41"><span>System Workflow &amp; Prototype Development</span></a></li><li><a href="#swos25" data-go="42"><span>User Testing &amp; Prototype Evaluation · Phase 1</span></a></li><li><a href="#swos26" data-go="43"><span>User Testing &amp; Prototype Evaluation · Phase 1</span></a></li><li><a href="#snverb" data-go="44"><span>User Testing &amp; Prototype Evaluation · Verbatims</span></a></li><li><a href="#swos28" data-go="45"><span>Limitations &amp; Future Scope</span></a></li><li><a href="#swos29" data-go="46"><span>Conclusions</span></a></li></ol></div>
+<div class="zm" id="zm" hidden role="dialog" aria-modal="true" aria-label="Zoomed image"><div class="zbar"><span class="t" id="zt"></span><div class="g"><button class="btn" id="zp" type="button" aria-label="Previous image">Prev</button><button class="btn" id="zn" type="button" aria-label="Next image">Next</button><button class="btn" id="zout" type="button" aria-label="Zoom out">−</button><button class="btn" id="zin" type="button" aria-label="Zoom in">+</button><button class="btn" id="zfit" type="button">Fit</button><button class="btn" id="zx" type="button">Close</button></div></div>
+<div class="zst" id="zst"><img id="zimg" alt=""><p class="zh" aria-hidden="true">Scroll or pinch to zoom · drag to pan · double-click to zoom in or out · Esc to close</p></div></div>
+<script>(function(){
+var d=document,B=d.body,$=function(i){return d.getElementById(i)},slides=[].slice.call(d.querySelectorAll('.sl')),N=slides.length,
+ mq=matchMedia('(prefers-reduced-motion: reduce)'),cur=0,railA=[].slice.call(d.querySelectorAll('.rail a'));
+function calm(){return B.classList.contains('calm')||mq.matches}
+B.classList.add('js');
+d.querySelectorAll('.stg').forEach(function(g){[].slice.call(g.children).forEach(function(c,i){c.style.setProperty('--i',i)})});
+d.querySelectorAll('.paper').forEach(function(p){[].slice.call(p.querySelectorAll('.card,.facts>div,.hmw,.lead,.note,.mos>*,.sr3>*')).forEach(function(c,i){if(c.closest('.stg')===null||true){c.classList.add('stgi');c.style.setProperty('--i',Math.min(i,10))}})});
+/* motion toggle */
+var mot=$('mot');mot.addEventListener('click',function(){var on=!B.classList.contains('calm');B.classList.toggle('calm',on);mot.setAttribute('aria-pressed',on)});
+/* reveal once */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px',threshold:.05});
+slides.forEach(function(s){io.observe(s)});
+/* current slide */
+var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cur=slides.indexOf(e.target);paint()}})},{rootMargin:'-45% 0px -45% 0px'});
+slides.forEach(function(s){io2.observe(s)});
+function paint(){railA.forEach(function(a,i){if(i===cur)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}
+function go(i,focus){i=Math.max(0,Math.min(N-1,i));slides[i].scrollIntoView({behavior:calm()?'auto':'smooth',block:'center'});if(focus!==false)slides[i].focus({preventScroll:true});cur=i;paint()}
+var tt=$('totop');if(tt)tt.addEventListener('click',function(e){e.preventDefault();var h=$('pagetop');scrollTo({top:0,behavior:calm()?'auto':'smooth'});if(h)setTimeout(function(){h.focus({preventScroll:true})},calm()?0:500)});
+/* progress */
+var pr=$('prog'),tick=0;addEventListener('scroll',function(){if(tick)return;tick=requestAnimationFrame(function(){tick=0;var h=d.documentElement.scrollHeight-innerHeight;pr.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')'})},{passive:true});
+/* menu */
+var menu=$('menu'),mb=$('menub');
+function menuOpen(on){menu.hidden=!on;mb.setAttribute('aria-expanded',on);B.style.overflow=on?'hidden':'';if(on){$('menux').focus()}else mb.focus()}
+mb.addEventListener('click',function(){menuOpen(menu.hidden)});$('menux').addEventListener('click',function(){menuOpen(false)});
+menu.addEventListener('click',function(e){var a=e.target.closest('a[data-go]');if(a){e.preventDefault();menuOpen(false);go(+a.getAttribute('data-go'))}});
+/* zoom viewer */
+var zm=$('zm'),zs=$('zst'),zi=$('zimg'),zt=$('zt'),zl=[],zk=0,S=1,X=0,Y=0,FW=0,opener=null,ptrs={},lastD=0,drag=null;
+slides.forEach(function(s,i){if(s.querySelector('button.z'))zl.push(i)});
+function fit(){var W=zs.clientWidth,H=zs.clientHeight;FW=Math.min(W*.98,H*.98*16/9);zi.style.width=FW+'px';zi.style.height=(FW*9/16)+'px';zi.style.marginLeft=(-FW/2)+'px';zi.style.marginTop=(-FW*9/32)+'px'}
+function clamp(){var W=zs.clientWidth,H=zs.clientHeight,sw=FW*S,sh=FW*9/16*S,mx=Math.max(0,(sw-W)/2),my=Math.max(0,(sh-H)/2);X=Math.max(-mx,Math.min(mx,X));Y=Math.max(-my,Math.min(my,Y))}
+function apply(){clamp();zi.style.transform='translate('+X.toFixed(1)+'px,'+Y.toFixed(1)+'px) scale('+S.toFixed(3)+')'}
+function zoomAt(f,px,py){var n=Math.max(1,Math.min(5,S*f)),k=n/S;X=px-(px-X)*k;Y=py-(py-Y)*k;S=n;apply()}
+function center(){var r=zs.getBoundingClientRect();return[r.width/2-r.width/2,0]}
+function load(k){zk=(k+zl.length)%zl.length;var s=slides[zl[zk]],img=s.querySelector('img.pg');zi.src=img.currentSrc||img.src;zi.alt=img.alt;zt.textContent=img.alt;S=1;X=0;Y=0;fit();apply()}
+function zOpen(i){opener=d.activeElement;zm.hidden=false;B.style.overflow='hidden';zk=Math.max(0,zl.indexOf(i));load(zk);$('zx').focus()}
+function zClose(){zm.hidden=true;B.style.overflow='';var i=zl[zk];go(i,false);if(opener&&opener.focus)opener.focus({preventScroll:true})}
+slides.forEach(function(s,i){var b=s.querySelector('button.z');if(b)b.addEventListener('click',function(){zOpen(i)})});
+$('zx').addEventListener('click',zClose);$('zp').addEventListener('click',function(){load(zk-1)});$('zn').addEventListener('click',function(){load(zk+1)});
+$('zin').addEventListener('click',function(){zoomAt(1.5,0,0)});$('zout').addEventListener('click',function(){zoomAt(1/1.5,0,0)});$('zfit').addEventListener('click',function(){S=1;X=0;Y=0;apply()});
+zs.addEventListener('wheel',function(e){e.preventDefault();var r=zs.getBoundingClientRect();zoomAt(e.deltaY<0?1.15:1/1.15,e.clientX-r.left-r.width/2,e.clientY-r.top-r.height/2)},{passive:false});
+zs.addEventListener('dblclick',function(e){var r=zs.getBoundingClientRect();if(S>1.2){S=1;X=0;Y=0;apply()}else zoomAt(2.5,e.clientX-r.left-r.width/2,e.clientY-r.top-r.height/2)});
+zs.addEventListener('pointerdown',function(e){zs.setPointerCapture(e.pointerId);ptrs[e.pointerId]={x:e.clientX,y:e.clientY};zs.classList.add('dragging');lastD=0});
+zs.addEventListener('pointermove',function(e){var p=ptrs[e.pointerId];if(!p)return;var ids=Object.keys(ptrs);
+ if(ids.length===2){var o=ptrs[ids.filter(function(k){return +k!==e.pointerId})[0]],nd=Math.hypot(e.clientX-o.x,e.clientY-o.y);if(lastD){var r=zs.getBoundingClientRect();zoomAt(nd/lastD,(e.clientX+o.x)/2-r.left-r.width/2,(e.clientY+o.y)/2-r.top-r.height/2)}lastD=nd}
+ else{X+=e.clientX-p.x;Y+=e.clientY-p.y;apply()}
+ p.x=e.clientX;p.y=e.clientY});
+function pend(e){delete ptrs[e.pointerId];lastD=0;if(!Object.keys(ptrs).length)zs.classList.remove('dragging')}
+zs.addEventListener('pointerup',pend);zs.addEventListener('pointercancel',pend);
+addEventListener('resize',function(){if(!zm.hidden){fit();apply()}});
+/* keyboard */
+addEventListener('keydown',function(e){
+ if(e.altKey||e.ctrlKey||e.metaKey)return;
+ if(!zm.hidden){
+  if(e.key==='Escape'){zClose();e.preventDefault()}
+  else if(e.key==='+'||e.key==='='){zoomAt(1.3,0,0)}else if(e.key==='-'){zoomAt(1/1.3,0,0)}else if(e.key==='0'){S=1;X=0;Y=0;apply()}
+  else if(e.key==='ArrowLeft'&&S<=1.01){load(zk-1);e.preventDefault()}else if(e.key==='ArrowRight'&&S<=1.01){load(zk+1);e.preventDefault()}
+  else if(e.key.indexOf('Arrow')===0&&S>1.01){var k=60;if(e.key==='ArrowLeft')X+=k;if(e.key==='ArrowRight')X-=k;if(e.key==='ArrowUp')Y+=k;if(e.key==='ArrowDown')Y-=k;apply();e.preventDefault()}
+  else if(e.key==='Tab'){var f=[].slice.call(zm.querySelectorAll('button')),a=f[0],z=f[f.length-1];if(e.shiftKey&&d.activeElement===a){z.focus();e.preventDefault()}else if(!e.shiftKey&&d.activeElement===z){a.focus();e.preventDefault()}}
+  return}
+ if(!menu.hidden){if(e.key==='Escape')menuOpen(false);return}
+ var t=e.target;if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'))return;
+});
+paint();
+if(location.hash){var h=d.getElementById(location.hash.slice(1));if(h&&h.classList.contains('sl'))setTimeout(function(){go(slides.indexOf(h),false)},50)}
+})();
+</script>
+</body></html>
