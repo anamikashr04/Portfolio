@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Finger-Mask Comic Filter | Anamika Shrivastava</title>
-<meta name="description" content="An interactive experiment by Anamika Shrivastava: frame part of your live camera view with your fingers and see it redrawn in a comic or anime-inspired style, in your browser.">
+<title>Make Your Own Comic | Anamika Shrivastava</title>
+<meta name="description" content="An interactive experiment by Anamika Shrivastava: frame your live camera view with your fingers, pick a comic, anime, Ghibli-inspired, manga or pop-art style, and take your own comic picture, in your browser.">
 <meta name="theme-color" content="#0d1914">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317231f'/%3E%3Cpath d='M16 50 32 14l16 36M23 38h18' fill='none' stroke='%23f6f3ed' stroke-width='5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,6 +82,24 @@ h1:focus,h2:focus{outline:none}
 .livetop{position:absolute;left:0;right:0;top:0;z-index:26;display:flex;justify-content:space-between;gap:.6rem;padding:.8rem clamp(.8rem,3vw,2rem);background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,0))}
 .kb{position:absolute;right:clamp(.8rem,3vw,2rem);bottom:5.5rem;margin:0;font-size:.78rem;color:#dfe7e1;background:rgba(13,25,20,.8);padding:.35rem .7rem;max-width:20rem;text-align:right;z-index:24}
 @media (max-width:640px){.kb{display:none}}
+
+/* side panel, photo, sfx */
+.side{position:absolute;right:clamp(.8rem,2vw,1.4rem);top:4.6rem;z-index:26;width:13rem;display:grid;gap:.55rem;background:rgba(13,25,20,.88);border:2px solid var(--lt);padding:.8rem;box-shadow:5px 5px 0 #000;max-height:calc(100svh - 11rem);overflow:auto}
+.sh{margin:0;font:800 .72rem 'Instrument Sans',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--ring)}
+.styl{display:grid;gap:.4rem}.styl .btn{justify-content:flex-start;padding:.5rem .8rem;min-height:2.4rem;font-size:.85rem}
+.inten{display:grid;gap:.3rem;font-weight:600;font-size:.85rem}.inten input{width:100%;accent-color:#ffd9a0;min-height:1.6rem}
+.sr2{display:grid;gap:.4rem}.sr2 .btn.pri{transform:none;box-shadow:3px 3px 0 #000}.sr2 .btn{justify-content:center;font-size:.85rem;padding:.5rem .8rem;min-height:2.4rem}
+.sfxw{position:absolute;left:50%;top:38%;z-index:27;pointer-events:none;opacity:0;font:900 clamp(3rem,11vw,8rem)/1 'Bricolage Grotesque',Impact,sans-serif;font-variation-settings:'wdth' 75;text-transform:uppercase;color:#ffd9a0;-webkit-text-stroke:3px #000;text-shadow:6px 6px 0 #000,0 0 0 #ff5a36;transform:translate(-50%,-50%) rotate(-8deg)}
+.sfxw.go{animation:sfx 1s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes sfx{0%{opacity:0;transform:translate(-50%,-50%) rotate(-14deg) scale(.2)}25%{opacity:1;transform:translate(-50%,-50%) rotate(-8deg) scale(1.15)}70%{opacity:1;transform:translate(-50%,-50%) rotate(-8deg) scale(1)}100%{opacity:0;transform:translate(-50%,-62%) rotate(-8deg) scale(1.05)}}
+.flash{position:absolute;inset:0;z-index:28;background:#fff;opacity:0;pointer-events:none}.flash.go{animation:fl .35s ease-out}
+@keyframes fl{0%{opacity:.9}100%{opacity:0}}
+.calm .sfxw.go{animation:sfxc 1.2s both}.calm .flash.go{animation:none}
+@keyframes sfxc{0%,100%{opacity:0}15%,80%{opacity:1}}
+.shot{position:absolute;inset:0;z-index:40;display:grid;place-items:center;padding:1rem;background:rgba(0,0,0,.82);overflow:auto}.shot[hidden]{display:none}
+.shc{width:min(46rem,100%);border:4px solid var(--lt);background:#122219;padding:1.2rem;box-shadow:10px 10px 0 #000;text-align:center}
+.shc h2{font-size:clamp(1.6rem,4vw,2.4rem);text-transform:uppercase;margin-bottom:.8rem}.shc img{display:block;max-width:100%;max-height:58svh;margin:0 auto 1rem;border:3px solid #000}.shc .btns{justify-content:center}
+@media (max-width:640px){.side{top:3.9rem;left:.6rem;right:.6rem;width:auto;max-height:none;padding:.5rem;gap:.4rem}.sh{display:none}.styl{display:flex;overflow-x:auto;padding-bottom:.2rem}.styl .btn{white-space:nowrap;flex:none}.inten{grid-template-columns:auto 1fr;align-items:center}.sr2{grid-template-columns:1fr 1fr}}
 /* wipe */
 .wipe{position:fixed;inset:0;z-index:50;pointer-events:none;visibility:hidden;background:var(--ring)}
 .wipe::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.5) 3px,transparent 3.6px);background-size:18px 18px}
@@ -105,16 +123,16 @@ h1:focus,h2:focus{outline:none}
  <div class="ig">
   <div>
    <p class="eye">Interactive experiment</p>
-   <h1 id="h-intro" tabindex="-1">Finger-Mask <em>Comic</em> Filter</h1>
-   <p class="lede">Hold up your hands and frame part of your own live camera view. Inside the frame, the picture is redrawn as a comic or anime-inspired drawing. Move your fingers and the frame moves with them.</p>
+   <h1 id="h-intro" tabindex="-1">Make your own <em>Comic</em></h1>
+   <p class="lede">Frame your live camera view with your fingers and watch yourself turn into a comic panel. Pick a style, add the sound, take your picture.</p>
    <div class="cta"><button class="btn pri" id="try" type="button">Try it with your camera</button><a class="btn" href="#how">How it works</a></div>
   </div>
   <figure class="art" aria-hidden="true" style="margin:0"><div class="pnl p1"><div class="fr"><i></i><i></i><i></i><i></i></div></div><div class="pnl p2"></div><div class="pnl p3"></div><figcaption class="artcap">Illustration only. Your camera is off.</figcaption></figure>
  </div>
  <div class="info" id="how">
-  <section><h2>The idea</h2><p>Reference: a tutorial video demonstrating a comic-style finger-mask editing effect. This page turns that idea into something you can try yourself, live.</p></section>
-  <section><h2>What happens live</h2><ul><li>Your camera view is redrawn by a real-time shader (ink outlines, flat colour, halftone dots).</li><li>Your hands are tracked in the browser. Two hands make a four-point finger frame. One hand makes a pinch lens.</li></ul></section>
-  <section><h2>What is different</h2><p>The tutorial's look comes from editing recorded footage afterwards. A browser cannot do that live, so this prototype uses a real-time drawing effect instead. It is a prototype and has not been tested across devices.</p></section>
+  <section><h2>Five looks</h2><p>American comic, anime, Ghibli-inspired, black-and-white manga and pop art. Drag the intensity up for bolder ink.</p></section>
+  <section><h2>Your fingers are the frame</h2><p>Two hands make a four-point frame. One hand makes a pinch lens. Or drag to draw a frame.</p></section>
+  <section><h2>Good to know</h2><p>A live prototype, not tested across devices. The styles are inspired looks, not official art from any studio.</p></section>
  </div>
 </section>
 <!-- 2. PERMISSION -->
@@ -122,7 +140,7 @@ h1:focus,h2:focus{outline:none}
  <h2 id="h-perm" tabindex="-1">Before the camera turns on</h2>
  <ol class="pts">
   <li><span><b>Your browser will ask.</b> The camera stays off until you choose Allow in your browser's own prompt. You can say no.</span></li>
-  <li><span><b>Video stays on your device.</b> The picture is processed in this page. The code on this page does not upload, send or save your video or any frame of it.</span></li>
+  <li><span><b>Video stays on your device.</b> The picture is processed in this page. The code on this page does not upload or send your video or any frame of it. A picture is made only if you press Take photo, and it stays on your device.</span></li>
   <li><span><b>One download.</b> To find your hands, the page downloads a hand-tracking model from the public CDN cdn.jsdelivr.net. That is a download to you. Your video is not part of it.</span></li>
   <li><span><b>You decide when it stops.</b> The camera is switched off when you press Exit, leave this page, or switch to another tab.</span></li>
  </ol>
@@ -154,11 +172,25 @@ h1:focus,h2:focus{outline:none}
  </div>
  <div class="livetop"><button class="btn" id="exit" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Exit and stop camera</span></button></div>
  <p class="kb" aria-hidden="true">Mouse or touch: drag to draw a frame. Keyboard: arrows move it, + and − resize, Esc clears it.</p>
+<aside class="side" id="side" aria-label="Style, sound and photo">
+  <p class="sh" id="shl">Style</p>
+  <div class="styl" role="group" aria-labelledby="shl">
+   <button class="btn sty" type="button" data-s="0" aria-pressed="true">American comic</button>
+   <button class="btn sty" type="button" data-s="1" aria-pressed="false">Anime</button>
+   <button class="btn sty" type="button" data-s="2" aria-pressed="false">Ghibli-inspired</button>
+   <button class="btn sty" type="button" data-s="3" aria-pressed="false">Manga (black and white)</button>
+   <button class="btn sty" type="button" data-s="4" aria-pressed="false">Pop art</button>
+  </div>
+  <label class="inten" for="kInt"><span>Intensity <output id="kOut" for="kInt">90</output></span><input id="kInt" type="range" min="30" max="100" value="90"></label>
+  <div class="sr2"><button class="btn" id="cSnd" type="button" aria-pressed="true">Sound: on</button><button class="btn pri" id="cShot" type="button">Take photo</button></div>
+ </aside>
+ <div class="sfxw" id="sfxw" aria-hidden="true"></div><div class="flash" id="flash" aria-hidden="true"></div>
+ <p class="sr" id="say" role="status" aria-live="polite"></p>
+ <div class="shot" id="shot" role="dialog" aria-modal="true" aria-labelledby="shotH" hidden><div class="shc"><h2 id="shotH" tabindex="-1">Your comic panel</h2><img id="shotImg" alt="Your camera picture redrawn in the style you chose"><p class="hint">Made on your device. Nothing is uploaded.</p><div class="btns"><a class="btn pri" id="shotDl" download="my-comic.png" href="#">Download picture</a><button class="btn" id="shotX" type="button">Keep drawing</button></div></div></div>
  <div class="hud">
   <p class="status" id="status" role="status" aria-live="polite"><i aria-hidden="true"></i><span id="stxt">Starting…</span></p>
   <div class="ctl" role="group" aria-label="Effect controls">
-   <button class="btn" id="cStyle" type="button" aria-pressed="false">Style: Comic</button>
-   <button class="btn" id="cMask" type="button" aria-pressed="false">Redraw: Inside the frame</button>
+   <button class="btn" id="cMask" type="button">Redraw: Inside the frame</button>
    <button class="btn" id="cMir" type="button" aria-pressed="true">Mirror view</button>
    <button class="btn" id="cPts" type="button" aria-pressed="true">Show finger points</button>
    <button class="btn" id="cClr" type="button">Clear drawn frame</button>
@@ -176,7 +208,7 @@ var HANDS_BASE='https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/';
 var coarse=matchMedia('(pointer:coarse)').matches;
 /* ---------- state ---------- */
 var stream=null,video=$('vid'),running=false,raf=0,tracker=null,trackerState='none',busy=false,gl=null,prog=null,texV=null,texM=null,U={},
-    opts={style:0,invert:0,mirror:1,pts:1},manual=null,hands=[],lastSeen=0,maskA=0,smooth=null,startToken=0,keepStatus='';
+    opts={style:0,invert:0,mirror:1,pts:1,mode:0,k:.9},manual=null,hands=[],lastSeen=0,maskA=0,smooth=null,startToken=0,keepStatus='';
 var mc=d.createElement('canvas'),mx=mc.getContext('2d'),glc=$('gl'),ov=$('ov'),ox=ov.getContext('2d');
 function setState(s,focusId){B.setAttribute('data-state',s);var sc=d.querySelector('.scr[id="s-'+s+'"]');if(sc&&s!=='live'){sc.classList.remove('in');void sc.offsetWidth;sc.classList.add('in')}
  if(s!=='live')scrollTo(0,0);d.getElementById('top').style.display=(s==='live')?'none':'';
@@ -194,7 +226,7 @@ $('back').addEventListener('click',function(){stopAll()});
 function fail(title,msg,hint){stopAll();$('h-err').textContent=title;$('errmsg').textContent=msg;$('errhint').textContent=hint||'';setState('err')}
 function loadMsg(t){$('loadmsg').textContent=t}
 async function start(){
- var tok=++startToken;
+ actx();var tok=++startToken;
  if(!window.isSecureContext||!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
   return fail('This browser can’t open the camera here','Camera access needs a secure (https) page and a browser that supports it. This page can’t reach a camera in the current setup.','Open the site over https in a current version of Chrome, Edge, Safari or Firefox.')}
  try{var t=d.createElement('canvas');gl=t.getContext('webgl')||t.getContext('experimental-webgl');if(!gl)throw 0;gl=null}catch(x){return fail('The picture effect can’t run','This browser could not start WebGL, which the live effect needs.','Try another browser or device, or turn on hardware acceleration.')}
@@ -221,7 +253,7 @@ async function start(){
  loadTracker(tok);
 }
 function killStream(){if(stream){stream.getTracks().forEach(function(t){t.stop()});stream=null}if(video){try{video.pause()}catch(e){}video.srcObject=null}}
-function stopAll(){startToken++;running=false;cancelAnimationFrame(raf);killStream();if(tracker&&tracker.close){try{tracker.close()}catch(e){}}tracker=null;trackerState='none';busy=false;hands=[];$('wipe').classList.remove('go')}
+function stopAll(){var sh=$('shot');if(sh)sh.hidden=true;startToken++;running=false;cancelAnimationFrame(raf);killStream();if(tracker&&tracker.close){try{tracker.close()}catch(e){}}tracker=null;trackerState='none';busy=false;hands=[];$('wipe').classList.remove('go')}
 addEventListener('pagehide',stopAll);
 d.addEventListener('visibilitychange',function(){if(d.hidden&&running){stopAll();$('endmsg').textContent='The camera was switched off because this tab was hidden. Nothing was recorded or uploaded by this page.';setState('end')}});
 /* ---------- hand tracking ---------- */
@@ -267,40 +299,53 @@ var lastS='';function status(k,t){if(lastS===k+t)return;lastS=k+t;var s=$('statu
 function noHandStatus(first){status('warn',first?'Hand tracking is ready. Raise a hand, or two, into view.':'No hand detected. Raise a hand into view, or drag to draw a frame.')}
 /* ---------- GL ---------- */
 var VS='attribute vec2 p;varying vec2 v;void main(){v=vec2(p.x*.5+.5,.5-p.y*.5);gl_Position=vec4(p,0.,1.);}';
-var FS='precision mediump float;varying vec2 v;uniform sampler2D uV,uM;uniform vec2 uC,uS,uO,uMS;uniform float uStyle,uInv,uMir,uA,uT;'+
-'vec3 S(vec2 p){p.x=mix(p.x,1.-p.x,uMir);return texture2D(uV,p*uS+uO).rgb;}'+
-'float L(vec3 c){return dot(c,vec3(.299,.587,.114));}'+
-'vec3 sat(vec3 c,float k){float l=L(c);return mix(vec3(l),c,k);}'+
-'void main(){vec2 o=vec2(1.6)/uC;vec3 c=S(v);float l=L(c);'+
-' float a=L(S(v+vec2(-o.x,-o.y))),b=L(S(v+vec2(0.,-o.y))),cc=L(S(v+vec2(o.x,-o.y))),d=L(S(v+vec2(-o.x,0.))),e=L(S(v+vec2(o.x,0.))),f=L(S(v+vec2(-o.x,o.y))),g=L(S(v+vec2(0.,o.y))),h=L(S(v+vec2(o.x,o.y)));'+
-' float gx=-a-2.*d-f+cc+2.*e+h,gy=-a-2.*b-cc+f+2.*g+h;float ed=length(vec2(gx,gy));'+
-' vec3 res;'+
-' if(uStyle<.5){'+
-'  vec3 q=floor(sat(c,1.35)*4.+.5)/4.;float ql=L(q);'+
-'  vec2 pp=v*uC;float cs=uC.y/95.;mat2 R=mat2(.7071,-.7071,.7071,.7071);vec2 g2=R*pp/cs;float dist=length(fract(g2)-.5);float rad=(1.-ql)*.62;float dot_=smoothstep(rad+.08,rad-.08,dist);'+
-'  vec3 ink=vec3(.06,.05,.08);vec3 paper=vec3(1.,.97,.9);'+
-'  res=mix(q*.92+paper*.08,ink,dot_*smoothstep(.62,.1,ql)*.85);'+
-'  res=mix(res,ink,smoothstep(.22,.5,ed));'+
-' }else{'+
-'  vec3 sm=(S(v+vec2(o.x*2.,0.))+S(v-vec2(o.x*2.,0.))+S(v+vec2(0.,o.y*2.))+S(v-vec2(0.,o.y*2.))+c)/5.;float sl=L(sm);'+
-'  float band=floor(sl*5.)/5.;float t=smoothstep(.0,.04,fract(sl*5.));band=mix(floor((sl-.04)*5.)/5.,band,t);'+
-'  vec3 hue=sat(sm/max(sl,.08),1.25);vec3 base=hue*(band*.78+.28);'+
-'  base=mix(base,vec3(1.,.78,.8)*(band*.8+.25),.12*smoothstep(.55,.9,sl));'+
-'  res=mix(base,vec3(.16,.09,.13),smoothstep(.34,.7,ed));'+
-' }'+
-' float m=0.;vec2 mo=vec2(1.5)/uMS;float m0=texture2D(uM,v).r;'+
-' m=(texture2D(uM,v).r*2.+texture2D(uM,v+vec2(mo.x,0.)).r+texture2D(uM,v-vec2(mo.x,0.)).r+texture2D(uM,v+vec2(0.,mo.y)).r+texture2D(uM,v-vec2(0.,mo.y)).r)/6.;'+
-' m*=uA;float mm=mix(m,1.-m,uInv*step(.001,uA));m=mm;'+
-' float band2=(1.-smoothstep(.0,.16,abs(m-.5)))*step(.001,uA);'+
-' vec3 raw=S(v);vec3 outc=mix(raw,res,smoothstep(.42,.58,m));'+
-' outc=mix(outc,vec3(.04,.04,.06),band2);'+
-' gl_FragColor=vec4(outc,1.);}';
+var FS=['precision mediump float;varying vec2 v;uniform sampler2D uV,uM;uniform vec2 uC,uS,uO,uMS;uniform float uStyle,uInv,uMir,uA,uT,uK;',
+'vec3 S(vec2 p){p.x=mix(p.x,1.-p.x,uMir);return texture2D(uV,p*uS+uO).rgb;}',
+'float L(vec3 c){return dot(c,vec3(.299,.587,.114));}',
+'vec3 sat(vec3 c,float k){float l=L(c);return mix(vec3(l),c,k);}',
+'float hs(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}',
+'float dts(vec2 pp,float cs,float v){mat2 R=mat2(.7071,-.7071,.7071,.7071);vec2 g=R*pp/cs;float d=length(fract(g)-.5);float r=sqrt(clamp(v,0.,1.))*.74;return smoothstep(r+.07,r-.07,d);}',
+'void main(){vec2 o=vec2(1.6)/uC;vec3 c=S(v);float K=uK;',
+' float a=L(S(v+vec2(-o.x,-o.y))),b=L(S(v+vec2(0.,-o.y))),cc=L(S(v+vec2(o.x,-o.y))),d=L(S(v+vec2(-o.x,0.))),e=L(S(v+vec2(o.x,0.))),f=L(S(v+vec2(-o.x,o.y))),g=L(S(v+vec2(0.,o.y))),h=L(S(v+vec2(o.x,o.y)));',
+' float gx=-a-2.*d-f+cc+2.*e+h,gy=-a-2.*b-cc+f+2.*g+h;float ed=length(vec2(gx,gy));',
+' vec3 sm=(S(v+vec2(o.x*2.,0.))+S(v-vec2(o.x*2.,0.))+S(v+vec2(0.,o.y*2.))+S(v-vec2(0.,o.y*2.))+c)/5.;',
+' vec2 pp=v*uC;vec3 res;float ie=1.-K;',
+' if(uStyle<.5){',
+'  vec3 cl=clamp((sm*.6+c*.4-.5)*(1.15+.35*K)+.5,0.,1.);cl=sat(cl,1.35+.45*K);float lv=3.+ie*3.;vec3 q=floor(cl*lv+.5)/lv;float ql=L(q);',
+'  float dk=dts(pp,uC.y/68.,smoothstep(.5,.1,ql));vec3 ink=vec3(.05,.04,.07);',
+'  res=mix(q,ink,dk*(.4+.35*K));res=mix(res,ink,smoothstep(.12+.2*ie,.36+.2*ie,ed));res=mix(res,vec3(1.,.97,.88),.05);',
+' }else if(uStyle<1.5){',
+'  float sl=L(sm);float band=floor(sl*4.+.5)/4.;vec3 hue=sat(sm/max(sl,.1),1.4+.4*K);vec3 base=clamp(hue*(band*.85+.25),0.,1.);',
+'  base=mix(base,vec3(1.,.92,.92),smoothstep(.82,.96,sl)*.55);base=mix(base,base*vec3(.8,.78,1.),smoothstep(.38,.1,sl)*.55);',
+'  res=mix(base,vec3(.16,.08,.1),smoothstep(.2+.25*ie,.5+.2*ie,ed));',
+' }else if(uStyle<2.5){',
+'  vec3 w=(S(v+vec2(o.x*3.,0.))+S(v-vec2(o.x*3.,0.))+S(v+vec2(0.,o.y*3.))+S(v-vec2(0.,o.y*3.))+S(v+o*3.)+S(v-o*3.)+sm*2.)/8.;float lw=L(w);',
+'  w=mix(w,floor(w*8.+.5)/8.,.15+.4*K);w=sat(w,1.1+.2*K);w*=vec3(1.07,1.03,.9);',
+'  w=mix(w,vec3(.5,.74,.96),smoothstep(.72,1.,lw)*.3);w=mix(w,vec3(.1,.3,.24),smoothstep(.3,.04,lw)*.3);',
+'  w+=hs(floor(pp/2.))*.04-.02;res=mix(w,w*vec3(.36,.3,.28),smoothstep(.3,.9,ed)*(.35+.3*K));',
+' }else if(uStyle<3.5){',
+'  float l=L(mix(c,sm,.5));l=clamp((l-.5)*(1.35+.5*K)+.52,0.,1.);',
+'  float t=dts(pp,uC.y/58.,smoothstep(.74,.28,l));float v1=mix(1.,0.,t*.9);v1=mix(v1,0.,smoothstep(.2,.08,l));v1=mix(v1,1.,step(.74,l));',
+'  res=vec3(v1)*vec3(.98,.96,.92);res=mix(res,vec3(.03),smoothstep(.15+.2*ie,.4+.2*ie,ed));',
+' }else{',
+'  vec3 cl=clamp((sm-.5)*(1.4+.4*K)+.5,0.,1.);float l=L(cl);vec3 pal=vec3(1.,.95,.85);',
+'  if(l<.28)pal=vec3(.07,.1,.38);else if(l<.5)pal=vec3(.92,.1,.16);else if(l<.74)pal=vec3(1.,.86,.1);',
+'  float t=dts(pp,uC.y/34.,smoothstep(.72,.3,l))*step(.28,l)*step(l,.74);',
+'  res=mix(pal,pal*.5,t*.6);res=mix(res,vec3(.03),smoothstep(.18+.15*ie,.42,ed));',
+' }',
+' res=mix(c,res,.45+.55*K);',
+' float m=0.;vec2 mo=vec2(1.5)/uMS;',
+' m=(texture2D(uM,v).r*2.+texture2D(uM,v+vec2(mo.x,0.)).r+texture2D(uM,v-vec2(mo.x,0.)).r+texture2D(uM,v+vec2(0.,mo.y)).r+texture2D(uM,v-vec2(0.,mo.y)).r)/6.;',
+' m*=uA;float mm=mix(m,1.-m,uInv*step(.001,uA));m=mm;',
+' float band2=(1.-smoothstep(.0,.16,abs(m-.5)))*step(.001,uA);',
+' vec3 raw=S(v);vec3 outc=mix(raw,res,smoothstep(.42,.58,m));outc=mix(outc,vec3(.04,.04,.06),band2*step(uInv,.5)*.0+band2);',
+' gl_FragColor=vec4(outc,1.);}'].join('\n');
 function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(o));return o}
 function initGL(){try{
  gl=glc.getContext('webgl',{antialias:false,alpha:false,preserveDrawingBuffer:false})||glc.getContext('experimental-webgl');if(!gl)return false;
  prog=gl.createProgram();gl.attachShader(prog,sh(gl.VERTEX_SHADER,VS));gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(prog);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw new Error('link');gl.useProgram(prog);
  var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);var pl=gl.getAttribLocation(prog,'p');gl.enableVertexAttribArray(pl);gl.vertexAttribPointer(pl,2,gl.FLOAT,false,0,0);
- ['uV','uM','uC','uS','uO','uMS','uStyle','uInv','uMir','uA','uT'].forEach(function(n){U[n]=gl.getUniformLocation(prog,n)});
+ ['uV','uM','uC','uS','uO','uMS','uStyle','uInv','uMir','uA','uT','uK'].forEach(function(n){U[n]=gl.getUniformLocation(prog,n)});
  function tex(u){var t=gl.createTexture();gl.activeTexture(gl.TEXTURE0+u);gl.bindTexture(gl.TEXTURE_2D,t);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);return t}
  texV=tex(0);texM=tex(1);gl.uniform1i(U.uV,0);gl.uniform1i(U.uM,1);layout();return true}catch(e){console.warn('gl init failed',e&&e.message);return false}}
 /* ---------- draw loop ---------- */
@@ -310,16 +355,18 @@ function loop(){if(!running)return;raf=requestAnimationFrame(loop);
  var now=performance.now();
  if(tracker&&!busy){busy=true;tracker.send({image:video}).then(function(){busy=false}).catch(function(){busy=false;trackerState='failed';tracker=null;status('bad','Hand tracking stopped working. You can still drag across the picture to draw a frame.')})}
  // grace period when hands vanish
- var seen=hands.length&&(now-lastSeen<1e9);var shape=currentShape(now);
- var target=shape?1:0;if(calm()){maskA=target}else{maskA+=(target-maskA)*.22;if(Math.abs(target-maskA)<.01)maskA=target}
+ var shape=currentShape(now);var whole=opts.mode===2;
+ if(shape&&!hadShape&&!whole&&now-lastPow>2500){lastPow=now;pow()}hadShape=!!shape;
+ var target=(shape||whole)?1:0;if(calm()){maskA=target}else{maskA+=(target-maskA)*.22;if(Math.abs(target-maskA)<.01)maskA=target}
  if(!shape&&maskA>0&&lastShape)shape=lastShape;if(shape)lastShape=shape;
  // mask canvas
- mx.fillStyle='#000';mx.fillRect(0,0,mc.width,mc.height);
- if(shape){mx.fillStyle='#fff';mx.beginPath();if(shape.type==='circle'){mx.ellipse(shape.x*mc.width,shape.y*mc.height,shape.r*mc.height,shape.r*mc.height,0,0,6.2832)}else{shape.pts.forEach(function(p,i){i?mx.lineTo(p.x*mc.width,p.y*mc.height):mx.moveTo(p.x*mc.width,p.y*mc.height)});mx.closePath()}mx.fill()}
+ mx.fillStyle=whole?'#fff':'#000';mx.fillRect(0,0,mc.width,mc.height);
+ if(shape&&!whole){mx.fillStyle='#fff';mx.beginPath();if(shape.type==='circle'){mx.ellipse(shape.x*mc.width,shape.y*mc.height,shape.r*mc.height,shape.r*mc.height,0,0,6.2832)}else{shape.pts.forEach(function(p,i){i?mx.lineTo(p.x*mc.width,p.y*mc.height):mx.moveTo(p.x*mc.width,p.y*mc.height)});mx.closePath()}mx.fill()}
  gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,texV);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,video);
  gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,texM);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,mc);
- gl.uniform2f(U.uC,CW,CH);gl.uniform2f(U.uMS,mc.width,mc.height);gl.uniform2f(U.uS,cov.sx,cov.sy);gl.uniform2f(U.uO,cov.ox,cov.oy);gl.uniform1f(U.uStyle,opts.style);gl.uniform1f(U.uInv,opts.invert);gl.uniform1f(U.uMir,opts.mirror);gl.uniform1f(U.uA,maskA);gl.uniform1f(U.uT,now/1000);
+ gl.uniform2f(U.uC,CW,CH);gl.uniform2f(U.uMS,mc.width,mc.height);gl.uniform2f(U.uS,cov.sx,cov.sy);gl.uniform2f(U.uO,cov.ox,cov.oy);gl.uniform1f(U.uStyle,opts.style);gl.uniform1f(U.uInv,opts.invert);gl.uniform1f(U.uK,opts.k);gl.uniform1f(U.uMir,opts.mirror);gl.uniform1f(U.uA,maskA);gl.uniform1f(U.uT,now/1000);
  gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+ if(snapReq){snapReq=false;takeShot()}
  // overlay
  ox.clearRect(0,0,CW,CH);
  if(opts.pts&&hands.length){ox.fillStyle='#ffd9a0';ox.strokeStyle='#000';ox.lineWidth=Math.max(2,CH/260);hands.forEach(function(l){[4,8].forEach(function(k){var p=toCanvas(l[k]);ox.beginPath();ox.arc(p.x*CW,p.y*CH,Math.max(6,CH/70),0,6.2832);ox.fill();ox.stroke()})})}
@@ -332,10 +379,37 @@ function loop(){if(!running)return;raf=requestAnimationFrame(loop);
   else if(trackerState==='failed')status('bad','Hand tracking is not available. Drag across the picture to draw a frame.');
   else status('warn','Camera is on. Loading hand tracking… You can already drag to draw a frame.')}
 }
-var lastShape=null;
+var lastShape=null,hadShape=false,lastPow=0,snapReq=false;
+/* ---------- sound, words, photo ---------- */
+var soundOn=true,AC=null,sayT=0;
+function say(t){var e=$('say');e.textContent='';clearTimeout(sayT);sayT=setTimeout(function(){e.textContent=t},40)}
+function actx(){if(!AC){var C=window.AudioContext||window.webkitAudioContext;if(C){try{AC=new C()}catch(e){}}}if(AC&&AC.state==='suspended'){try{AC.resume()}catch(e){}}return AC}
+function tn(a,f,t,du,ty,g,f2){var o=a.createOscillator(),v=a.createGain();o.type=ty||'sine';o.frequency.setValueAtTime(f,t);if(f2)o.frequency.exponentialRampToValueAtTime(f2,t+du);v.gain.setValueAtTime(.0001,t);v.gain.exponentialRampToValueAtTime(g||.15,t+.015);v.gain.exponentialRampToValueAtTime(.0001,t+du);o.connect(v);v.connect(a.destination);o.start(t);o.stop(t+du+.05)}
+function nz(a,t,du,f0,f1,g){var n=Math.floor(a.sampleRate*du),b=a.createBuffer(1,n,a.sampleRate),x=b.getChannelData(0);for(var i=0;i<n;i++)x[i]=(Math.random()*2-1)*(1-i/n);var sn=a.createBufferSource();sn.buffer=b;var fl=a.createBiquadFilter();fl.type='bandpass';fl.Q.value=.9;fl.frequency.setValueAtTime(f0,t);fl.frequency.exponentialRampToValueAtTime(f1,t+du);var v=a.createGain();v.gain.setValueAtTime(g,t);v.gain.exponentialRampToValueAtTime(.0001,t+du);sn.connect(fl);fl.connect(v);v.connect(a.destination);sn.start(t)}
+function sfx(k){if(!soundOn)return;var a=actx();if(!a)return;var t=a.currentTime;
+ if(k==='pow'){tn(a,220,t,.22,'sawtooth',.18,50);nz(a,t,.25,1800,300,.35);tn(a,880,t+.02,.12,'square',.06,300)}
+ else if(k==='pop'){tn(a,420,t,.1,'triangle',.16,900);tn(a,900,t+.07,.12,'triangle',.1,1300)}
+ else if(k==='shutter'){nz(a,t,.05,4000,2500,.5);nz(a,t+.09,.07,3000,1800,.4);tn(a,1500,t,.03,'square',.05)}}
+var WORDS=['POW!','ZAP!','BAM!','WHAM!','KAPOW!'];
+function word(w){var e=$('sfxw');e.textContent=w;e.classList.remove('go');void e.offsetWidth;e.classList.add('go')}
+function pow(){sfx('pow');word(WORDS[Math.floor(Math.random()*WORDS.length)])}
+function takeShot(){
+ var pad=Math.round(CH/55)+6,c=d.createElement('canvas');c.width=CW+pad*2;c.height=CH+pad*2;var x=c.getContext('2d');
+ x.fillStyle='#f6efe0';x.fillRect(0,0,c.width,c.height);x.drawImage(glc,pad,pad);x.lineWidth=Math.max(4,CH/110);x.strokeStyle='#050505';x.strokeRect(pad,pad,CW,CH);
+ var url=c.toDataURL('image/png');sfx('shutter');word('SNAP!');var f=$('flash');f.classList.remove('go');void f.offsetWidth;f.classList.add('go');
+ setTimeout(function(){$('shotImg').src=url;$('shotDl').href=url;$('shot').hidden=false;$('shotH').focus();say('Your comic picture is ready. Download it or keep drawing.')},calm()?100:650)}
+function closeShot(){$('shot').hidden=true;var b=$('cShot');if(b)b.focus()}
 /* ---------- controls ---------- */
 function tog(id,key,labels,invertTrue){var b=$(id);b.addEventListener('click',function(){opts[key]=opts[key]?0:1;b.textContent=labels[opts[key]];b.setAttribute('aria-pressed',opts[key]?'true':'false')})}
-tog('cStyle','style',['Style: Comic','Style: Anime']);tog('cMask','invert',['Redraw: Inside the frame','Redraw: Outside the frame']);
+var MODES=['Redraw: Inside the frame','Redraw: Outside the frame','Redraw: Whole picture'];
+$('cMask').addEventListener('click',function(){opts.mode=(opts.mode+1)%3;opts.invert=opts.mode===1?1:0;this.textContent=MODES[opts.mode];say(MODES[opts.mode]);if(opts.mode===2)pow()});
+var NAMES=['American comic','Anime','Ghibli-inspired','Manga, black and white','Pop art'];
+d.querySelectorAll('.sty').forEach(function(b){b.addEventListener('click',function(){opts.style=+b.dataset.s;d.querySelectorAll('.sty').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});say('Style: '+NAMES[opts.style]);sfx('pop');word(['POP!','ZAP!','BOOM!','WHAM!','KAPOW!'][opts.style])})});
+$('kInt').addEventListener('input',function(){opts.k=this.value/100;$('kOut').textContent=this.value});
+$('cSnd').addEventListener('click',function(){soundOn=!soundOn;this.textContent='Sound: '+(soundOn?'on':'off');this.setAttribute('aria-pressed',String(soundOn));if(soundOn)sfx('pop')});
+$('cShot').addEventListener('click',function(){snapReq=true});
+$('shotX').addEventListener('click',closeShot);
+d.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('shot').hidden){e.preventDefault();closeShot()}});
 $('cMir').addEventListener('click',function(){opts.mirror=opts.mirror?0:1;this.setAttribute('aria-pressed',opts.mirror?'true':'false')});
 $('cPts').addEventListener('click',function(){opts.pts=opts.pts?0:1;this.setAttribute('aria-pressed',opts.pts?'true':'false')});
 $('cClr').addEventListener('click',function(){manual=null});
