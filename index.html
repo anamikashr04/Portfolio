@@ -607,10 +607,10 @@ function frame(now){
   yaw=py;pitch=pp}
  render()}
 function near(){
- var best=-1,bd=520,fx=Math.sin(yaw)*Math.cos(pitch),fz=-Math.cos(yaw)*Math.cos(pitch),fy=-Math.sin(pitch);
+ var best=-1,bd=0,fx=Math.sin(yaw)*Math.cos(pitch),fz=-Math.cos(yaw)*Math.cos(pitch),fy=-Math.sin(pitch);
  PN.forEach(function(n,i){var p=n.p,dx=p.x-cx,dz=p.z-cz,d=Math.hypot(dx,dz),front=((cx-p.x)*Math.sin(n.r)+(cz-p.z)*Math.cos(n.r))>0,
   dot=(dx*fx+dz*fz+(-55)*fy)/Math.hypot(dx,dz,55);
-  n.d=d;if(front&&d<bd&&dot>.82){bd=d;best=i}});
+  n.d=d;if(front&&d<760&&dot>.86&&dot>bd){bd=dot;best=i}});
  if(best!==target){target=best;PN.forEach(function(n,i){n.g.classList.toggle('near',i===best)});
   var c=$('gcap');if(best>=0){var p=PROJECTS[best];c.innerHTML='<b>'+esc(p.title)+'</b>'+(coarse?'Tap the panel to open':'Click or press Enter to open');c.classList.add('on');$('gstat').textContent=p.title+'. Press Enter to open.'}else{c.classList.remove('on')}}
 }
@@ -665,7 +665,7 @@ function endDrag(e){if(drag&&e.pointerId===drag.id){drag=null;setTimeout(functio
 addEventListener('pointerup',endDrag);addEventListener('pointercancel',endDrag);
 /* click while pointer-locked: pick what the crosshair points at */
 gv.addEventListener('click',function(e){if(document.pointerLockElement!==gv||pvOpen)return;
- var el=document.elementFromPoint(innerWidth/2,innerHeight/2),f=el&&el.closest&&el.closest('.gface');if(f&&target>=0&&+f.getAttribute('data-i')===target)openPV(target)});
+ var el=document.elementFromPoint(innerWidth/2,innerHeight/2),f=el&&el.closest&&el.closest('.gface');if(f&&target>=0&&+f.getAttribute('data-i')===target)openPV(target);else if(target>=0)openPV(target)});
 /* joystick */
 var jo=$('gjoy'),kn=$('gknob'),jid=null;
 function jmove(e){var r=jo.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2),m=Math.hypot(dx,dy),R=r.width/2;if(m>R){dx*=R/m;dy*=R/m}
