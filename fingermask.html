@@ -199,7 +199,7 @@ async function start(){
   return fail('This browser can’t open the camera here','Camera access needs a secure (https) page and a browser that supports it. This page can’t reach a camera in the current setup.','Open the site over https in a current version of Chrome, Edge, Safari or Firefox.')}
  try{var t=d.createElement('canvas');gl=t.getContext('webgl')||t.getContext('experimental-webgl');if(!gl)throw 0;gl=null}catch(x){return fail('The picture effect can’t run','This browser could not start WebGL, which the live effect needs.','Try another browser or device, or turn on hardware acceleration.')}
  setState('load');loadMsg('Waiting for your browser’s camera prompt…');
- try{stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:'user',width:{ideal:1280},height:{ideal:720}}})}
+ try{try{stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:'user',width:{ideal:1280},height:{ideal:720}}})}catch(e1){if(e1&&(e1.name==='NotFoundError'||e1.name==='OverconstrainedError'||e1.name==='DevicesNotFoundError'))stream=await navigator.mediaDevices.getUserMedia({audio:false,video:true});else throw e1}}
  catch(err){if(tok!==startToken)return;var n=err&&err.name;
   if(n==='NotAllowedError'||n==='SecurityError'||n==='PermissionDeniedError')return fail('Camera permission was not given','The camera was not turned on. Nothing was recorded.','To try again, allow camera access for this site in your browser’s address bar or site settings, then press Try again.');
   if(n==='NotFoundError'||n==='DevicesNotFoundError'||n==='OverconstrainedError')return fail('No camera found','This device doesn’t seem to have a camera that the browser can use.','Connect a camera, then press Try again.');
