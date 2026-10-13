@@ -2,975 +2,298 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shrunkhala: System Thinking | Anamika Shrivastava</title>
 <meta name="description" content="Shrunkhala Organisation: System Thinking, a systems-thinking project by Anamika Shrivastava, with the waste-segregation awareness material and the guidelines leaflets.">
-<meta name="theme-color" content="#0d1914">
+<meta name="theme-color" content="#1f1711">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317231f'/%3E%3Cpath d='M16 50 32 14l16 36M23 38h18' fill='none' stroke='%23f6f3ed' stroke-width='5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..700&family=Instrument+Sans:wght@400;600;800&display=swap">
-<style>:root{--ink:#17231f;--green:#2c5b49;--bg:#0d1914;--cream:#fcf9f0;--or:#b84f00;--orb:#ff7d00;--gr:#237744;--lt:#f1ede4;--ring:#ffd9a0;box-sizing:border-box}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..700&family=Instrument+Sans:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#f8f3e9;--bg2:#efe6d3;--ink:#2a2018;--mut:#6b5b4b;--ac:#a8693f;--acd:#7d4524;--tan:#dcc196;--tan2:#ead9b8;--gr:#2f6b46;--dk:#1f1711;--lt:#f8f3e9;--ring:#ffcf8a;--hero:#a8693f;box-sizing:border-box}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
-body{margin:0;background:var(--bg);color:var(--lt);font-family:'Instrument Sans',system-ui,sans-serif;line-height:1.5}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:1.06rem;line-height:1.62;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque','Instrument Sans',system-ui,sans-serif;line-height:1.08;margin:0}
+a{color:inherit}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-:focus-visible{outline:3px solid var(--ring);outline-offset:4px}
-.paper :focus-visible{outline-color:var(--or)}
-.skip{position:absolute;left:1rem;top:-4rem;background:var(--lt);color:var(--ink);padding:.6rem 1rem;z-index:30;font-weight:600}
+:focus-visible{outline:3px solid var(--acd);outline-offset:3px}
+.hero :focus-visible,.dark :focus-visible,.bk :focus-visible,.part :focus-visible{outline-color:var(--ring)}
+.skip{position:absolute;left:1rem;top:-4rem;background:#fff;color:var(--ink);padding:.6rem 1rem;z-index:60;font-weight:700;border-radius:6px}
 .skip:focus{top:1rem}
-.prog{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--ring);transform-origin:0 50%;transform:scaleX(0);z-index:20}
-.top{position:fixed;left:0;right:0;top:0;z-index:15;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.9rem clamp(1rem,3vw,2rem);background:linear-gradient(to bottom,rgba(13,25,20,.94),rgba(13,25,20,0))}
-.btn{white-space:nowrap;font:600 .8rem 'Instrument Sans',system-ui,sans-serif;color:var(--lt);background:rgba(13,25,20,.7);border:1px solid rgba(241,237,228,.55);padding:.5rem .85rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
-.btn:hover{background:var(--lt);color:var(--ink)}
-.btn[aria-pressed="true"],.btn[aria-expanded="true"]{background:var(--lt);color:var(--ink)}
-.btn svg{width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.tr{display:flex;gap:.6rem}
-.intro{min-height:62vh;min-height:62svh;display:flex;flex-direction:column;justify-content:flex-end;gap:1rem;padding:7rem clamp(1rem,4vw,3rem) 3rem;max-width:1320px;margin:0 auto}
-.intro h1{margin:0;font:250 clamp(3rem,9vw,8.5rem)/.88 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 78;letter-spacing:-.035em}
-.intro .tag{margin:0;font-size:clamp(1.05rem,1.8vw,1.5rem);max-width:40rem;color:#f3e3c3}
-.intro .hint{margin:0;font-size:.82rem;color:#cdd9d1;letter-spacing:.03em}
-.intro kbd{font:600 .72rem 'Instrument Sans',system-ui,sans-serif;border:1px solid rgba(241,237,228,.5);padding:.05rem .35rem}
-main{max-width:1320px;margin:0 auto;padding:0 clamp(1rem,4vw,3rem) 9rem}
-.sl{position:relative;margin:0 0 clamp(4rem,11vh,8rem);scroll-margin-top:3.5rem}
-.sl:focus{outline:none}
-.sl:focus-visible .fr{outline:3px solid var(--ring);outline-offset:6px}
-.sn{display:flex;align-items:baseline;gap:.5rem;margin:0 0 .7rem;font:600 .78rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#cdd9d1}
-.sn b{font:300 1.6rem 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.02em;color:var(--lt)}
-.fr{position:relative;background:var(--cream);box-shadow:0 30px 80px -20px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.04);border-radius:4px;overflow:hidden}
-.fr button.z{all:unset;display:block;position:relative;width:100%;cursor:zoom-in}
-.fr button.z:focus-visible{outline:3px solid var(--ring);outline-offset:-3px}
-.fr img.pg{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--cream)}
-.zb{position:absolute;right:.8rem;bottom:.8rem;font:600 .75rem 'Instrument Sans',system-ui,sans-serif;background:rgba(13,25,20,.86);color:var(--lt);padding:.35rem .7rem;opacity:0;transform:translateY(4px);transition:opacity .25s,transform .25s;pointer-events:none}
-.fr:hover .zb,.fr button.z:focus-visible .zb{opacity:1;transform:none}
-@media (hover:none){.zb{opacity:1;transform:none}}
-/* reveal */
-.js .sl .fr{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-.js .sl.in .fr{opacity:1;transform:none}
-.js .sl .sn{opacity:0;transition:opacity .6s .1s}.js .sl.in .sn{opacity:1}
-.js .sl .stg>*{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
-.js .sl.in .stg>*{opacity:1;transform:none;transition-delay:calc(var(--i,0)*70ms + .25s)}
-.calm .sl .fr,.calm .sl .sn,.calm .sl .stg>*{opacity:1!important;transform:none!important;transition:none!important}
-.calm html,html:has(.calm){scroll-behavior:auto}
-/* rail */
-.rail{position:fixed;left:.9rem;top:50%;transform:translateY(-50%);z-index:12;display:none}
-.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
-.rail a{display:block;width:14px;height:3px;background:rgba(241,237,228,.35);border-radius:2px;transition:width .2s,background .2s}
-.rail a:hover,.rail a:focus-visible,.rail a[aria-current="true"]{width:30px;background:var(--lt)}
-.rail a[aria-current="true"]{background:var(--ring)}
-@media (min-width:1180px) and (min-height:760px){.rail{display:block}}
-/* bottom pager */
-.pager{position:fixed;right:clamp(.6rem,2vw,1.4rem);bottom:clamp(.6rem,2vw,1.4rem);z-index:14;display:flex;align-items:center;background:rgba(13,25,20,.9);border:1px solid rgba(241,237,228,.5);backdrop-filter:blur(6px)}
-.pager button{all:unset;cursor:pointer;display:grid;place-items:center;width:2.8rem;height:2.6rem;color:var(--lt)}
-.pager button:hover{background:var(--lt);color:var(--ink)}
-.pager button:focus-visible{outline:3px solid var(--ring);outline-offset:-3px}
-.pager svg{width:1.1rem;height:1.1rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.pager output{min-width:5.4rem;text-align:center;font:600 .85rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.06em}
-/* menu */
-.menu{position:fixed;inset:0;z-index:25;background:rgba(7,13,10,.94);overflow:auto;padding:5rem clamp(1rem,4vw,3rem) 3rem}
-.menu[hidden]{display:none}
-.menu h2{margin:0 0 1.2rem;font:250 clamp(2rem,5vw,3.6rem)/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 78;letter-spacing:-.03em}
-.menu ol{list-style:none;margin:0 auto;padding:0;max-width:1100px;columns:3 18rem;column-gap:2.5rem}
-.menu li{break-inside:avoid}
-.menu a{display:flex;gap:.9rem;padding:.55rem 0;border-top:1px solid rgba(241,237,228,.2);color:var(--lt);text-decoration:none;font-size:.92rem}
-.menu a:hover{color:var(--ring)}
-.menu a b{font:300 1.05rem 'Bricolage Grotesque',system-ui,sans-serif;min-width:2rem;color:#cdd9d1}
-.menu .x{position:fixed;top:1rem;right:clamp(1rem,3vw,2rem)}
-/* zoom viewer */
-.zm{position:fixed;inset:0;z-index:40;background:#050a08;display:flex;flex-direction:column}
-.zm[hidden]{display:none}
-.zbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 1rem;background:#0b1511;border-bottom:1px solid rgba(241,237,228,.15)}
-.zbar .t{font:600 .85rem 'Instrument Sans',system-ui,sans-serif;color:#cdd9d1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.zbar .g{display:flex;gap:.4rem;flex:none}
-.zst{position:relative;flex:1;overflow:hidden;touch-action:none;cursor:grab;outline:none}
-.zst.dragging{cursor:grabbing}
-.zst img{position:absolute;left:50%;top:50%;max-width:none;user-select:none;-webkit-user-drag:none;transform-origin:50% 50%;will-change:transform;background:var(--cream)}
-.zh{position:absolute;left:50%;bottom:1rem;transform:translateX(-50%);font-size:.78rem;color:#cdd9d1;background:rgba(7,13,10,.8);padding:.3rem .7rem;pointer-events:none;white-space:nowrap}
-.calm .zst img{transition:none}
-/* ===== native slides ===== */
-.paper{padding:clamp(1.1rem,3.4vw,3.2rem);color:#1a1a19;font-size:clamp(.92rem,1.25vw,1.12rem);line-height:1.5}
-.paper h2.pt{margin:0 0 clamp(1.2rem,3vw,2.4rem);padding-bottom:.5rem;font:400 clamp(1.7rem,3.6vw,2.9rem)/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 75;text-transform:uppercase;letter-spacing:.01em;color:var(--or);border-bottom:2px solid var(--orb);display:inline-block;padding-right:3rem}
-.paper h3{margin:0 0 .6rem;font:700 1.05em 'Instrument Sans',system-ui,sans-serif;color:var(--gr)}
-.paper p{margin:0 0 .8em}.paper p:last-child{margin-bottom:0}
-.paper ul{margin:0;padding-left:1.15em}.paper li{margin:0 0 .45em}
-.card{border:1.5px solid var(--gr);border-radius:22px;padding:1.2rem 1.4rem;background:rgba(255,255,255,.4)}
-.hd{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:clamp(1.2rem,3vw,2.4rem)}
-.hd .pt{margin:0;order:2}.brand{margin:0;font:600 .9rem/1.2 'Instrument Sans',system-ui,sans-serif;color:var(--or)}
-.ov{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(1.2rem,4vw,3.5rem);align-items:start}
-.eyebrow{font:700 .85rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.08em;margin:0 0 .5rem;padding-left:.8rem;border-left:2px solid var(--gr);color:var(--gr)}
-.lead{font-size:1.12em;max-width:34rem}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem 2rem;margin:1.6rem 0 0;padding-top:1.3rem;border-top:1px solid rgba(26,26,25,.3)}
-.facts dt{font:700 .78rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.1em;color:var(--gr);margin-bottom:.2rem}.facts dd{margin:0}
-.ov-r{margin:0}.ov-r img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 40%;border-radius:18px;border:3px solid var(--gr)}
-.ov-r figcaption{margin-top:.8rem;font:700 clamp(1.3rem,2.4vw,2rem)/1.05 'Instrument Sans',system-ui,sans-serif;color:var(--gr)}
-.pd{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"why init" "why nat" "hmw hmw";gap:1.1rem clamp(1rem,4vw,3rem)}
-.c-why{grid-area:why;align-self:center}.c-init{grid-area:init}.c-nat{grid-area:nat}
-.hmw{grid-area:hmw;margin:1rem 0 0;padding-top:1.1rem;border-top:1px solid rgba(26,26,25,.3);display:flex;gap:1.5rem;flex-wrap:wrap}
-.hmw span{font:700 .85rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.08em;color:var(--or)}.hmw strong{flex:1;min-width:16rem}
-.sr3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.src{display:flex;flex-direction:column;gap:.8rem}.src h3{text-align:center;font-size:1.08em}
-.src .sb{flex:1;font-size:.95em}.src .sb p.lb{font-weight:700;color:var(--gr)}
-.lnk{align-self:flex-start;color:var(--gr);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.lnk:hover{color:var(--or)}
-.notes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem}
-.note{background:#fdeeb0;padding:1rem 1rem 1.6rem;box-shadow:0 8px 18px -8px rgba(0,0,0,.35);transition:transform .25s,box-shadow .25s;position:relative;clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%)}
-.note.hot{background:#ff9aa0}
-.note h3{color:#1a1a19;font-size:.98em}.note p{font-size:.92em}
-.note:hover{transform:translateY(-4px) rotate(-.6deg);box-shadow:0 16px 28px -10px rgba(0,0,0,.4)}
-.mos{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
-.mo{background:#e4f1e8;padding:0 1.2rem 1.4rem;box-shadow:0 8px 18px -10px rgba(0,0,0,.4)}
-.mo h3{margin:0 0 1rem;display:flex;justify-content:center;transform:translateY(-1.6rem);margin-bottom:-.2rem}
-.mo h3 span{display:grid;place-items:center;width:4.4rem;height:4.4rem;border-radius:50%;background:var(--gr);color:#fff;font:600 1.9rem 'Bricolage Grotesque',system-ui,sans-serif}
-.mo{margin-top:2rem}
-.mx{display:grid;grid-template-columns:auto 1fr 1fr auto;grid-template-rows:auto 1fr 1fr auto;gap:1rem;align-items:stretch}
-.ax{font:700 .9rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.06em;color:#1a1a19}
-.a-t{grid-column:2/4;grid-row:1;text-align:center}.a-b{grid-column:2/4;grid-row:4;text-align:center}
-.a-l{grid-column:1;grid-row:2/4;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;align-self:center}
-.a-r{grid-column:4;grid-row:2/4;writing-mode:vertical-rl;text-align:center;align-self:center}
-.q{background:#e4f1e8;padding:1.2rem 1.4rem;box-shadow:0 8px 18px -10px rgba(0,0,0,.4)}
-.q1{grid-column:2;grid-row:2}.q2{grid-column:3;grid-row:2}.q3{grid-column:2;grid-row:3}.q4{grid-column:3;grid-row:3}
-.sf{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(1rem,3vw,2.5rem);align-items:center}
-.sf-i{width:clamp(5rem,12vw,11rem);height:auto}
-.fail{border-color:#d63a3a}.fail h3{color:#d63a3a;text-align:center}.fail li{color:#c42f2f}
-.rec h3{text-align:center}
-.imp{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-.ic{padding:1.3rem 1.4rem;box-shadow:0 8px 18px -10px rgba(0,0,0,.4)}
-.ic h3{color:#1a1a19;font-size:1.1em;margin-bottom:.8rem}
-.ic-a{background:#f9b27c}.ic-b{background:#d5e6da}.ic-c{background:#f6e57d}
-.fs .ic{border-radius:22px}.fs .ic-a{background:#d5e6da}.fs .ic-b{background:#faeec2}.fs .ic-c{background:#f9b27c}
-.ic{transition:transform .25s}.ic:hover{transform:translateY(-4px)}
-@media (max-width:900px){
- .ov,.pd,.sf{grid-template-columns:1fr}.pd{grid-template-areas:"init" "nat" "why" "hmw"}.c-why{align-self:stretch}
- .sr3,.imp{grid-template-columns:1fr}.notes{grid-template-columns:1fr 1fr}.mos{grid-template-columns:1fr 1fr;gap:2.6rem 1rem}
- .sf-i{margin:0 auto}.facts{grid-template-columns:1fr}
-}
-@media (max-width:560px){.btn{font-size:.72rem;padding:.45rem .6rem}.top{padding:.6rem .7rem}.tr{gap:.4rem}.notes,.mos{grid-template-columns:1fr}.mx{gap:.6rem}.ax{font-size:.72rem}.q{padding:.8rem .9rem;font-size:.85rem}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .sl .fr,.js .sl .sn,.js .sl .stg>*{opacity:1;transform:none;transition:none}.note,.ic,.zb{transition:none}}
-
-/* intro cover + entrance */
-.intro{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:clamp(1.5rem,4vw,4rem)}
-.intro .itx{display:flex;flex-direction:column;gap:1rem;min-width:0;flex:1 1 auto}
-.icov{margin:0;flex:0 0 min(38vw,30rem);align-self:center;transform:rotate(2.5deg);box-shadow:0 30px 70px -20px rgba(0,0,0,.7),0 0 0 6px var(--cream);background:var(--cream)}
-.icov img{display:block;width:100%;height:auto}
-.js .intro h1 span{display:inline-block;opacity:0;transform:translateY(.5em);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
-.js .intro h1 span:nth-child(2){animation-delay:.12s}.js .intro h1 span:nth-child(3){animation-delay:.24s}
-.js .intro .tag,.js .intro .hint{opacity:0;animation:rise .8s .5s cubic-bezier(.2,.7,.2,1) forwards}.js .intro .hint{animation-delay:.7s}
-.js .icov{opacity:0;animation:cov 1.1s .35s cubic-bezier(.2,.7,.2,1) forwards}
-@keyframes rise{to{opacity:1;transform:none}}
-@keyframes cov{from{opacity:0;transform:translateY(40px) rotate(7deg) scale(.94)}to{opacity:1;transform:rotate(2.5deg)}}
-.js .icov img{animation:flt 7s ease-in-out 1.6s infinite}@keyframes flt{50%{transform:translateY(-6px)}}
-@media (max-width:860px){.intro{flex-direction:column;align-items:flex-start}.icov{flex:none;width:min(86vw,26rem);align-self:flex-start}}
-/* frames: hover lift, alternate slide-in, sheen */
-.js .sl:nth-of-type(odd):not(.in) .fr{transform:translate(-28px,26px) scale(.985)}.js .sl:nth-of-type(even):not(.in) .fr{transform:translate(28px,26px) scale(.985)}
-.fr{transition:box-shadow .35s,transform .35s}
-@media (hover:hover){.js .sl.in .fr:hover{transform:translateY(-5px);box-shadow:0 40px 90px -20px rgba(0,0,0,.7),0 0 0 1px rgba(255,217,160,.35)}}
-.fr button.z::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.22) 50%,transparent 60%);transform:translateX(-120%);pointer-events:none}
-@media (hover:hover){.fr:hover button.z::after{transform:translateX(120%);transition:transform .9s}}
-.js .sl .stgi{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
-.js .sl.in .stgi{opacity:1;transform:none;transition-delay:calc(var(--i,0)*60ms + .3s)}
-.calm .sl .stgi,.calm .intro h1 span,.calm .intro .tag,.calm .intro .hint,.calm .icov,.calm .icov img{opacity:1!important;transform:none!important;transition:none!important;animation:none!important}
-.calm .icov{transform:rotate(2.5deg)!important}
-@media (prefers-reduced-motion:reduce){.js .sl .stgi,.js .intro h1 span,.js .intro .tag,.js .intro .hint,.js .icov,.js .icov img{opacity:1;transform:none;animation:none;transition:none}.js .icov{transform:rotate(2.5deg)}.fr button.z::after{display:none}}
-
-/* ===== one cohesive page ===== */
-main{max-width:none;margin:0;padding:0;background:var(--cream);color:#1a1a19}
-.sl{max-width:1240px;margin:0 auto;padding:clamp(2.6rem,7vh,5rem) clamp(1rem,4vw,3rem);border-top:1px solid rgba(23,35,31,.12)}
-.sl:first-child{border-top:0}
-.sl .st{margin:0 0 clamp(1rem,2.4vw,1.8rem);padding-bottom:.5rem;font:400 clamp(1.5rem,3.2vw,2.5rem)/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 75;text-transform:uppercase;letter-spacing:.01em;color:var(--or);border-bottom:2px solid var(--orb);display:inline-block;max-width:100%}
-.fr{background:transparent;box-shadow:none;border-radius:0}
-.fr:not(.paper){box-shadow:0 18px 50px -24px rgba(23,35,31,.55),0 0 0 1px rgba(23,35,31,.1);border-radius:6px;overflow:hidden;background:#fff}
-.paper.fr{padding:0}
-.paper.fr>.pt{display:inline-block}
-.js .sl:nth-of-type(odd):not(.in) .fr,.js .sl:nth-of-type(even):not(.in) .fr{transform:translateY(26px)}
-@media (hover:hover){.js .sl.in .fr:not(.paper):hover{transform:translateY(-4px);box-shadow:0 30px 70px -26px rgba(23,35,31,.6),0 0 0 1px rgba(184,79,0,.4)}.js .sl.in .fr.paper:hover{transform:none;box-shadow:none}}
-.sl:focus-visible .fr{outline-color:var(--or)}
-.fr.bad{min-height:12rem;display:grid;place-items:center;background:#f1ead6}.fr.bad::after{content:"Image unavailable (" attr(data-f) "). Please reload the page.";font:600 .9rem 'Instrument Sans',sans-serif;color:#6b4a1a;padding:1rem}.fr.bad img{display:none}
-.end{background:var(--bg);color:var(--lt);padding:clamp(3rem,9vh,6rem) clamp(1rem,4vw,3rem);display:flex;flex-wrap:wrap;gap:1.4rem;justify-content:space-between;align-items:center;max-width:none}
-.end p{margin:0;font:250 clamp(1.8rem,4vw,3.2rem)/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 78;letter-spacing:-.03em}
-.eb{display:flex;gap:.7rem;flex-wrap:wrap}
-.end .btn{font-size:.9rem;padding:.7rem 1.1rem}
-.zm .zbar .t{max-width:60vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-
-.rail a{background:rgba(23,35,31,.28)}.rail a:hover,.rail a:focus-visible,.rail a[aria-current="true"]{background:#17231f}.rail a[aria-current="true"]{background:var(--orb)}
-/* ===== Shrunkhala additions ===== */
-:root{--tan:#d9b382;--tan2:#a9743a;--paperbg:#f3f1ec;--bl:#1f66c6;--gn:#3a7d4c;--yl:#f2c12e;--rd:#d93a3a}
-.paper{background:var(--paperbg)}
-.intro .eye{margin:0;font:600 .85rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--tan)}
-.pill{display:inline-block;margin:0;padding:.9rem 2.2rem .9rem 1.4rem;background:var(--tan);border-radius:0 999px 999px 0/0 70% 70% 0;font:400 clamp(1.2rem,2.6vw,2.1rem)/1.05 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 75;text-transform:uppercase;letter-spacing:.015em;color:#111}
-.pill.st{margin-top:1rem;font-size:clamp(1rem,2vw,1.6rem)}
-.paper .hd{align-items:center}.paper .hd .pt{order:0}
-.paper h3{color:#2b2b28}
-.btn.dk{background:#1b2a24;color:#f1ede4;border-color:#1b2a24}
-.btn.dk:hover,.btn.dk[aria-pressed="true"],.btn.dk.on{background:var(--tan2);border-color:var(--tan2);color:#fff}
-.btn.dk:disabled{opacity:.45;cursor:not-allowed}
-.paper .btn:focus-visible,.paper button:focus-visible{outline:3px solid var(--or);outline-offset:3px}
-/* impact */
-.ims{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
-.im{background:#fff;border-top:6px solid var(--tan);padding:1.4rem 1.3rem 1.6rem;box-shadow:0 10px 24px -14px rgba(0,0,0,.4)}
-.im .big{margin:0 0 .5rem;font:300 clamp(2.4rem,5vw,4.2rem)/1 'Bricolage Grotesque',system-ui,sans-serif;color:var(--tan2);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.im h3{font-size:1.02em;margin:0 0 .5rem}.im p{font-size:.94em}
+.prog{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--ring);transform:scaleX(0);transform-origin:left;z-index:50}
+.bk{position:fixed;left:0;top:0;z-index:40;padding:.9rem 1rem}
+.bk a{display:inline-flex;gap:.5rem;align-items:center;padding:.55rem 1rem;border-radius:999px;background:rgba(31,23,17,.88);color:#fff;text-decoration:none;font-weight:700;font-size:.92rem;border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px)}
+.bk a:hover{background:#fff;color:var(--dk)}
+.bk svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2}
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem}
+/* hero */
+.hero{background:var(--hero);color:#fff;padding:7rem 0 4rem;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center}
+.hero .kick{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin:0 0 1rem;opacity:.92}
+.hero h1{font-size:clamp(3rem,8vw,6.6rem);font-weight:600;letter-spacing:-.025em}
+.hero h1 span{display:block}
+.hero .tag{font-size:1.25rem;margin:1.4rem 0 1.2rem;max-width:34ch;opacity:.96}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0;padding:0;list-style:none}
+.chips li{border:1.5px solid currentColor;border-radius:999px;padding:.28rem .85rem;font-weight:700;font-size:.85rem}
+.hero .ph{border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)}
+.hero .ph img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.hero .scroll{display:inline-block;margin-top:2rem;font-weight:700;text-decoration:none;border-bottom:2px solid currentColor}
+/* parts */
+.part{background:var(--dk);color:var(--lt);padding:4.5rem 0 4rem}
+.part .pn{margin:0 0 .6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;color:var(--tan)}
+.part h2{font-size:clamp(2.2rem,5vw,4rem);font-weight:600;letter-spacing:-.02em}
+.part p:not(.pn){max-width:60ch;margin:1rem 0 0;color:#e6d9c3}
+/* sections */
+.sec{padding:5rem 0}
+.sec.tint{background:var(--bg2)}
+.sec.dark{background:var(--dk);color:var(--lt)}
+.sec.dark .eb{color:var(--tan)}
+.sh{margin-bottom:2.2rem;max-width:62ch}
+.eb{margin:0 0 .6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;color:var(--acd)}
+.sec h2{font-size:clamp(1.9rem,4vw,3.1rem);font-weight:600;letter-spacing:-.015em}
+.lede{font-size:1.15rem;color:var(--mut);margin:1rem 0 0}
+.dark .lede{color:#d9ccb6}
+.lead{font-size:1.22rem;line-height:1.55;max-width:60ch}
+p{margin:0 0 1rem}
+ul,ol{padding-left:1.2rem;margin:0 0 1rem}
+li{margin:.3rem 0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.split.st{align-items:start}
+.split>*{min-width:0}
+/* figures */
+.fg{margin:0}
+.fg img{border-radius:10px;width:100%}
+.fg figcaption{font-size:.9rem;color:var(--mut);margin-top:.6rem}
+.dark .fg figcaption{color:#cbbea8}
+.zm{display:block;position:relative;padding:0;border:0;background:none;width:100%;cursor:zoom-in;border-radius:10px;overflow:hidden;font:inherit;color:inherit}
+.zm .zb{position:absolute;right:.6rem;bottom:.6rem;background:rgba(31,23,17,.85);color:#fff;border-radius:999px;padding:.2rem .7rem;font-size:.78rem;font-weight:700;opacity:0;transition:opacity .2s}
+.zm:hover .zb,.zm:focus-visible .zb{opacity:1}
+.fg.diagram .zm,.fg.diagram>img{background:#f2f2f2;border-radius:12px;box-shadow:0 20px 50px -34px rgba(42,32,24,.6);border:1px solid rgba(42,32,24,.1)}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem;align-items:start}
+.gal.tall{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.gal .fg img{aspect-ratio:4/3;object-fit:cover}
+.gal .fg.diagram img{aspect-ratio:auto;object-fit:contain}
+.sec.tint .card{background:#fbf6ec}
+.gal.poster .fg img{aspect-ratio:3/4;object-fit:contain;background:#fff}
+.gal.sq .fg img{aspect-ratio:1/1}
+/* cards */
+.cards{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem}
+.card{background:var(--tan2);border-radius:16px;padding:1.5rem 1.5rem 1.2rem;margin:0}
+.dark .card{background:#2e2218}
+.card h3{font-size:1.45rem;font-weight:600;margin-bottom:.7rem}
+.card p:last-child,.card ul:last-child{margin-bottom:0}
+.cards.num{counter-reset:c}
+.cards.num .card{position:relative;padding-top:3.4rem}
+.cards.num .card::before{counter-increment:c;content:counter(c);position:absolute;left:1.4rem;top:.8rem;font:600 2.2rem 'Bricolage Grotesque',sans-serif;color:var(--acd)}
+.cards.logo .card{text-align:left}
+.cards.logo .card img{width:150px;height:150px;object-fit:contain;background:#fff;border-radius:12px;padding:.5rem;margin-bottom:1rem}
+/* stats */
+.stats{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem}
+.stats li{margin:0;border-top:3px solid var(--acd);padding-top:1rem}
+.stats .big{display:block;font:600 clamp(2.4rem,5vw,3.6rem)/1 'Bricolage Grotesque',sans-serif;color:var(--gr);letter-spacing:-.02em}
+.stats .lb{display:block;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;margin:.5rem 0 .6rem;color:var(--acd)}
+.stats p{margin:0;color:var(--mut)}
+.dark .stats p{color:#dccfb9}
+.dark .stats .lb{color:#e6c28f}
+.dark .stats .big{color:var(--tan)}
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin:0;border:1px solid rgba(42,32,24,.18);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.4)}
+.facts div{padding:1rem 1.2rem;border-right:1px solid rgba(42,32,24,.12);border-bottom:1px solid rgba(42,32,24,.12)}
+.facts dt{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acd);margin-bottom:.25rem}
+.facts dd{margin:0;font-weight:600}
+.dark .facts{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.04)}
+.dark .facts dt{color:var(--tan)}
+.dark .facts div{border-color:rgba(255,255,255,.12)}
+/* quotes */
+.qts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem;align-items:start}
+.qt{margin:0;background:#fffdf6;color:var(--ink);border-radius:6px;padding:1.3rem 1.3rem 1rem;box-shadow:0 14px 30px -20px rgba(0,0,0,.5);position:relative}
+.qt::before{content:"";position:absolute;left:50%;top:-10px;width:70px;height:20px;transform:translateX(-50%) rotate(-2deg);background:rgba(214,190,150,.8)}
+.qt blockquote{margin:0}
+.qt p{margin:0 0 .8rem}
+.qt figcaption{font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--acd)}
+.qgroup h3{font-size:1.3rem;margin-bottom:1.2rem}
+.qgroups{display:grid;gap:3rem}
+/* details */
+.more{margin-top:1rem;border:1px solid rgba(42,32,24,.2);border-radius:10px;background:rgba(255,255,255,.4)}
+.more summary{cursor:pointer;padding:.8rem 1.1rem;font-weight:700}
+.more>div{padding:0 1.1rem 1rem}
+.more ul{columns:3 180px;column-gap:1.5rem}
+/* legend */
+.lgd{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;list-style:none;padding:0;margin:1rem 0 0;font-size:.92rem}
+.lgd li{display:flex;gap:.45rem;align-items:center;margin:0}
+.lgd i{width:14px;height:14px;border-radius:3px;display:inline-block;border:1px solid rgba(0,0,0,.25)}
+/* rings */
+.rings{position:relative;aspect-ratio:1;max-width:520px;margin:0 auto;width:100%}
+.rings .rg{position:absolute;left:50%;transform:translateX(-50%);border-radius:50%;aspect-ratio:1}
+.rings .r1{top:0;width:100%;background:#eee0b6}
+.rings .r2{top:13%;width:74%;background:#e6b980}
+.rings .r3{top:26%;width:48%;background:#cfa264}
+.rings h3{position:absolute;left:0;right:0;top:5%;text-align:center;font-size:clamp(.9rem,2.4vw,1.2rem);letter-spacing:.06em;text-transform:uppercase}
+.rings p{position:absolute;left:0;right:0;bottom:5%;margin:0;text-align:center;font-size:clamp(.62rem,1.7vw,.82rem);font-weight:700;text-transform:uppercase;line-height:1.35}
+.rings .r3 h3{top:12%}
+.rings .r3 p{bottom:auto;top:30%}
+/* matrix */
+.mx{display:grid;grid-template-columns:auto 1fr 1fr;grid-template-rows:auto auto auto;gap:.8rem;max-width:1000px}
+.mx .ax{font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem;color:var(--acd);display:flex;align-items:center;justify-content:center}
+.mx .yax{grid-row:1/3;writing-mode:vertical-rl;transform:rotate(180deg)}
+.mx .q{background:var(--tan2);border-radius:14px;padding:1.2rem 1.4rem}
+.mx .q h3{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acd);margin-bottom:.6rem;font-family:'Instrument Sans',sans-serif}
+.mx .q ul{margin:0;padding-left:1.1rem}
+.mx .xax{grid-column:2/4;justify-content:space-between}
 /* iceberg */
-.ice{position:relative;display:grid;gap:0;background:linear-gradient(to bottom,#fbfaf6 0,#fbfaf6 24%,#e9e1d3 24%,#d9cdb9 100%);border-radius:6px;overflow:hidden}
-.ib{display:grid;grid-template-columns:1fr minmax(9rem,24%) 1fr;gap:clamp(.6rem,2vw,2rem);align-items:center;padding:1.1rem clamp(.8rem,2.4vw,2rem);border-bottom:2px dashed rgba(90,70,50,.45);transition:opacity .4s}
-.ib:last-child{border-bottom:0}
-.ib ul{margin:0;padding-left:1.1em;font-size:.98em}.ib li{margin:0 0 .3em}
-.ibr ul{padding-left:1.1em}
-.ibc{all:unset;cursor:pointer;display:grid;place-items:center;min-height:6.2rem;text-align:center;font:700 clamp(.85rem,1.6vw,1.25rem)/1.1 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:.04em;color:#1a1a19;background:rgba(169,116,58,.35);transition:background .3s,transform .3s}
-.ib0 .ibc{background:rgba(217,179,130,.55);clip-path:polygon(8% 100%,38% 22%,50% 0,62% 22%,92% 100%)}
-.ib0 .ibc span{transform:translateY(30%)}
-.ib1 .ibc{clip-path:polygon(0 0,100% 0,88% 100%,12% 100%)}
-.ib2 .ibc{clip-path:polygon(12% 0,88% 0,76% 100%,24% 100%)}
-.ib3 .ibc{clip-path:polygon(14% 0,86% 0,72% 60%,50% 100%,28% 60%)}
-.ib3 .ibc span{transform:translateY(-8%)}
-.ibc:hover,.ibc[aria-pressed="true"]{background:var(--tan2);color:#fff}
-.ibc:focus-visible{outline:3px solid var(--or);outline-offset:2px}
-.ice[data-focus]:not([data-focus=""]) .ib{opacity:.28}
-.ice[data-focus="0"] .ib0,.ice[data-focus="1"] .ib1,.ice[data-focus="2"] .ib2,.ice[data-focus="3"] .ib3{opacity:1}
-.js .ice .ib{opacity:0;transform:translateY(12px);transition:opacity .7s,transform .7s}
-.js .sl.in .ice .ib{opacity:1;transform:none;transition-delay:calc(var(--d,0)*220ms + .3s)}
-.js .sl.in .ice[data-focus]:not([data-focus=""]) .ib{opacity:.28;transition-delay:0s}
-.js .sl.in .ice[data-focus="0"] .ib0,.js .sl.in .ice[data-focus="1"] .ib1,.js .sl.in .ice[data-focus="2"] .ib2,.js .sl.in .ice[data-focus="3"] .ib3{opacity:1}
-.ib1{--d:1}.ib2{--d:2}.ib3{--d:3}
-.ice-h{margin:.8rem 0 0;font-size:.82rem;color:#55524a}
-.calm .ice .ib{opacity:1!important;transform:none!important;transition:none!important}
-.calm .ice[data-focus]:not([data-focus=""]) .ib{opacity:.28!important}
-.calm .ice[data-focus="0"] .ib0,.calm .ice[data-focus="1"] .ib1,.calm .ice[data-focus="2"] .ib2,.calm .ice[data-focus="3"] .ib3{opacity:1!important}
-/* verbatim */
-.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.2rem}
-.chip{font:600 .8rem 'Instrument Sans',system-ui,sans-serif;padding:.4rem .8rem;border:1.5px solid var(--tan2);background:transparent;color:#3a2a14;border-radius:999px;cursor:pointer}
-.chip:hover{background:#ecd9bd}.chip[aria-pressed="true"]{background:var(--tan2);color:#fff}
-.vcs{display:grid;grid-template-columns:1fr 2fr 1fr;gap:1.2rem}
-.vc{background:#dcab6c;border-radius:20px;padding:1.2rem 1.1rem 1.4rem}
-.vc h3{text-align:center;font:700 1.2em/1.15 'Bricolage Grotesque',system-ui,sans-serif;color:#1a1a19;margin:0 0 1rem}
-.nqs{list-style:none;margin:0;padding:0;display:grid;gap:1.1rem}
-.vc1 .nqs{grid-template-columns:1fr 1fr}
-.nq{background:#f1efe2;padding:1.4rem 1rem 1.2rem;box-shadow:0 8px 16px -8px rgba(0,0,0,.4);transform:rotate(var(--r,0deg));transition:transform .25s,opacity .3s,filter .3s;position:relative}
-.nq::before{content:"";position:absolute;left:50%;top:-10px;width:5rem;height:1.2rem;transform:translateX(-50%);background:rgba(220,210,190,.75)}
-.nq:nth-child(odd){--r:-.6deg}.nq:nth-child(even){--r:.7deg}
-.nq:hover{transform:rotate(0) translateY(-3px)}
-.nq blockquote{margin:0;text-align:center;font:400 .93em/1.5 'Instrument Sans',system-ui,sans-serif}
-.nq blockquote p{margin:0 0 .5rem}.nq footer{font-size:.92em}
-.vcs[data-sp] .nq{opacity:.4;filter:grayscale(.6)}
-.vcs[data-sp="Volunteer 1"] .nq[data-sp="Volunteer 1"],.vcs[data-sp="Volunteer 2"] .nq[data-sp="Volunteer 2"],.vcs[data-sp="Beneficiary"] .nq[data-sp="Beneficiary"],.vcs[data-sp="Another volunteer"] .nq[data-sp="Another volunteer"]{opacity:1;filter:none}
-/* gaps */
-.gps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,3vw,2.4rem);padding-top:1rem}
-.gp{display:flex;flex-direction:column;align-items:center}
-.gn{margin:0 0 -2.2rem;position:relative;z-index:1;font:400 clamp(2.6rem,5vw,4.4rem)/1 'Instrument Sans',system-ui,sans-serif;color:#111}
-.gb{width:100%;min-height:11rem;padding:3.2rem 1.2rem 1.4rem;background:#dcab6c;border-radius:16px;text-align:center;-webkit-mask:radial-gradient(circle at 50% 0,transparent 2.6rem,#000 calc(2.6rem + .5px));mask:radial-gradient(circle at 50% 0,transparent 2.6rem,#000 calc(2.6rem + .5px));transition:transform .3s}
-.gp:nth-child(3) .gb{background:#e8cfae}
-.gp:hover .gb{transform:translateY(-4px)}
-.gb h3{font:700 1.1em 'Instrument Sans',system-ui,sans-serif;color:#111;margin:.2rem 0 1.2rem}.gb p{font-family:'Instrument Sans',system-ui,sans-serif}
-/* stages */
-.sh{font:700 clamp(1.2rem,2.4vw,1.9rem) 'Instrument Sans',system-ui,sans-serif;text-align:center;margin:0 0 1.2rem;color:#111}
-.nb{text-align:center;font-size:1.05em;margin:0 0 1.2rem;font-family:'Instrument Sans',system-ui,sans-serif}
-.sctl{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:.9rem}
-.sgbar{height:4px;background:rgba(0,0,0,.12);margin-bottom:1rem}.sgbar i{display:block;height:100%;width:12.5%;background:var(--tan2);transition:width .6s cubic-bezier(.2,.7,.2,1)}
-.sgs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(8,1fr);gap:.4rem;align-items:stretch}
-.sg{display:flex}
-.sgb{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;width:100%;background:#fff1d6;border:1.5px solid #f2d79f;transition:transform .35s,box-shadow .35s,background .35s,opacity .35s;opacity:.62}
-.sgb h3{margin:0;padding:.7rem .4rem;text-align:center;font:700 .88em 'Instrument Sans',system-ui,sans-serif;background:#fde6b8;color:#111;min-height:3.4rem;display:grid;place-items:center}
-.sgq{margin:0;padding:.6rem .5rem;font:400 .76em/1.4 'Instrument Sans',system-ui,sans-serif;background:#f3f1ec;flex:1}
-.sgb img{display:block;width:100%;height:auto;aspect-ratio:330/432;object-fit:cover}
-.sgn{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.sg.on .sgb{opacity:1;transform:translateY(-8px) scale(1.04);box-shadow:0 18px 30px -12px rgba(0,0,0,.5);background:#fff;position:relative;z-index:2}
-.sg.on .sgb h3{background:var(--tan);}
-.sgb:hover{opacity:1}
-.sgb:focus-visible{outline:3px solid var(--or);outline-offset:2px}
-.calm .sgb,.calm .sgbar i{transition:none}
+.ice{border-top:2px dashed rgba(42,32,24,.35)}
+.ice .row{display:grid;grid-template-columns:1fr 200px 1fr;gap:1.5rem;align-items:center;padding:1.2rem 0;border-bottom:2px dashed rgba(42,32,24,.35)}
+.ice .ly{font:600 1.15rem 'Bricolage Grotesque',sans-serif;text-align:center;letter-spacing:.06em;text-transform:uppercase;padding:.9rem .5rem;border-radius:12px}
+.ice .row:nth-child(1) .ly{background:#e9dcc8}
+.ice .row:nth-child(2) .ly{background:#cdb59d}
+.ice .row:nth-child(3) .ly{background:#b79b82}
+.ice .row:nth-child(4) .ly{background:#a58a73;color:#fff}
+.ice ul{margin:0}
+.tw{overflow-x:auto;margin:0 0 1.4rem;border-radius:12px;background:#fffdf6;border:1px solid rgba(42,32,24,.14);padding:.4rem 1rem 1rem}
+.tbl{border-collapse:collapse;width:100%;min-width:420px;font-size:.95rem}
+.tbl caption{text-align:left;font:600 1.15rem 'Bricolage Grotesque',sans-serif;padding:.9rem 0 .6rem}
+.tbl th,.tbl td{padding:.5rem .8rem;text-align:right;border-bottom:1px solid rgba(42,32,24,.14);font-variant-numeric:tabular-nums}
+.tbl th[scope=col]{font-size:.8rem;letter-spacing:.04em;border-bottom:2px solid var(--ink)}
+.tbl th[scope=row]{text-align:left;font-weight:600}
+.tbl td:first-child,.tbl th:first-child{text-align:left}
+.tn{font-size:.85rem;color:var(--mut);margin:.7rem 0 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start}
+.two>*{min-width:0}
+.hy{list-style:none;padding:0;margin:0;display:grid;gap:.9rem}
+.hy li{background:var(--tan2);border-radius:12px;padding:1rem 1.2rem;margin:0}
+.hy b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:1.2rem;margin-bottom:.2rem}
+.ref{font-size:.9rem;color:var(--mut);margin-top:1rem}
+.fg.sm{max-width:320px;margin-top:1.4rem}
+.fg.wide{max-width:1000px}
+.ice .side{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acd);margin:0 0 .3rem}
+/* profile */
+.prof{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.prof li{background:var(--tan);border-radius:16px;padding:1.4rem;margin:0}
+.prof h3{font-size:1.5rem;margin-bottom:.8rem}
+.prof dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem}
+.prof dt{font-weight:700}
+.prof dd{margin:0}
+/* stage journey */
+.stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;counter-reset:s}
+.stages li{margin:0;background:#fffdf6;border-radius:14px;overflow:hidden;box-shadow:0 14px 30px -24px rgba(42,32,24,.6);display:flex;flex-direction:column}
+.stages img{height:230px;object-fit:contain;width:100%;background:#fff}
+.stages .sb{padding:1rem 1.1rem 1.2rem}
+.stages .sb::before{counter-increment:s;content:counter(s);display:inline-block;font:600 .85rem 'Instrument Sans';width:1.7rem;height:1.7rem;line-height:1.7rem;text-align:center;border-radius:50%;background:var(--acd);color:#fff;margin-bottom:.5rem}
+.stages h3{font-size:1.2rem;margin-bottom:.4rem}
+.stages p{margin:0;font-size:.95rem;color:var(--mut)}
 /* bins */
-.ch{margin:0;font:800 clamp(1.3rem,3.2vw,2.5rem)/1 'Instrument Sans',system-ui,sans-serif;letter-spacing:.01em}
-.c1{color:var(--rd)}.c2{color:var(--yl)}.c3{color:var(--gn)}.c4{color:var(--bl)}
-.aw{text-align:center;font:700 clamp(.9rem,1.6vw,1.2rem) 'Instrument Sans',system-ui,sans-serif;margin:0 0 1.4rem;letter-spacing:.01em}
-.bsx{position:relative}
-.bs{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.6rem,2.4vw,2rem);align-items:end;padding:1rem 0 0}
-.bin{position:relative;height:clamp(11rem,26vw,17rem);display:flex;flex-direction:column;justify-content:flex-end;--c:var(--bl);--t:#fff}
-.b-organic{--c:var(--gn)}.b-paper{--c:var(--yl);--t:#2a2100}.b-hazardous{--c:var(--rd)}
-.bin .lid{position:absolute;left:-3%;right:-3%;bottom:calc(100% - 2.6rem);height:.9rem;background:var(--c);filter:brightness(.88);border-radius:6px 6px 2px 2px;transform-origin:0 100%;transition:transform .35s cubic-bezier(.3,.8,.3,1)}
-.bin.open .lid{transform:translateY(-.9rem) rotate(-8deg)}
-.bd{position:relative;height:calc(100% - 2rem);background:var(--c);clip-path:polygon(0 0,100% 0,94% 100%,6% 100%);display:flex;flex-direction:column;align-items:center;padding:1rem .6rem .5rem;color:var(--t);transition:filter .35s}
-.bin.hit .bd{filter:brightness(1.18) saturate(1.1)}
-.bl{margin:0;font:800 clamp(.72rem,1.6vw,1.15rem)/1 'Instrument Sans',system-ui,sans-serif;letter-spacing:.05em}
-.got{list-style:none;margin:.6rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.25rem;justify-content:center}
-.got li{font:600 .66rem/1.2 'Instrument Sans',system-ui,sans-serif;background:rgba(255,255,255,.88);color:#1a1a19;padding:.15rem .4rem;border-radius:999px;animation:pop .35s both}
-@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
-.btray{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:1.3rem 0 .9rem;min-height:2.6rem}
-.chp{all:unset;box-sizing:border-box;cursor:pointer;font:600 .85rem 'Instrument Sans',system-ui,sans-serif;padding:.45rem .9rem;border-radius:999px;background:#fff;border:2px solid #cfc7b6;color:#1a1a19;transition:transform .2s,border-color .2s}
-.chp:hover{transform:translateY(-2px);border-color:var(--tan2)}
-.chp:focus-visible{outline:3px solid var(--or);outline-offset:2px}
-.chp[hidden]{display:none}
-.fly{position:absolute;z-index:5;pointer-events:none;font:600 .85rem 'Instrument Sans',system-ui,sans-serif;padding:.45rem .9rem;border-radius:999px;background:#fff;border:2px solid #333;white-space:nowrap}
-.bctl{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
-.bst{min-height:1.5em;text-align:center;font-size:.88rem;margin:.7rem 0 0;color:#444}
-.leg{list-style:none;margin:1.4rem 0 0;padding:1rem 0 0;border-top:1px solid rgba(0,0,0,.2);display:grid;grid-template-columns:1fr 1fr;gap:.7rem 2rem}
-.lg{display:flex;gap:.9rem;align-items:center;padding:.4rem .5rem;border-radius:6px;transition:background .3s}
-.lg p{margin:0;font-family:'Instrument Sans',system-ui,sans-serif}
-.sw{flex:none;width:3.2rem;height:1.6rem;background:var(--bl)}
-.lg-organic .sw{background:var(--gn)}.lg-paper .sw{background:var(--yl)}.lg-hazardous .sw{background:var(--rd)}
-.lg.on{background:#ecd9bd}
-.it.on{background:#fde08a}
-/* leaflet */
-.lfg{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.6fr);gap:clamp(1rem,3vw,2.5rem);align-items:center}.lfg.one{grid-template-columns:1fr}
-.lfl{display:flex;flex-direction:column;align-items:flex-start}
-.pyr ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:6px;width:min(100%,19rem)}
-.pyr li{display:grid;place-items:center;text-align:center;padding:.7rem .3rem;font:600 .78rem/1.15 'Instrument Sans',system-ui,sans-serif;color:#5b3a12;transition:transform .3s,filter .3s;cursor:default}
-.pt1{width:46%;background:linear-gradient(#f3d98c,#d9b05a);clip-path:polygon(32% 0,68% 0,100% 100%,0 100%);padding-top:1.6rem!important}
-.pt2{width:73%;background:linear-gradient(#c89b62,#a4723a);clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);padding-top:1.2rem!important;color:#fff!important}
-.pt3{width:100%;background:linear-gradient(#b98650,#8c5c2a);clip-path:polygon(14% 0,86% 0,100% 100%,0 100%);padding-top:1.3rem!important;color:#fff!important}
-.pyr li:hover{transform:translateY(-3px);filter:brightness(1.1)}
-.lfx{min-width:0}
-.lfv{background:#fff;box-shadow:0 18px 36px -18px rgba(0,0,0,.5);overflow:hidden;border-radius:4px}
-.lfwhole img,.pn img{display:block;width:100%;height:auto}
-.lfpanel{display:flex;justify-content:center;background:#f6f3ea}
-.pn{width:min(100%,calc((var(--w)/1414)*(78vh)));overflow:hidden;aspect-ratio:var(--w)/1414;position:relative}
-.pn img{position:absolute;top:0;left:calc(var(--x)/var(--w)*-100%);width:calc(2000/var(--w)*100%);max-width:none;height:auto}
-.pn[hidden],.lfpanel[hidden],.lfwhole[hidden]{display:none}
-.lfc{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.8rem}
-@media (max-width:900px){.ims{grid-template-columns:1fr 1fr}.vcs{grid-template-columns:1fr}.vc1 .nqs{grid-template-columns:1fr 1fr}.gps{grid-template-columns:1fr}.sgs{grid-template-columns:repeat(4,1fr);row-gap:1.2rem}.lfg{grid-template-columns:1fr}.ib{grid-template-columns:1fr}.ibc{min-height:3rem;clip-path:none!important;order:-1}.ib0 .ibc span,.ib3 .ibc span{transform:none}.leg{grid-template-columns:1fr}.lfl{align-items:center}}
-@media (max-width:560px){.ims,.vc1 .nqs{grid-template-columns:1fr}.sgs{grid-template-columns:repeat(2,1fr)}.bd{padding-top:.7rem}.got li{font-size:.58rem}}
-@media (prefers-reduced-motion:reduce){.sgb,.sgbar i,.bin .lid,.nq,.gb,.ibc{transition:none}.got li{animation:none}.js .ice .ib{opacity:1;transform:none;transition:none}}
-.sl.cont{border-top:0;padding-top:0}
-.sl .part{margin:0 0 1.6rem;font:600 .8rem/1.2 "Instrument Sans",system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:var(--gr);display:block;width:fit-content;padding:.5rem .9rem}
-.sl.cont .fr{margin-top:1.2rem}
-</style></head>
+.binleg{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.8rem}
+.binleg li{display:flex;gap:.8rem;align-items:flex-start;margin:0}
+.binleg i{flex:none;width:28px;height:28px;border-radius:6px;margin-top:.1rem}
+.chw{font:600 clamp(1.4rem,3vw,2rem)/1.1 'Bricolage Grotesque',sans-serif;margin:0 0 1rem}
+.chw .c1{color:#1c5fc4}.chw .c2{color:#d9a400}.chw .c3{color:#237744}.chw .c4{color:#c42a2a}
+/* pyramid */
+.pyr{list-style:none;padding:0;margin:0 auto;max-width:360px}
+.pyr li{margin:0 auto .45rem;padding:.9rem 1rem;text-align:center;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;clip-path:polygon(var(--c) 0,calc(100% - var(--c)) 0,calc(100% - var(--d)) 100%,var(--d) 100%)}
+.pyr li:nth-child(1){width:46%;background:#c98f5c;--c:18%;--d:0%;clip-path:polygon(50% 0,100% 100%,0 100%);padding-top:2rem}
+.pyr li:nth-child(2){width:74%;background:#a8693f;clip-path:polygon(18% 0,82% 0,100% 100%,0 100%)}
+.pyr li:nth-child(3){width:100%;background:#7d4524;clip-path:polygon(12% 0,88% 0,100% 100%,0 100%)}
+.pyr span{font-size:.78rem}
+/* team */
+.team{list-style:none;margin:1.2rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.7rem}
+.team li{margin:0;padding:.6rem 1.1rem;border:1.5px solid var(--acd);border-radius:999px;background:rgba(255,255,255,.55);font-weight:700}
+.team li.me{background:var(--acd);color:#fff}
+/* footer */
+.end{background:var(--dk);color:var(--lt);padding:4.5rem 0 3.5rem}
+.end h2{font-size:clamp(2rem,5vw,3.6rem);font-weight:600;margin-bottom:1rem}
+.end .nav{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.btn{display:inline-block;padding:.8rem 1.3rem;border-radius:999px;background:var(--tan);color:var(--dk);font-weight:700;text-decoration:none;border:2px solid var(--tan)}
+.btn:hover{background:transparent;color:var(--tan)}
+.btn.o{background:transparent;color:var(--lt);border-color:rgba(255,255,255,.5)}
+.btn.o:hover{background:#fff;color:var(--dk)}
+/* lightbox */
+dialog#lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh}
+dialog#lb::backdrop{background:rgba(15,10,6,.92)}
+#lb .in{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;padding:3.5rem 1rem 2rem}
+#lb img{max-width:100%;max-height:calc(100vh - 7.5rem);width:auto;height:auto;border-radius:6px;background:#fff}
+#lb p{color:#eee;margin:.8rem 0 0;max-width:70ch;text-align:center;font-size:.95rem}
+#lb button{position:absolute;right:1rem;top:1rem;background:#fff;color:var(--dk);border:0;border-radius:999px;padding:.6rem 1.1rem;font:700 .95rem 'Instrument Sans',sans-serif;cursor:pointer}
+/* reveal */
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media(max-width:900px){
+ .hero .wrap,.split,.two{grid-template-columns:1fr;gap:2rem}
+ .hero{padding-top:6rem}
+ .ice .row{grid-template-columns:1fr;gap:.8rem}
+ .ice .ly{order:-1}
+ .sec{padding:3.6rem 0}
+}
+@media(max-width:700px){.stages{grid-template-columns:1fr}}
+@media(max-width:560px){.mx{grid-template-columns:1fr}.mx .yax{display:none}.mx .xax{grid-column:1}}
+
+:root{--hero:#a8693f}</style></head>
 <body>
 <a class="skip" href="#main">Skip to the project</a>
 <div class="prog" id="prog" aria-hidden="true"></div>
-<header class="top"><a class="btn" href="index.html#gal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 12H6M11 7l-5 5 5 5"/></svg><span>Back to the exhibition</span></a>
-</header>
-<nav class="rail" aria-label="Section marks"><ol><li><a href="#s03" aria-label="Introduction to Shrunkhala" title="Introduction to Shrunkhala"></a></li><li><a href="#s04" aria-label="Organizational Overview" title="Organizational Overview"></a></li><li><a href="#s05" aria-label="Core Philosophy · Strategic Approach · Founder’s vision" title="Core Philosophy · Strategic Approach · Founder’s vision"></a></li><li><a href="#s06" aria-label="Why Shrunkhala?" title="Why Shrunkhala?"></a></li><li><a href="#s07" aria-label="Shrunkhala’s Objectives" title="Shrunkhala’s Objectives"></a></li><li><a href="#s08" aria-label="Impact and Achievements" title="Impact and Achievements"></a></li><li><a href="#s09" aria-label="Latest Projects" title="Latest Projects"></a></li><li><a href="#s10" aria-label="Campaigns" title="Campaigns"></a></li><li><a href="#s11" aria-label="Campaigns" title="Campaigns"></a></li><li><a href="#s12" aria-label="Case Studies" title="Case Studies"></a></li><li><a href="#s13" aria-label="System Mapping" title="System Mapping"></a></li><li><a href="#s14" aria-label="Stakeholder Mapping" title="Stakeholder Mapping"></a></li><li><a href="#s15" aria-label="Stakeholder Matrix" title="Stakeholder Matrix"></a></li><li><a href="#s16" aria-label="Iceberg Model" title="Iceberg Model"></a></li><li><a href="#s17" aria-label="Causal Loop Diagram" title="Causal Loop Diagram"></a></li><li><a href="#s18" aria-label="Primary Research · Interviews" title="Primary Research · Interviews"></a></li><li><a href="#s19" aria-label="Volunteer Verbatim" title="Volunteer Verbatim"></a></li><li><a href="#s20" aria-label="Gaps Identified" title="Gaps Identified"></a></li><li><a href="#s21" aria-label="System Mapping" title="System Mapping"></a></li><li><a href="#s22" aria-label="Causal Loop Diagram" title="Causal Loop Diagram"></a></li><li><a href="#s23" aria-label="Behavioural Change Model" title="Behavioural Change Model"></a></li><li><a href="#s24" aria-label="Behavioural Change Model" title="Behavioural Change Model"></a></li><li><a href="#s25" aria-label="Awareness" title="Awareness"></a></li><li><a href="#s26" aria-label="Awareness" title="Awareness"></a></li><li><a href="#s27" aria-label="Guidelines Leaflet" title="Guidelines Leaflet"></a></li><li><a href="#s28" aria-label="Guidelines Leaflet" title="Guidelines Leaflet"></a></li><li><a href="#s29" aria-label="Thank you" title="Thank you"></a></li></ol></nav>
-<div class="intro"><div class="itx"><h1 id="pagetop" tabindex="-1"><span>Shrunkhala</span> <span>System</span> <span>Thinking</span></h1><p class="tag">Shrunkhala Organisation · Inspire to aspire</p>
-<p class="hint">Scroll to read the whole project. Select any image to zoom in.</p></div><figure class="icov" aria-hidden="true"><img src="shrunkhala/s01.webp" alt="" width="2000" height="1125" decoding="async"></figure></div>
-<main id="main" aria-label="Project"><section class="sl" id="s03" tabindex="-1" aria-label="Introduction to Shrunkhala"><h2 class="st">Introduction to Shrunkhala</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s03.webp" alt="Introduction to Shrunkhala" width="2000" height="1125"  decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>The term ‘Shrunkhala’, derived from Sanskrit, translates to ‘Chain’ in English.
-It reflects the philosophy and approach of the organization — emphasizing collective effort and interconnected
-responsibility.
-Guided by the belief that sustainable communities are achievable only through the active engagement of
-citizens.
-Introduction to Shrunkhala
-Location Map</p></div></section>
-<section class="sl" id="s04" tabindex="-1" aria-label="Organizational Overview"><h2 class="st">Organizational Overview</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s04.webp" alt="Organizational Overview" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Organizational Overview
-Registered Name: Shrunkhala Organisation for Sustainable Development
-Legal Status: Non-Profit Entity, registered under Section 8 of the Companies Act.
-Established: 2018
-Headquarters: Navi Mumbai, Maharashtra
-Founder
-Head Office: Kharghar, Navi Mumbai
-Operates as a citizen-focused organization, fostering participatory models for
-sustainable living.</p></div></section>
-<section class="sl" id="s05" tabindex="-1" aria-label="Core Philosophy · Strategic Approach · Founder’s vision"><h2 class="st">Core Philosophy · Strategic Approach · Founder’s vision</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s05.webp" alt="Core Philosophy · Strategic Approach · Founder’s vision" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Shrunkhala functions as a People’s
-Organization with citizens at the center
-of all initiatives.
-Believes in collective responsibility as
-the foundation for sustainable
-development.
-Seeks to transform awareness into
-tangible citizen action for long-term
-environmental and social impact.
-Core Philosophy Strategic Approach
-Engaging citizens through education,
-dialogue, and collaboration.
-Promoting awareness campaigns for
-sustainable living and responsible
-consumption.
-Facilitating community-driven
-initiatives to address local
-environmental challenges.
-Strengthening partnerships that
-enhance social, environmental and
-economic resilience.
-Founder’s vision
-“I believe real change begins with one
-person’s thinking. When an individual
-understands their responsibility, the
-whole community starts to
-transform.”
-“For me, Shrunkhala is about creating
-a space where people especially women
-can learn, talk, and grow together.
-That’s how sustainable communities
-are built.”
-“Sustainability does not start with big
-projects. It starts with simple habits.”</p></div></section>
-<section class="sl" id="s06" tabindex="-1" aria-label="Why Shrunkhala?"><h2 class="st">Why Shrunkhala?</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s06.webp" alt="Why Shrunkhala?" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>VISION
-An inclusive, sustainable and equitable society in
-which people feel safe &amp; happy and want to live
-now and in future
-APPROACH
-Shrunkhala is People’s organisation.
-Our approach is citizen centric.
-OBJECTIVE
-To build an open platform for the people,
-especially women, where they can explore their
-skills and design their dreams.
-Why Shrunkhala ?</p></div></section>
-<section class="sl" id="s07" tabindex="-1" aria-label="Shrunkhala’s Objectives"><h2 class="st">Shrunkhala’s Objectives</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s07.webp" alt="Shrunkhala’s Objectives" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Shrunkhala&#x27;s Objectives
-Educate Changemakers
-Empower Women Build Green Community
-Support Sustainable Livelihoods Foster Happiness &amp; Safety
-Move Towards Renewable Energy</p></div></section>
-<section class="sl" id="s08" tabindex="-1" aria-label="Impact and Achievements"><div class="fr paper"><div class="hd"><h2 class="pt">Impact and Achievements</h2></div><ol class="ims stg"><li class="im"><p class="big"><span class="cnt" data-to="10000">10,000+</span></p><h3>Lives Touched:</h3><p>Through awareness drives, sustainability workshops, and community initiatives.</p></li><li class="im"><p class="big"><span class="cnt" data-to="25">25</span></p><h3>MT CO₂ Emission Reduced:</h3><p>Achieved through environmental projects and waste management initiatives.</p></li><li class="im"><p class="big"><span class="cnt" data-to="100">100+</span></p><h3>Skill Upgradation Programs:</h3><p>Conducted to promote eco-literacy, sustainable practices, and livelihood enhancement.</p></li><li class="im"><p class="big"><span class="cnt" data-to="200000">200,000+</span></p><h3>Seedballs Created:</h3><p>Distributed to support reforestation and community-led environmental restoration.</p></li></ol></div></section>
-<section class="sl" id="s09" tabindex="-1" aria-label="Latest Projects"><h2 class="st">Latest Projects</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s09.webp" alt="Latest Projects" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Dreamweaver – Capacity
-Building Program for Women
-Empowers women by providing an open
-platform to explore and enhance their
-skills.
-Ankur – Program for Food
-Sustainability
-Focuses on developing
-kitchen gardens within social
-institutions.
-Zero Waste – Reduce, Reuse,
-Recycle
-Promotes responsible
-consumption through refuse,
-reuse, and recycle practices.
-Kavach – Environmental
-Conservation Program
-Addresses the impact of
-urbanization and loss of green
-cover.
-Champ – Developing Socially &amp;
-Environmentally Responsible Kids
-Aims to nurture social and
-environmental awareness among
-children.
-Latest
-Projects</p></div></section>
-<section class="sl" id="s10" tabindex="-1" aria-label="Campaigns"><h2 class="st">Campaigns</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s10.webp" alt="Campaigns" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Campaigns</p></div></section>
-<section class="sl cont" id="s11" tabindex="-1" aria-label="Campaigns"><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s11.webp" alt="Campaigns" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Campaigns</p></div></section>
-<section class="sl" id="s12" tabindex="-1" aria-label="Case Studies"><h2 class="st">Case Studies</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s12.webp" alt="Case Studies" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>EK SAATH
-The Earth Foundation is a Mumbai NGO
-that uses community action and behavior
-change to implement waste management
-and sustainability projects for cleaner
-local environments.
-GOONJ
-Goonj is a New Delhi-based NGO that
-uses its &#x27;Cloth for Work&#x27; model to link
-urban waste management
-(sustainability) with community-led
-development (behavior change) and
-women&#x27;s livelihood across India.
-Case Studies
-SWAYAM SHIKSHAN PRAYOG
-Swayam Shikshan Prayog (SSP) is a
-Pune-based NGO that empowers women
-leaders in health, water, sanitation, and
-climate-resilient farming to ensure
-sustainable rural development.</p></div></section>
-<section class="sl" id="s13" tabindex="-1" aria-label="System Mapping"><h2 class="st">System Mapping</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s13.webp" alt="System Mapping diagram showing the legend, human and non-human elements, community centres, regions focused and the programmes." width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>LEGENDS:
-COMMUNITY
-CENTERS
-HUMAN
-SPACES
-NON-HUMAN
-SHRUNKHALA
-FOUNDER
-HOMEMAKERS
-CHILDREN
-ELDERLY
-TEACHERS
-COMMUNITY
-LEADERS
-GRAM
-PANCHAYAT
-NGO PARTNERS
-GOVERNMENT
-REPRESENTATI
-IVES
-REWARDS
-BEHAVIORAL
-CHANGE
-COMPOSTING
-BINS
-SEGREGATION
-INSTRUMENT
-COMMUNICA
-TION
-PLATFORMS
-EVENT
-MATERIALS
-LOGISTICS
-WASTE
-COLLECTION
-BAGS
-MEASUREMEN
-T TOOLS
-EDUCATIONAL
-INSTITUTION
-S
-ORPHANAGES
-REHABILITATI
-ON CENTERS
-HOSPICES
-HOMES
-WASTE
-COLLECTION
-CENTERS
-KITCHEN
-GARDENS
-PUBLIC
-SPACES
-OFFICES
-REGIONS
-FOCUSED
-NAVI
-MUMBAI
-KHARGHAR
-RAIGAD
-KALYAN
-DOMBIVLI
-AMBARNATH
-SANGLI
-System
-Mapping
-AWARENESS
-MATERIALS
-DREAMWEAV
-ER
-PLASTIC
-RECYCLING
-PREMIER
-LEAGUE
-PROGRAM
-ZERO WASTE
-THERMOCAL
-RECYCLING
-ANKUR
-KAVACH
-CHAMP</p></div></section>
-<section class="sl" id="s14" tabindex="-1" aria-label="Stakeholder Mapping"><h2 class="st">Stakeholder Mapping</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s14.webp" alt="Stakeholder Mapping" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>LOCAL GOVERNMENT BODIES
-INVOLVED
-CORE
-FOUNDER
-BENEFICIARIES
-FIELD STAFF
-HOMEMAKERS
-EDUCATIONAL INSTITUTION
-INFORMED
-SUPPLIERS
-BENEFICIARIES
-Vidya Samvardhan - Students for
-underprivileged communites
-Unnati - Youth and women from
-LIG communites
--Marginalized families
--Homeless individuals
--Disaster affected groups
--Local communites
--Urban Residents
-Seva
-Jaago
-VENDORS
-VOLUNTEERS
-Stakeholder
-Mapping</p></div></section>
-<section class="sl" id="s15" tabindex="-1" aria-label="Stakeholder Matrix"><h2 class="st">Stakeholder Matrix</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s15.webp" alt="Stakeholder Matrix" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Local Government Bodies
-Informed Suppliers
-Educational Institutions
-Founder
-Community Leaders
-NGO Partners
-Government Representatives
-Urban Residents
-Vendors
-General Public
-Homemakers
-Children
-Elderly
-Teachers
-Volunteers
-Beneficiaries
-INTEREST
-POWER
-LOW HIGH
-LOW
-HIGH
-Stakeholder
-Matrix</p></div></section>
-<section class="sl" id="s16" tabindex="-1" aria-label="Iceberg Model"><div class="fr paper"><div class="hd"><span class="pill">Iceberg<br>Model</span></div><div class="ice" data-focus=""><div class="ib ib0" data-i="0"><div class="ibl"><ul><li>Initial public reluctance: “Not my job; municipality’s duty.”</li><li>Rewards for sustainable actions</li></ul></div><button class="ibc" type="button" aria-pressed="false"><span>EVENTS</span></button><div class="ibr"><ul><li>Women’s workshops</li><li>Zero-waste drives</li><li>Kitchen gardens</li><li>Reward competitions.</li></ul></div></div><div class="ib ib1" data-i="1"><div class="ibl"><ul><li>Rising rates of recycling</li><li>Habit routine triggered by discomfort</li></ul></div><button class="ibc" type="button" aria-pressed="false"><span>PATTERNS</span></button><div class="ibr"><ul><li>Repeated use of incentives</li><li>Gradual rise in engagement and participation.</li></ul></div></div><div class="ib ib2" data-i="2"><div class="ibl"><ul><li>Volunteer-based, flexible organization.</li><li>Community-led design</li><li>Collective decisions</li></ul></div><button class="ibc" type="button" aria-pressed="false"><span>STRUCTURES</span></button><div class="ibr"><ul><li>Constant redesign as per community feedback.</li><li>Waste tracking and digital updates</li></ul></div></div><div class="ib ib3" data-i="3"><div class="ibl"><ul><li>Sustainability is everyone&#x27;s daily job</li><li>Knowledge drives sustainable choices</li><li>Norms: &quot;Not my job&quot; as barrier</li></ul></div><button class="ibc" type="button" aria-pressed="false"><span>MENTAL MODES</span></button><div class="ibr"><ul><li>Trust built by respecting local culture</li><li>Rewards and feedback sustain change</li><li>System thinking guides program design</li></ul></div></div></div><p class="ice-h"><span data-ui>Select a layer to focus on it. Select it again to show all.</span></p></div></section>
-<section class="sl" id="s17" tabindex="-1" aria-label="Causal Loop Diagram"><h2 class="st">Causal Loop Diagram</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s17.webp" alt="Causal Loop Diagram" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Communication
-points
-External
-Pressure
-Community
-Trust
-External
-Incentives
-Personal
-Responsibility
-Realisation
-Self and Cross
-Monitoring
-Civic Sense
-Initial Resistance
-Denial
-Behavioural Change
-Motivation Volunteers
-Awareness
-Government
-Partnerships
-Organisational
-Capacity
-Program impact
-Program
-Deployment Rate
-Adoption Rate
-Codesigning/
-Coworking
-Training
-Engagement
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
--
-B
-R
-R
-R
-1
-2
-3
-+
--
-+
-+
-+
-+
-+
-+
-+
-+
-Causal Loop
-Diagram
-Shrunkhala’s
-Intervention
-+</p></div></section>
-<section class="sl" id="s18" tabindex="-1" aria-label="Primary Research · Interviews"><h2 class="st">Primary Research · Interviews</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s18.webp" alt="Primary Research · Interviews" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Gender
-Age
-Occupation
-Address
-Female
-43
-Primary School Teacher
-Dharavi, Mumbai — Community
-Learning Centre
-
-Female
-34
-Homemaker
-Khargar, Navi Mumbai, Kalyan–
-Shrunkhala Sustainable Systems
-Gender
-Age
-Occupation
-Address
-
-Volunteer
-
-Gender
-Age
-Occupation
-Address
-Male
-42
-Small scale farmer
-Uran Taluka, Raigad District
-Volunteer
-Beneficiary
-PRIMARY
-RESEARCH-
-INTERVIEWS</p></div></section>
-<section class="sl" id="s19" tabindex="-1" aria-label="Volunteer Verbatim"><div class="fr paper"><div class="hd"><h2 class="pt">VOLUNTEER VERBATIM</h2></div><div class="chips" role="group" aria-label="Show quotes by speaker" data-ui><button type="button" class="chip" aria-pressed="false" data-sp="Volunteer 1"><span data-ui>Volunteer 1</span></button><button type="button" class="chip" aria-pressed="false" data-sp="Volunteer 2"><span data-ui>Volunteer 2</span></button><button type="button" class="chip" aria-pressed="false" data-sp="Beneficiary"><span data-ui>Beneficiary</span></button><button type="button" class="chip" aria-pressed="false" data-sp="Another volunteer"><span data-ui>Another volunteer</span></button></div><div class="vcs stg"><section class="vc vc0"><h3>Volunteer Motivation</h3><ul class="nqs"><li class="nq" data-sp="Volunteer 1"><blockquote><p>“Shuru mein timepass lagta tha, but when I saw how a small act like waste segregation changes lives, it became my personal responsibility as a citizen.”</p><footer>- Volunteer 1</footer></blockquote></li><li class="nq" data-sp="Volunteer 2"><blockquote><p>“I was in touch with the founder as we shared same office earlier so I was one of the first people to join Shrunkhala.”</p><footer>- Volunteer 2</footer></blockquote></li></ul></section><section class="vc vc1"><h3>Community Impact</h3><ul class="nqs"><li class="nq" data-sp="Volunteer 1"><blockquote><p>“Seedball campaigns mein citizen participation amazing hota hai. Log seedhi aur collective impact wali cheezon se instantly jud jaate hain.”</p><footer>- Volunteer 1</footer></blockquote></li><li class="nq" data-sp="Beneficiary"><blockquote><p>“Simple steps like composting and waste sorting help our land stay healthier.Learning sustainable habits makes a big difference.”</p><footer>- Beneficiary</footer></blockquote></li><li class="nq" data-sp="Volunteer 1"><blockquote><p>“When we started with blue bag campaign in our society the mujhe notice huwa ki plastic weight gradually increase huwa per flat even my son started monitoring waste jo usme ja skta hai. ”</p><footer>- Volunteer 1</footer></blockquote></li><li class="nq" data-sp="Volunteer 2"><blockquote><p>“It’s not just about the people we are working for even aap jaise students ko bhi fayda milta hai when you work with us aap bohot sari skills develop kr lete ho. ”</p><footer>- Volunteer 2</footer></blockquote></li></ul></section><section class="vc vc2"><h3>Structural Challenges</h3><ul class="nqs"><li class="nq" data-sp="Another volunteer"><blockquote><p>“Tree plantation drives mein har baar permits aur coordination tough hota hai. Nagar Palika ke saath engagement ke liye clear protocol hona chahiye.”</p><footer>- Another volunteer</footer></blockquote></li><li class="nq" data-sp="Volunteer 2"><blockquote><p>“The last moment change of plan is quite common jaise jab kisi college me collection zyada ho gaya then we have to arrange different type of vehicle also if a newer volunteer is on field. Honestly there are a lot of moving parts.”</p><footer>- Volunteer 2</footer></blockquote></li></ul></section></div></div></section>
-<section class="sl" id="s20" tabindex="-1" aria-label="Gaps Identified"><div class="fr paper"><div class="hd"><span class="pill">Gaps Identified</span></div><ol class="gps stg"><li class="gp"><p class="gn">1</p><div class="gb"><h3>Behavioural change</h3><p>&quot;Not my duty&quot;</p></div></li><li class="gp"><p class="gn">2</p><div class="gb"><h3>Structural gap</h3><p>Decision making load on the Founder</p></div></li><li class="gp"><p class="gn">3</p><div class="gb"><h3>Cultural gap</h3><p>A lack of a standardized cultural assessment before starting a program in a new area.</p></div></li></ol></div></section>
-<section class="sl" id="s21" tabindex="-1" aria-label="System Mapping"><h2 class="st">System Mapping</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s21.webp" alt="System Mapping diagram with the gaps and solutions added, including guidelines, flash cards, AR lens and awareness leaflet." width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>LEGENDS:
-COMMUNITY
-CENTERS
-GAP
-HUMAN
-NON-HUMAN
-SOLUTION
-SPACE
-SHRUNKHALA
-FOUNDER
-HOMEMAKERS
-CHILDREN
-ELDERLY TEACHERS
-COMMUNITY
-LEADERS
-GRAM
-PANCHAYAT
-NGO PARTNERS
-GOVERNMENT
-REPRESENTATI
-IVES
-REWARDS
-BEHAVIORAL
-CHANGE
-COMPOSTING
-BINS
-SEGREGATION
-INSTRUMENT
-COMMUNICA
-TION
-PLATFORMS
-EVENT
-MATERIALS
-LOGISTICS
-WASTE
-COLLECTION
-BAGS
-MEASUREMEN
-T TOOLS
-EDUCATIONAL
-INSTITUTION
-S
-ORPHANAGES
-REHABILITATI
-ON CENTERS
-HOSPICES
-HOMES
-WASTE
-COLLECTION
-CENTERS
-KITCHEN
-GARDENS
-PUBLIC
-SPACES
-OFFICES
-REGIONS
-FOCUSED
-NAVI
-MUMBAI
-KHARGHAR
-RAIGAD
-KALYAN
-DOMBIVLI
-AMBARNATH
-SANGLI
-System
-Mapping
-AWARENESS
-MATERIALS
-DREAMWEAV
-ER
-ZERO WASTE
-THERMOCAL
-RECYCLING
-ANKUR
-KAVACH
-CHAMP
-GUIDELINES
-STRUCTURAL
-GAP
-BEHAVIOURAL
-CHANGE
-FLASH CARDS
-AR LENS
-AWARENESS
-LEAFLET
-MEASURING
-CHANGE
-HABITUAL
-CHANGE
-INFORMATION
-TRAINING
-PLASTIC
-RECYCLING
-PREMIER
-LEAGUE
-PROGRAM</p></div></section>
-<section class="sl" id="s22" tabindex="-1" aria-label="Causal Loop Diagram"><h2 class="st">Causal Loop Diagram</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s22.webp" alt="Causal Loop Diagram" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Behavioural
-repetition
-Volunteers
-Advocacy
-Reach
-Institute
-Partnerships
-Sense of
-achievement
-Incentives
-Workshops/
-Awareness drives
-+
-+
-+
-+
-+
-+
-B
-R1
-+
-+
-Causal Loop
-Diagram
-Shrunkhala’s
-Intervention
-Program success
-rate
-Organisation
-Capacity
-Shrunkhala’s
-Internal
-Communication
-Shrunkhala-
-Community
-Communication
-Community Trust
-Civic Sense
-Participation
-+
-+
-R2
-+
-+
-+
-+
-+
-+
-+
-Measurable
-Behavioral Change
-Resources
-Knowledge Transfer
-Sustainable
-Habits
-Awareness
-Initial Resistance
--
--
--
-Negligence
--
-+
-+
-+
-+
-+
-+</p></div></section>
-<section class="sl" id="s23" tabindex="-1" aria-label="Behavioural Change Model"><h2 class="st">Behavioural Change Model</h2><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s23.webp" alt="Behavioural Change Model" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>BEHAVIOURAL
-CHANGE MODEL
-*Reference: Mahamuni, Ravi. 2020. Crafting a Change: Service
-Design Perspective for Sustained Behaviour Change.</p></div></section>
-<section class="sl cont" id="s24" tabindex="-1" aria-label="Behavioural Change Model"><div class="fr paper"><div class="hd"><span class="pill">BEHAVIOURAL<br>CHANGE MODEL</span></div><h3 class="sh">Segregating Waste Correctly</h3><p class="nb"><strong>Introducing New Behaviour:</strong> Segregate recyclables, compostables, &amp; general waste daily.</p><div class="sctl" data-ui><button type="button" class="btn dk" id="sgplay"><span data-ui>Play the journey</span></button><button type="button" class="btn dk" id="sgprev" aria-label="Previous stage"><span data-ui>Previous</span></button><button type="button" class="btn dk" id="sgnext" aria-label="Next stage"><span data-ui>Next</span></button></div><div class="sgbar" aria-hidden="true"><i id="sgfill"></i></div><ol class="sgs"><li class="sg on" data-k="0"><button type="button" class="sgb" aria-pressed="true"><span class="sgn" data-ui>1</span><h3>Unaware</h3><p class="sgq">&quot;What is waste segregation, and why should I care?&quot;</p><img src="shrunkhala/st1.webp" alt="" width="330" height="432" loading="lazy"></button></li><li class="sg" data-k="1"><button type="button" class="sgb" aria-pressed="false"><span class="sgn" data-ui>2</span><h3>Unengaged</h3><p class="sgq">&quot;My mixed trash is creating problems right now.&quot;</p><img src="shrunkhala/st2.webp" alt="" width="330" height="432" loading="lazy"></button></li><li class="sg" data-k="2"><button type="button" class="sgb" aria-pressed="false"><span class="sgn" data-ui>3</span><h3>Undecided</h3><p class="sgq">“I agree it&#x27;s a problem, but I don&#x27;t know the rules or the first step.&quot;</p><img src="shrunkhala/st3.webp" alt="" width="330" height="432" loading="lazy"></button></li><li class="sg" data-k="3"><button type="button" class="sgb" aria-pressed="false"><span class="sgn" data-ui>4</span><h3>Prepare To Perform</h3><p class="sgq">“I have the knowledge, now I need the physical system to make it easy.”</p><img src="shrunkhala/st4.webp" alt="" width="330" height="432" loading="lazy"></button></li><li class="sg" data-k="4"><button type="button" class="sgb" aria-pressed="false"><span class="sgn" data-ui>5</span><h3>Perform Once</h3><p class="sgq">&quot;I did it! That was easy. Now I just need to remember to do it again.&quot;</p><img src="shrunkhala/st5.webp" alt="" width="330" height="432" loading="lazy"></button></li><li class="sg" data-k="5"><button type="button" class="sgb" aria-pressed="false"><span class="sgn" data-ui>6</span><h3>Maintain</h3><p class="sgq">&quot;This is now a part of my routine, and I feel good about contributing.&quot;</p><img src="shrunkhala/st6.webp" alt="" width="330" height="432" loading="lazy"></button></li><li class="sg" data-k="6"><button type="button" class="sgb" aria-pressed="false"><span class="sgn" data-ui>7</span><h3>Sustain</h3><p class="sgq">&quot;My effort creates visible, long-term benefits for my community and the environment.&quot;</p><img src="shrunkhala/st7.webp" alt="" width="330" height="432" loading="lazy"></button></li><li class="sg" data-k="7"><button type="button" class="sgb" aria-pressed="false"><span class="sgn" data-ui>8</span><h3>Advocate</h3><p class="sgq">&quot;This is too important to keep quiet about. I must inspire others to join.&quot;</p><img src="shrunkhala/st8.webp" alt="" width="330" height="432" loading="lazy"></button></li></ol></div></section>
-<section class="sl" id="s25" tabindex="-1" aria-label="Awareness"><div class="fr paper"><div class="hd"><span class="pill">AWARENESS</span><p class="ch"><span class="c1">CHOOSE</span> <span class="c2">YOUR</span> <span class="c3">COLOUR</span> <span class="c4">WISELY</span></p></div><p class="aw">AWARENESS IS THE FIRST STEP TOWARDS BEHAVIOUR CHANGE.</p><div class="bsx"><div class="bs" id="bs"><div class="bin b-plastic" data-b="plastic"><div class="lid"></div><div class="bd"><p class="bl">PLASTIC</p><ul class="got" aria-hidden="true"></ul></div></div><div class="bin b-organic" data-b="organic"><div class="lid"></div><div class="bd"><p class="bl">ORGANIC</p><ul class="got" aria-hidden="true"></ul></div></div><div class="bin b-paper" data-b="paper"><div class="lid"></div><div class="bd"><p class="bl">PAPER</p><ul class="got" aria-hidden="true"></ul></div></div><div class="bin b-hazardous" data-b="hazardous"><div class="lid"></div><div class="bd"><p class="bl">HAZARDOUS</p><ul class="got" aria-hidden="true"></ul></div></div></div><div class="btray" id="btray" aria-label="Items from the legend" data-ui></div><div class="bctl" data-ui><button class="btn dk" id="bplay" type="button"><span data-ui>Sort them all</span></button><button class="btn dk" id="bstep" type="button"><span data-ui>Sort the next item</span></button><button class="btn dk" id="breset" type="button"><span data-ui>Start again</span></button></div><p class="bst" id="bst" role="status" aria-live="polite" data-ui></p></div><ul class="leg"><li class="lg lg-plastic" data-b="plastic"><i class="sw" aria-hidden="true"></i><p><strong>Plastic</strong> (e.g., <span class="it" data-b="plastic">plastic bottles,</span> <span class="it" data-b="plastic">plastic bags)</span></p></li><li class="lg lg-organic" data-b="organic"><i class="sw" aria-hidden="true"></i><p><strong>Organic</strong> (e.g., <span class="it" data-b="organic">fruit,</span> <span class="it" data-b="organic">leaves,</span> <span class="it" data-b="organic">food scraps)</span></p></li><li class="lg lg-paper" data-b="paper"><i class="sw" aria-hidden="true"></i><p><strong>Paper</strong> (e.g., <span class="it" data-b="paper">newspapers,</span> <span class="it" data-b="paper">cardboard,</span> <span class="it" data-b="paper">packaging)</span></p></li><li class="lg lg-hazardous" data-b="hazardous"><i class="sw" aria-hidden="true"></i><p><strong>Hazardous</strong> (e.g., <span class="it" data-b="hazardous">syringes,</span> <span class="it" data-b="hazardous">batteries,</span> <span class="it" data-b="hazardous">specific chemical containers)</span></p></li></ul></div></section>
-<section class="sl cont" id="s26" tabindex="-1" aria-label="Awareness"><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s26.webp" alt="Awareness" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>CHOOSE YOUR COLOUR WISELY
-MEASURING THE BEHAVIOURAL CHANGE.
-AWARENESS</p></div></section>
-<section class="sl" id="s27" tabindex="-1" aria-label="Guidelines Leaflet"><div class="fr paper"><div class="hd"><span class="pill">GUIDELINES<br>LEAFLET</span></div><div class="lfg"><div class="lfl"><div class="pyr" role="group" aria-label="Structural organization pyramid"><ol><li class="pt1"><span>FOUNDER</span></li><li class="pt2"><span>PROJECT COORDINATORS</span></li><li class="pt3"><span>VOLUNTEERS</span></li></ol></div><p class="pill st">STRUCTURAL<br>ORGANIZATION</p></div><div class="lfx" data-lf="1"><div class="lfv"><div class="lfwhole"><img src="shrunkhala/pam1.webp" alt="Shrunkhala guidelines leaflet, English version, a three-panel folded leaflet." width="2000" height="1414" loading="lazy"></div><div class="lfpanel" hidden><div class="pn" data-x="0" data-w="643" hidden><img src="shrunkhala/pam1.webp" alt="Shrunkhala guidelines leaflet, English version, a three-panel folded leaflet. Panel 1 of 3 shown." width="2000" height="1414" loading="lazy"></div><div class="pn" data-x="643" data-w="614" hidden><img src="shrunkhala/pam1.webp" alt="Shrunkhala guidelines leaflet, English version, a three-panel folded leaflet. Panel 2 of 3 shown." width="2000" height="1414" loading="lazy"></div><div class="pn" data-x="1257" data-w="743" hidden><img src="shrunkhala/pam1.webp" alt="Shrunkhala guidelines leaflet, English version, a three-panel folded leaflet. Panel 3 of 3 shown." width="2000" height="1414" loading="lazy"></div></div></div><div class="lfc" role="group" aria-label="English leaflet view" data-ui><button type="button" class="btn dk on" data-v="all" aria-pressed="true"><span data-ui>Whole leaflet</span></button><button type="button" class="btn dk" data-v="0" aria-pressed="false"><span data-ui>Panel 1</span></button><button type="button" class="btn dk" data-v="1" aria-pressed="false"><span data-ui>Panel 2</span></button><button type="button" class="btn dk" data-v="2" aria-pressed="false"><span data-ui>Panel 3</span></button></div></div></div></div></section>
-<section class="sl cont" id="s28" tabindex="-1" aria-label="Guidelines Leaflet"><div class="fr paper"><div class="hd"><span class="pill">GUIDELINES<br>LEAFLET</span></div><div class="lfg one"><div class="lfx" data-lf="2"><div class="lfv"><div class="lfwhole"><img src="shrunkhala/pam2.webp" alt="Shrunkhala guidelines leaflet, Marathi version, a three-panel folded leaflet." width="2000" height="1414" loading="lazy"></div><div class="lfpanel" hidden><div class="pn" data-x="0" data-w="643" hidden><img src="shrunkhala/pam2.webp" alt="Shrunkhala guidelines leaflet, Marathi version, a three-panel folded leaflet. Panel 1 of 3 shown." width="2000" height="1414" loading="lazy"></div><div class="pn" data-x="643" data-w="614" hidden><img src="shrunkhala/pam2.webp" alt="Shrunkhala guidelines leaflet, Marathi version, a three-panel folded leaflet. Panel 2 of 3 shown." width="2000" height="1414" loading="lazy"></div><div class="pn" data-x="1257" data-w="743" hidden><img src="shrunkhala/pam2.webp" alt="Shrunkhala guidelines leaflet, Marathi version, a three-panel folded leaflet. Panel 3 of 3 shown." width="2000" height="1414" loading="lazy"></div></div></div><div class="lfc" role="group" aria-label="Marathi leaflet view" data-ui><button type="button" class="btn dk on" data-v="all" aria-pressed="true"><span data-ui>Whole leaflet</span></button><button type="button" class="btn dk" data-v="0" aria-pressed="false"><span data-ui>Panel 1</span></button><button type="button" class="btn dk" data-v="1" aria-pressed="false"><span data-ui>Panel 2</span></button><button type="button" class="btn dk" data-v="2" aria-pressed="false"><span data-ui>Panel 3</span></button></div></div></div></div></section>
-<section class="sl" id="s29" tabindex="-1" aria-label="Thank you"><div class="fr"><button class="z" type="button"><img class="pg" src="shrunkhala/s29.webp" alt="Thank you" width="2000" height="1125" loading="lazy" decoding="async" onerror="this.closest(&quot;.fr&quot;).classList.add(&quot;bad&quot;);this.closest(&quot;.fr&quot;).setAttribute(&quot;data-f&quot;,this.getAttribute(&quot;src&quot;))"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this image, in the order it is stored in the file:</p><p>Thank you</p></div></section></main>
-<footer class="end"><p>Shrunkhala · System Thinking</p><div class="eb"><a class="btn" id="totop" href="#pagetop"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V6M6 12l6-6 6 6"/></svg><span>Back to the top</span></a><a class="btn" href="index.html#gal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 12H6M11 7l-5 5 5 5"/></svg><span>Back to the exhibition</span></a></div></footer>
-
-<div class="zm" id="zm" hidden role="dialog" aria-modal="true" aria-label="Zoomed image"><div class="zbar"><span class="t" id="zt"></span><div class="g"><button class="btn" id="zp" type="button" aria-label="Previous image">Prev</button><button class="btn" id="zn" type="button" aria-label="Next image">Next</button><button class="btn" id="zout" type="button" aria-label="Zoom out">−</button><button class="btn" id="zin" type="button" aria-label="Zoom in">+</button><button class="btn" id="zfit" type="button">Fit</button><button class="btn" id="zx" type="button">Close</button></div></div>
-<div class="zst" id="zst"><img id="zimg" alt=""><p class="zh" aria-hidden="true">Scroll or pinch to zoom · drag to pan · double-click to zoom in or out · Esc to close</p></div></div>
-<script>(function(){
-var d=document,B=d.body,$=function(i){return d.getElementById(i)},slides=[].slice.call(d.querySelectorAll('.sl')),N=slides.length,
- mq=matchMedia('(prefers-reduced-motion: reduce)'),cur=0,railA=[].slice.call(d.querySelectorAll('.rail a'));
-function calm(){return B.classList.contains('calm')||mq.matches}
-B.classList.add('js');
-d.querySelectorAll('.stg').forEach(function(g){[].slice.call(g.children).forEach(function(c,i){c.style.setProperty('--i',i)})});
-d.querySelectorAll('.paper').forEach(function(p){[].slice.call(p.querySelectorAll('.card,.facts>div,.hmw,.lead,.note,.mos>*,.sr3>*')).forEach(function(c,i){if(c.closest('.stg')===null||true){c.classList.add('stgi');c.style.setProperty('--i',Math.min(i,10))}})});
-/* motion toggle */
-/* reveal once */
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px',threshold:.05});
-slides.forEach(function(s){io.observe(s)});
-/* current slide */
-var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cur=slides.indexOf(e.target);paint()}})},{rootMargin:'-45% 0px -45% 0px'});
-slides.forEach(function(s){io2.observe(s)});
-function paint(){railA.forEach(function(a,i){if(i===cur)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}
-function go(i,focus){i=Math.max(0,Math.min(N-1,i));slides[i].scrollIntoView({behavior:calm()?'auto':'smooth',block:'center'});if(focus!==false)slides[i].focus({preventScroll:true});cur=i;paint()}
-var tt=$('totop');if(tt)tt.addEventListener('click',function(e){e.preventDefault();var h=$('pagetop');scrollTo({top:0,behavior:calm()?'auto':'smooth'});if(h)setTimeout(function(){h.focus({preventScroll:true})},calm()?0:500)});
-/* progress */
-var pr=$('prog'),tick=0;addEventListener('scroll',function(){if(tick)return;tick=requestAnimationFrame(function(){tick=0;var h=d.documentElement.scrollHeight-innerHeight;pr.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')'})},{passive:true});
-/* zoom viewer */
-var zm=$('zm'),zs=$('zst'),zi=$('zimg'),zt=$('zt'),zl=[],zk=0,S=1,X=0,Y=0,FW=0,opener=null,ptrs={},lastD=0,drag=null;
-slides.forEach(function(s,i){if(s.querySelector('button.z'))zl.push(i)});
-function fit(){var W=zs.clientWidth,H=zs.clientHeight;FW=Math.min(W*.98,H*.98*16/9);zi.style.width=FW+'px';zi.style.height=(FW*9/16)+'px';zi.style.marginLeft=(-FW/2)+'px';zi.style.marginTop=(-FW*9/32)+'px'}
-function clamp(){var W=zs.clientWidth,H=zs.clientHeight,sw=FW*S,sh=FW*9/16*S,mx=Math.max(0,(sw-W)/2),my=Math.max(0,(sh-H)/2);X=Math.max(-mx,Math.min(mx,X));Y=Math.max(-my,Math.min(my,Y))}
-function apply(){clamp();zi.style.transform='translate('+X.toFixed(1)+'px,'+Y.toFixed(1)+'px) scale('+S.toFixed(3)+')'}
-function zoomAt(f,px,py){var n=Math.max(1,Math.min(5,S*f)),k=n/S;X=px-(px-X)*k;Y=py-(py-Y)*k;S=n;apply()}
-function center(){var r=zs.getBoundingClientRect();return[r.width/2-r.width/2,0]}
-function load(k){zk=(k+zl.length)%zl.length;var s=slides[zl[zk]],img=s.querySelector('img.pg');zi.src=img.currentSrc||img.src;zi.alt=img.alt;zt.textContent=img.alt;S=1;X=0;Y=0;fit();apply()}
-function zOpen(i){opener=d.activeElement;zm.hidden=false;B.style.overflow='hidden';zk=Math.max(0,zl.indexOf(i));load(zk);$('zx').focus()}
-function zClose(){zm.hidden=true;B.style.overflow='';var i=zl[zk];go(i,false);if(opener&&opener.focus)opener.focus({preventScroll:true})}
-slides.forEach(function(s,i){var b=s.querySelector('button.z');if(b)b.addEventListener('click',function(){zOpen(i)})});
-$('zx').addEventListener('click',zClose);$('zp').addEventListener('click',function(){load(zk-1)});$('zn').addEventListener('click',function(){load(zk+1)});
-$('zin').addEventListener('click',function(){zoomAt(1.5,0,0)});$('zout').addEventListener('click',function(){zoomAt(1/1.5,0,0)});$('zfit').addEventListener('click',function(){S=1;X=0;Y=0;apply()});
-zs.addEventListener('wheel',function(e){e.preventDefault();var r=zs.getBoundingClientRect();zoomAt(e.deltaY<0?1.15:1/1.15,e.clientX-r.left-r.width/2,e.clientY-r.top-r.height/2)},{passive:false});
-zs.addEventListener('dblclick',function(e){var r=zs.getBoundingClientRect();if(S>1.2){S=1;X=0;Y=0;apply()}else zoomAt(2.5,e.clientX-r.left-r.width/2,e.clientY-r.top-r.height/2)});
-zs.addEventListener('pointerdown',function(e){zs.setPointerCapture(e.pointerId);ptrs[e.pointerId]={x:e.clientX,y:e.clientY};zs.classList.add('dragging');lastD=0});
-zs.addEventListener('pointermove',function(e){var p=ptrs[e.pointerId];if(!p)return;var ids=Object.keys(ptrs);
- if(ids.length===2){var o=ptrs[ids.filter(function(k){return +k!==e.pointerId})[0]],nd=Math.hypot(e.clientX-o.x,e.clientY-o.y);if(lastD){var r=zs.getBoundingClientRect();zoomAt(nd/lastD,(e.clientX+o.x)/2-r.left-r.width/2,(e.clientY+o.y)/2-r.top-r.height/2)}lastD=nd}
- else{X+=e.clientX-p.x;Y+=e.clientY-p.y;apply()}
- p.x=e.clientX;p.y=e.clientY});
-function pend(e){delete ptrs[e.pointerId];lastD=0;if(!Object.keys(ptrs).length)zs.classList.remove('dragging')}
-zs.addEventListener('pointerup',pend);zs.addEventListener('pointercancel',pend);
-addEventListener('resize',function(){if(!zm.hidden){fit();apply()}});
-/* keyboard */
-addEventListener('keydown',function(e){
- if(e.altKey||e.ctrlKey||e.metaKey)return;
- if(!zm.hidden){
-  if(e.key==='Escape'){zClose();e.preventDefault()}
-  else if(e.key==='+'||e.key==='='){zoomAt(1.3,0,0)}else if(e.key==='-'){zoomAt(1/1.3,0,0)}else if(e.key==='0'){S=1;X=0;Y=0;apply()}
-  else if(e.key==='ArrowLeft'&&S<=1.01){load(zk-1);e.preventDefault()}else if(e.key==='ArrowRight'&&S<=1.01){load(zk+1);e.preventDefault()}
-  else if(e.key.indexOf('Arrow')===0&&S>1.01){var k=60;if(e.key==='ArrowLeft')X+=k;if(e.key==='ArrowRight')X-=k;if(e.key==='ArrowUp')Y+=k;if(e.key==='ArrowDown')Y-=k;apply();e.preventDefault()}
-  else if(e.key==='Tab'){var f=[].slice.call(zm.querySelectorAll('button')),a=f[0],z=f[f.length-1];if(e.shiftKey&&d.activeElement===a){z.focus();e.preventDefault()}else if(!e.shiftKey&&d.activeElement===z){a.focus();e.preventDefault()}}
-  return}
- var t=e.target;if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'))return;
-});
-paint();
-if(location.hash){var h=d.getElementById(location.hash.slice(1));if(h&&h.classList.contains('sl'))setTimeout(function(){go(slides.indexOf(h),false)},50)}
-})();
+<header class="bk"><a href="index.html#gal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 12H6M11 7l-5 5 5 5"/></svg><span>Back to the exhibition</span></a></header>
+<div class="hero"><div class="wrap"><div><p class="kick">Case study</p><h1 id="pagetop"><span>Shrunkhala</span><span>System</span><span>Thinking</span></h1><p class="tag">Shrunkhala Organisation · Inspire to aspire</p><ul class="chips" aria-label="Domains"><li>System Thinking</li></ul><a class="scroll" href="#main">Scroll to read the project</a></div><div class="ph"><img src="shrunkhala/cover.webp" alt="Students seated on the floor of a school hall, with a few people standing and holding a Plastics Recycling Warriors Contest banner." width="1153" height="1153" decoding="async"></div></div></div>
+<main id="main">
+<section class="part" aria-label="The organisation"><div class="wrap"><p class="pn">Part one</p><h2>The organisation</h2><p>Who Shrunkhala is, what it believes in and the work it does.</p></div></section>
+<section class="sec light" id="intro" aria-labelledby="intro-h"><div class="wrap rv"><header class="sh"><p class="eb">Introduction</p><h2 id="intro-h">Introduction to Shrunkhala</h2></header><div class="split"><div><p class="lead">The term ‘Shrunkhala’, derived from Sanskrit, translates to ‘Chain’ in English.</p><p>It reflects the philosophy and approach of the organization — emphasizing <strong>collective effort and interconnected responsibility</strong>.</p><p>Guided by the belief that sustainable communities are achievable only through the <strong>active engagement of citizens</strong>.</p><figure class="fg sm"><button class="zm" type="button" data-full="shrunkhala/map.webp" aria-label="Enlarge image: Satellite map of the neighbourhood around the organisation’s head office, with the locatio"><img src="shrunkhala/map.webp" alt="Satellite map of the neighbourhood around the organisation’s head office, with the location marked." width="599" height="452" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button><figcaption>Location Map</figcaption></figure></div><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/intro.webp" aria-label="Enlarge image: A group of women posing together on a carpet, holding a Shrunkhala banner."><img src="shrunkhala/intro.webp" alt="A group of women posing together on a carpet, holding a Shrunkhala banner." width="1400" height="1050" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure></div></div></section>
+<section class="sec tint" id="overview" aria-labelledby="overview-h"><div class="wrap rv"><header class="sh"><p class="eb">Organisation</p><h2 id="overview-h">Organizational Overview</h2></header><dl class="facts"><div><dt>Registered Name</dt><dd>Shrunkhala Organisation for Sustainable Development</dd></div><div><dt>Legal Status</dt><dd>Non-Profit Entity, registered under Section 8 of the Companies Act.</dd></div><div><dt>Established</dt><dd>2018</dd></div><div><dt>Headquarters</dt><dd>Navi Mumbai, Maharashtra</dd></div><div><dt>Head Office</dt><dd>Kharghar, Navi Mumbai</dd></div></dl><p class="lead">Operates as a <strong>citizen-focused organization</strong>, fostering participatory models for sustainable living.</p><div class="gal" style="margin-top:1.8rem"><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/ov1.webp" aria-label="Enlarge image: A community workshop in a green-walled hall: women seated on the floor and others standing"><img src="shrunkhala/ov1.webp" alt="A community workshop in a green-walled hall: women seated on the floor and others standing in front of a banner." width="512" height="384" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/ov2.webp" aria-label="Enlarge image: A group of people seated in a circle in a bright room, listening to a speaker."><img src="shrunkhala/ov2.webp" alt="A group of people seated in a circle in a bright room, listening to a speaker." width="1000" height="750" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure></div></div></section>
+<section class="sec light" id="philosophy" aria-labelledby="philosophy-h"><div class="wrap rv"><header class="sh"><p class="eb">Beliefs</p><h2 id="philosophy-h">Core philosophy, strategic approach and the founder’s vision</h2></header><ul class="cards "><li class="card"><h3>Core Philosophy</h3><ul><li>Shrunkhala functions as a <strong>People’s Organization</strong> with citizens at the center of all initiatives.</li><li>Believes in <strong>collective responsibility</strong> as the foundation for sustainable development.</li><li>Seeks to transform awareness into <strong>tangible citizen action</strong> for long-term environmental and social impact.</li></ul></li><li class="card"><h3>Strategic Approach</h3><ul><li>Engaging citizens through <strong>education, dialogue, and collaboration</strong>.</li><li>Promoting <strong>awareness campaigns</strong> for sustainable living and responsible consumption.</li><li>Facilitating <strong>community-driven initiatives</strong> to address local environmental challenges.</li><li>Strengthening partnerships that enhance <strong>social, environmental and economic resilience</strong>.</li></ul></li><li class="card"><h3>Founder’s vision</h3><ul><li>“I believe <strong>real change</strong> begins with one person’s thinking. <strong>When an individual understands their responsibility</strong>, the whole community starts to transform.”</li><li>“For me, Shrunkhala is <strong>about creating a space</strong> where people especially <strong>women can learn</strong>, talk, and grow together. That’s how sustainable communities are built.”</li><li>“<strong>Sustainability does not start with big projects</strong>. It starts with simple habits.”</li></ul></li></ul></div></section>
+<section class="sec tint" id="why" aria-labelledby="why-h"><div class="wrap rv"><header class="sh"><p class="eb">Purpose</p><h2 id="why-h">Why Shrunkhala?</h2></header><ul class="cards num"><li class="card"><h3>Vision</h3><p>An inclusive, sustainable and equitable society in which people feel safe &amp; happy and want to live now and in future</p></li><li class="card"><h3>Approach</h3><p>Shrunkhala is People’s organisation. Our approach is citizen centric.</p></li><li class="card"><h3>Objective</h3><p>To build an open platform for the people, especially women, where they can explore their skills and design their dreams.</p></li></ul></div></section>
+<section class="sec light" id="objectives" aria-labelledby="objectives-h"><div class="wrap rv"><header class="sh"><p class="eb">Objectives</p><h2 id="objectives-h">Shrunkhala’s Objectives</h2></header><ul class="chips big" style="color:var(--acd);margin-bottom:2rem"><li>Empower Women</li><li>Educate Changemakers</li><li>Build Green Community</li><li>Support Sustainable Livelihoods</li><li>Move Towards Renewable Energy</li><li>Foster Happiness &amp; Safety</li></ul><div class="gal"><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/obj1.webp" aria-label="Enlarge image: A woman in a pink top and sun hat tending plants in a garden."><img src="shrunkhala/obj1.webp" alt="A woman in a pink top and sun hat tending plants in a garden." width="960" height="350" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/obj2.webp" aria-label="Enlarge image: Hands pressing seeds into the soil."><img src="shrunkhala/obj2.webp" alt="Hands pressing seeds into the soil." width="960" height="350" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure></div></div></section>
+<section class="sec dark" id="impact" aria-labelledby="impact-h"><div class="wrap rv"><header class="sh"><p class="eb">Impact</p><h2 id="impact-h">Impact and Achievements</h2></header><ul class="stats"><li><span class="big">10,000+</span><span class="lb">Lives Touched</span><p>Through awareness drives, sustainability workshops, and community initiatives.</p></li><li><span class="big">25 MT</span><span class="lb">CO₂ Emission Reduced</span><p>Achieved through environmental projects and waste management initiatives.</p></li><li><span class="big">100+</span><span class="lb">Skill Upgradation Programs</span><p>Conducted to promote eco-literacy, sustainable practices, and livelihood enhancement.</p></li><li><span class="big">200,000+</span><span class="lb">Seedballs Created</span><p>Distributed to support reforestation and community-led environmental restoration.</p></li></ul></div></section>
+<section class="sec tint" id="projects" aria-labelledby="projects-h"><div class="wrap rv"><header class="sh"><p class="eb">Programmes</p><h2 id="projects-h">Latest Projects</h2></header><ul class="cards "><li class="card"><h3>Dreamweaver – Capacity Building Program for Women</h3><p>Empowers women by providing an open platform to explore and enhance their skills.</p></li><li class="card"><h3>Zero Waste – Reduce, Reuse, Recycle</h3><p>Promotes responsible consumption through refuse, reuse, and recycle practices.</p></li><li class="card"><h3>Ankur – Program for Food Sustainability</h3><p>Focuses on developing kitchen gardens within social institutions.</p></li><li class="card"><h3>Kavach – Environmental Conservation Program</h3><p>Addresses the impact of urbanization and loss of green cover.</p></li><li class="card"><h3>Champ – Developing Socially &amp; Environmentally Responsible Kids</h3><p>Aims to nurture social and environmental awareness among children.</p></li></ul><div class="gal" style="margin-top:2rem"><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/p-garden.webp" aria-label="Enlarge image: A garden bed edged with coconut shells, planted with greens, with people working nearby."><img src="shrunkhala/p-garden.webp" alt="A garden bed edged with coconut shells, planted with greens, with people working nearby." width="944" height="374" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/p-plant.webp" aria-label="Enlarge image: Children and adults planting saplings along the edge of a lawn."><img src="shrunkhala/p-plant.webp" alt="Children and adults planting saplings along the edge of a lawn." width="656" height="595" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/c-team.webp" aria-label="Enlarge image: Four people holding a banner that reads: Thermocol (EPS) is 100% Recyclable. Recycle Therm"><img src="shrunkhala/c-team.webp" alt="Four people holding a banner that reads: Thermocol (EPS) is 100% Recyclable. Recycle Thermocol Waste." width="540" height="540" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure></div></div></section>
+<section class="sec light" id="campaigns" aria-labelledby="campaigns-h"><div class="wrap rv"><header class="sh"><p class="eb">Campaigns</p><h2 id="campaigns-h">Campaigns</h2></header><div class="gal poster tall"><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/post-thermo.webp" aria-label="Enlarge image: Poster: Thermocol is 100% recyclable. Don’t waste it. Recycle it. Join Shrunkhala’s Zero W"><img src="shrunkhala/post-thermo.webp" alt="Poster: Thermocol is 100% recyclable. Don’t waste it. Recycle it. Join Shrunkhala’s Zero Waste Program." width="732" height="1024" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button><figcaption>Thermocol recycling and the Housekeeping Reward Program</figcaption></figure><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/post-roots.webp" aria-label="Enlarge image: Poster for the Dreamweaver programme session “Back to Roots”, a nutrition literacy session"><img src="shrunkhala/post-roots.webp" alt="Poster for the Dreamweaver programme session “Back to Roots”, a nutrition literacy session." width="648" height="648" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button><figcaption>Dreamweaver programme: Back to Roots</figcaption></figure><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/post-prpl.webp" aria-label="Enlarge image: Banner for the Plastics Recycling Premier League."><img src="shrunkhala/post-prpl.webp" alt="Banner for the Plastics Recycling Premier League." width="576" height="1280" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button><figcaption>Plastics Recycling Premier League</figcaption></figure><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/post-collage.webp" aria-label="Enlarge image: A collage of photographs from Shrunkhala events with groups of participants."><img src="shrunkhala/post-collage.webp" alt="A collage of photographs from Shrunkhala events with groups of participants." width="800" height="640" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button><figcaption>Moments from the events</figcaption></figure></div><div class="gal" style="margin-top:1.4rem"><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/c-class.webp" aria-label="Enlarge image: Students and teachers in a classroom with a Plastics Recycling Warrior Contest banner."><img src="shrunkhala/c-class.webp" alt="Students and teachers in a classroom with a Plastics Recycling Warrior Contest banner." width="640" height="640" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/c-housekeep.webp" aria-label="Enlarge image: A Housekeeping Reward Program sign: “Recycling is a New Lifestyle.”"><img src="shrunkhala/c-housekeep.webp" alt="A Housekeeping Reward Program sign: “Recycling is a New Lifestyle.”" width="640" height="480" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/c-banner.webp" aria-label="Enlarge image: Two people standing beside a Plastics Recycling Warrior banner at a school."><img src="shrunkhala/c-banner.webp" alt="Two people standing beside a Plastics Recycling Warrior banner at a school." width="577" height="577" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/c-gate.webp" aria-label="Enlarge image: Two women standing at a school gate under the Plastics Recycling Warrior Contest banner."><img src="shrunkhala/c-gate.webp" alt="Two women standing at a school gate under the Plastics Recycling Warrior Contest banner." width="577" height="577" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/c-celebration.webp" aria-label="Enlarge image: A group holding a banner during a clean and green celebration."><img src="shrunkhala/c-celebration.webp" alt="A group holding a banner during a clean and green celebration." width="1120" height="504" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure></div></div></section>
+<section class="sec tint" id="cases" aria-labelledby="cases-h"><div class="wrap rv"><header class="sh"><p class="eb">Case studies</p><h2 id="cases-h">Case Studies</h2></header><ul class="cards logo"><li class="card"><img src="shrunkhala/logo-goonj.webp" alt="Goonj logo: “a voice, an effort”." width="585" height="650" loading="lazy" decoding="async"><h3>GOONJ</h3><p>Goonj is a New Delhi-based NGO that uses its ‘Cloth for Work’ model to link urban waste management (sustainability) with community-led development (behavior change) and women’s livelihood across India.</p></li><li class="card"><img src="shrunkhala/logo-ek.webp" alt="Ek Saath, The Earth Foundation logo." width="585" height="650" loading="lazy" decoding="async"><h3>EK SAATH</h3><p>The Earth Foundation is a Mumbai NGO that uses community action and behavior change to implement waste management and sustainability projects for cleaner local environments.</p></li><li class="card"><img src="shrunkhala/logo-ssp.webp" alt="Swayam Shikshan Prayog logo: a tree made of hands, “Margin to Mainstream”." width="585" height="650" loading="lazy" decoding="async"><h3>SWAYAM SHIKSHAN PRAYOG</h3><p>Swayam Shikshan Prayog (SSP) is a Pune-based NGO that empowers women leaders in health, water, sanitation, and climate-resilient farming to ensure sustainable rural development.</p></li></ul></div></section>
+<section class="part" aria-label="Mapping the system"><div class="wrap"><p class="pn">Part two</p><h2>Mapping the system</h2><p>The people, places and things around Shrunkhala, and how they connect.</p></div></section>
+<section class="sec light" id="map1" aria-labelledby="map1-h"><div class="wrap rv"><header class="sh"><p class="eb">System mapping</p><h2 id="map1-h">System Mapping</h2></header><figure class="fg diagram"><button class="zm" type="button" data-full="shrunkhala/map1.webp" aria-label="Enlarge image: System map: Shrunkhala at the centre, linked by dashed lines to the people, spaces and non"><img src="shrunkhala/map1.webp" alt="System map: Shrunkhala at the centre, linked by dashed lines to the people, spaces and non-human elements around it, including the founder, homemakers, teachers, children, programmes such as Ankur, Kavach and Champ, community centres and the regions focused." width="2400" height="1417" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button><figcaption>Select the image to enlarge it.</figcaption></figure><ul class="lgd" aria-label="Legend"><li><i style="background:#fdeeb0"></i>Human</li><li><i style="background:#f9c7c7"></i>Spaces</li><li><i style="background:#d6f2c9"></i>Non-human</li></ul><details class="more"><summary>Read the elements as a list</summary><div><ul><li>Shrunkhala</li><li>Founder</li><li>Homemakers</li><li>Teachers</li><li>Children</li><li>Elderly</li><li>Community Leaders</li><li>Government Representatives</li><li>Gram Panchayat</li><li>NGO Partners</li><li>Dreamweaver</li><li>Ankur</li><li>Zero Waste</li><li>Kavach</li><li>Champ</li><li>Behavioral Change</li><li>Awareness Materials</li><li>Measurement Tools</li><li>Segregation Instrument</li><li>Waste Collection Bags</li><li>Composting Bins</li><li>Thermocol Recycling</li><li>Plastic Recycling Premier League</li><li>Rewards</li><li>Event Materials</li><li>Logistics</li><li>Communication Platforms</li><li>Educational Institutions</li><li>Public Spaces</li><li>Homes</li><li>Waste Collection Centers</li><li>Hospices</li><li>Rehabilitation Centers</li><li>Orphanages</li><li>Community Centers</li><li>Kitchen Gardens</li><li>Offices</li><li>Regions Focused</li><li>Navi Mumbai</li><li>Kharghar</li><li>Kalyan</li><li>Raigad</li><li>Sangli</li><li>Ambarnath</li><li>Dombivli</li></ul></div></details></div></section>
+<section class="sec tint" id="stake" aria-labelledby="stake-h"><div class="wrap rv"><header class="sh"><p class="eb">Stakeholders</p><h2 id="stake-h">Stakeholder Mapping</h2></header><div class="split"><div class="rings" role="img" aria-label="Three concentric rings. Core: Founder, Field Staff, Beneficiaries, Homemakers. Involved: Educational Institution, Volunteers. Informed: Suppliers, Vendors."><div class="rg r1"><h3>Informed</h3><p>Suppliers · Vendors</p></div><div class="rg r2"><h3>Involved</h3><p>Educational Institution<br>Volunteers</p></div><div class="rg r3"><h3>Core</h3><p>Founder<br>Field Staff<br>Beneficiaries<br>Homemakers</p></div></div><div><h3 style="margin-bottom:1rem">Beneficiaries</h3><ul class="cards "><li class="card"><h4>Vidya Samvardhan</h4><p>Students for underprivileged communities</p></li><li class="card"><h4>Unnati</h4><p>Youth and women from LIG communities</p></li><li class="card"><h4>Seva</h4><ul><li>Marginalized families</li><li>Homeless individuals</li><li>Disaster affected groups</li></ul></li><li class="card"><h4>Jaago</h4><ul><li>Local communities</li><li>Urban Residents</li></ul></li></ul></div></div></div></section>
+<section class="sec light" id="matrix" aria-labelledby="matrix-h"><div class="wrap rv"><header class="sh"><p class="eb">Stakeholders</p><h2 id="matrix-h">Stakeholder Matrix</h2></header><div class="mx"><div class="ax yax">Power: low to high</div><div class="q"><h3>High power · Low interest</h3><ul><li>Local Government Bodies</li><li>Informed Suppliers</li><li>Educational Institutions</li></ul></div><div class="q"><h3>High power · High interest</h3><ul><li>Founder</li><li>Community Leaders</li><li>NGO Partners</li><li>Government Representatives</li></ul></div><div class="q"><h3>Low power · Low interest</h3><ul><li>Urban Residents</li><li>Vendors</li><li>General Public</li></ul></div><div class="q"><h3>Low power · High interest</h3><ul><li>Homemakers</li><li>Children</li><li>Elderly</li><li>Teachers</li><li>Volunteers</li><li>Beneficiaries</li></ul></div><div class="ax xax"><span>Interest: low to high</span></div></div></div></section>
+<section class="sec tint" id="iceberg" aria-labelledby="iceberg-h"><div class="wrap rv"><header class="sh"><p class="eb">Systems thinking</p><h2 id="iceberg-h">Iceberg Model</h2></header><div class="ice"><div class="row"><div><ul><li>Initial public reluctance: “Not my job; municipality’s duty.”</li><li>Rewards for sustainable actions</li></ul></div><div class="ly">Events</div><div><ul><li>Women’s workshops</li><li>Zero-waste drives</li><li>Kitchen gardens</li><li>Reward competitions.</li></ul></div></div><div class="row"><div><ul><li>Rising rates of recycling</li><li>Habit routine triggered by discomfort</li></ul></div><div class="ly">Patterns</div><div><ul><li>Repeated use of incentives</li><li>Gradual rise in engagement and participation.</li></ul></div></div><div class="row"><div><ul><li>Volunteer-based, flexible organization.</li><li>Community-led design</li><li>Collective decisions</li></ul></div><div class="ly">Structures</div><div><ul><li>Constant redesign as per community feedback.</li><li>Waste tracking and digital updates</li></ul></div></div><div class="row"><div><ul><li>Sustainability is everyone's daily job</li><li>Knowledge drives sustainable choices</li><li>Norms: "Not my job" as barrier</li></ul></div><div class="ly">Mental Modes</div><div><ul><li>Trust built by respecting local culture</li><li>Rewards and feedback sustain change</li><li>System thinking guides program design</li></ul></div></div></div></div></section>
+<section class="sec light" id="loop1" aria-labelledby="loop1-h"><div class="wrap rv"><header class="sh"><p class="eb">Systems thinking</p><h2 id="loop1-h">Causal Loop Diagram</h2></header><figure class="fg diagram"><button class="zm" type="button" data-full="shrunkhala/loop1.webp" aria-label="Enlarge image: Causal loop diagram with one balancing loop (B) and three reinforcing loops (R1, R2, R3). "><img src="shrunkhala/loop1.webp" alt="Causal loop diagram with one balancing loop (B) and three reinforcing loops (R1, R2, R3). Nodes include Shrunkhala’s Intervention, External Pressure, Self and Cross Monitoring, Personal Responsibility Realisation, Motivation, Community Trust, Engagement, Training, Volunteers, Awareness, Behavioural Change, Program impact, Adoption Rate, Government Partnerships and Organisational Capacity." width="2400" height="1350" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button><figcaption>Select the image to enlarge it. Plus and minus signs show whether one factor raises or lowers the next.</figcaption></figure></div></section>
+<section class="part" aria-label="Listening to people"><div class="wrap"><p class="pn">Part three</p><h2>Listening to people</h2><p>Primary research with the people who work with, and benefit from, Shrunkhala.</p></div></section>
+<section class="sec tint" id="interviews" aria-labelledby="interviews-h"><div class="wrap rv"><header class="sh"><p class="eb">Primary research</p><h2 id="interviews-h">Interviews</h2></header><ul class="prof"><li><h3>Beneficiary</h3><dl><dt>Gender</dt><dd>Male</dd><dt>Age</dt><dd>42</dd><dt>Occupation</dt><dd>Small scale farmer</dd><dt>Address</dt><dd>Uran Taluka, Raigad District</dd></dl></li><li><h3>Volunteer 1</h3><dl><dt>Gender</dt><dd>Female</dd><dt>Age</dt><dd>34</dd><dt>Occupation</dt><dd>Homemaker</dd><dt>Address</dt><dd>Kharghar, Navi Mumbai, Kalyan–Shrunkhala Sustainable Systems</dd></dl></li><li><h3>Volunteer 2</h3><dl><dt>Gender</dt><dd>Female</dd><dt>Age</dt><dd>43</dd><dt>Occupation</dt><dd>Primary School Teacher</dd><dt>Address</dt><dd>Dharavi, Mumbai — Community Learning Centre</dd></dl></li></ul></div></section>
+<section class="sec dark" id="verbatim" aria-labelledby="verbatim-h"><div class="wrap rv"><header class="sh"><p class="eb">Primary research</p><h2 id="verbatim-h">Volunteer Verbatim</h2></header><div class="qgroups"><div class="qgroup"><h3>Volunteer Motivation</h3><div class="qts"><figure class="qt"><blockquote><p>“Shuru mein timepass lagta tha, but when I saw how a small act like waste segregation changes lives, it became my personal responsibility as a citizen.”</p></blockquote><figcaption>Volunteer 1</figcaption></figure><figure class="qt"><blockquote><p>“I was in touch with the founder as we shared same office earlier so I was one of the first people to join Shrunkhala.”</p></blockquote><figcaption>Volunteer 2</figcaption></figure></div></div><div class="qgroup"><h3>Community Impact</h3><div class="qts"><figure class="qt"><blockquote><p>“Seedball campaigns mein citizen participation amazing hota hai. Log seedhi aur collective impact wali cheezon se instantly jud jaate hain.”</p></blockquote><figcaption>Volunteer 1</figcaption></figure><figure class="qt"><blockquote><p>“Simple steps like composting and waste sorting help our land stay healthier. Learning sustainable habits makes a big difference.”</p></blockquote><figcaption>Beneficiary</figcaption></figure><figure class="qt"><blockquote><p>“When we started with blue bag campaign in our society the mujhe notice huwa ki plastic weight gradually increase huwa per flat even my son started monitoring waste jo usme ja skta hai.”</p></blockquote><figcaption>Volunteer 1</figcaption></figure><figure class="qt"><blockquote><p>“It’s not just about the people we are working for even aap jaise students ko bhi fayda milta hai when you work with us aap bohot sari skills develop kr lete ho.”</p></blockquote><figcaption>Volunteer 2</figcaption></figure></div></div><div class="qgroup"><h3>Structural Challenges</h3><div class="qts"><figure class="qt"><blockquote><p>“Tree plantation drives mein har baar permits aur coordination tough hota hai. Nagar Palika ke saath engagement ke liye clear protocol hona chahiye.”</p></blockquote><figcaption>Another volunteer</figcaption></figure><figure class="qt"><blockquote><p>“The last moment change of plan is quite common jaise jab kisi college me collection zyada ho gaya then we have to arrange different type of vehicle also if a newer volunteer is on field. Honestly there are a lot of moving parts.”</p></blockquote><figcaption>Volunteer 2</figcaption></figure></div></div></div></div></section>
+<section class="sec light" id="gaps" aria-labelledby="gaps-h"><div class="wrap rv"><header class="sh"><p class="eb">Findings</p><h2 id="gaps-h">Gaps Identified</h2></header><ul class="cards num"><li class="card"><h3>Behavioural change</h3><p>“Not my duty”</p></li><li class="card"><h3>Structural gap</h3><p>Decision making load on the Founder</p></li><li class="card"><h3>Cultural gap</h3><p>A lack of a standardized cultural assessment before starting a program in a new area.</p></li></ul></div></section>
+<section class="part" aria-label="Designing for change"><div class="wrap"><p class="pn">Part four</p><h2>Designing for change</h2><p>Gaps and solutions added to the system, and the behaviour change journey that follows.</p></div></section>
+<section class="sec tint" id="map2" aria-labelledby="map2-h"><div class="wrap rv"><header class="sh"><p class="eb">System mapping</p><h2 id="map2-h">System Mapping with gaps and solutions</h2></header><figure class="fg diagram"><button class="zm" type="button" data-full="shrunkhala/map2.webp" aria-label="Enlarge image: The system map again, now with the identified gaps in orange and the proposed solutions in"><img src="shrunkhala/map2.webp" alt="The system map again, now with the identified gaps in orange and the proposed solutions in blue added around Shrunkhala: guidelines, flash cards, an AR lens, an awareness leaflet, training, information and measuring change." width="2400" height="1417" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button><figcaption>Select the image to enlarge it.</figcaption></figure><ul class="lgd" aria-label="Legend"><li><i style="background:#ff8a4c"></i>Gap</li><li><i style="background:#fdeeb0"></i>Human</li><li><i style="background:#d6f2c9"></i>Non-human</li><li><i style="background:#9fe0f5"></i>Solution</li><li><i style="background:#f9c7c7"></i>Space</li></ul><details class="more"><summary>Read the elements as a list</summary><div><ul><li>Shrunkhala</li><li>Founder</li><li>Homemakers</li><li>Teachers</li><li>Children</li><li>Elderly</li><li>Community Leaders</li><li>Government Representatives</li><li>Gram Panchayat</li><li>NGO Partners</li><li>Dreamweaver</li><li>Ankur</li><li>Zero Waste</li><li>Kavach</li><li>Champ</li><li>Behavioral Change</li><li>Awareness Materials</li><li>Measurement Tools</li><li>Segregation Instrument</li><li>Waste Collection Bags</li><li>Composting Bins</li><li>Thermocol Recycling</li><li>Plastic Recycling Premier League</li><li>Rewards</li><li>Event Materials</li><li>Logistics</li><li>Communication Platforms</li><li>Educational Institutions</li><li>Public Spaces</li><li>Homes</li><li>Waste Collection Centers</li><li>Hospices</li><li>Rehabilitation Centers</li><li>Orphanages</li><li>Community Centers</li><li>Kitchen Gardens</li><li>Offices</li><li>Regions Focused</li><li>Navi Mumbai</li><li>Kharghar</li><li>Kalyan</li><li>Raigad</li><li>Sangli</li><li>Ambarnath</li><li>Dombivli</li><li>Structural Gap (gap)</li><li>Behavioural Change (gap)</li><li>Habitual Change (solution)</li><li>Training (solution)</li><li>Leaflet (solution)</li><li>Information (solution)</li><li>AR Lens (solution)</li><li>Awareness (solution)</li><li>Measuring Change (solution)</li><li>Guidelines (solution)</li><li>Flash Cards (solution)</li></ul></div></details></div></section>
+<section class="sec light" id="loop2" aria-labelledby="loop2-h"><div class="wrap rv"><header class="sh"><p class="eb">Systems thinking</p><h2 id="loop2-h">Causal Loop Diagram · Shrunkhala’s Intervention</h2></header><figure class="fg diagram"><button class="zm" type="button" data-full="shrunkhala/loop2.webp" aria-label="Enlarge image: Causal loop diagram showing Shrunkhala’s intervention: a balancing loop (B) linking Civic "><img src="shrunkhala/loop2.webp" alt="Causal loop diagram showing Shrunkhala’s intervention: a balancing loop (B) linking Civic Sense, Initial Resistance, Awareness, Negligence and Participation, and reinforcing loops (R1, R2) linking Program success rate, Sustainable Habits, Advocacy, Volunteers, Institute Partnerships, Workshops, Incentives, Community Trust and Knowledge Transfer." width="2400" height="1350" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button><figcaption>Select the image to enlarge it.</figcaption></figure></div></section>
+<section class="sec tint" id="bcm" aria-labelledby="bcm-h"><div class="wrap rv"><header class="sh"><p class="eb">Behaviour change</p><h2 id="bcm-h">Behavioural Change Model</h2></header><figure class="fg diagram"><button class="zm" type="button" data-full="shrunkhala/bcm.webp" aria-label="Enlarge image: Behavioural change model: the mental state moves from unaware to aware, decide, familiar b"><img src="shrunkhala/bcm.webp" alt="Behavioural change model: the mental state moves from unaware to aware, decide, familiar behaviour and internalized, passing through eight stages from Unaware to Advocate, with design intent (start, reduce, stop, balance behaviour) and intervention (strategy, design, execution) below." width="2128" height="888" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure><p class="ref">*Reference: Mahamuni, Ravi. 2020. Crafting a Change: Service Design Perspective for Sustained Behaviour Change.</p></div></section>
+<section class="sec light" id="stages" aria-labelledby="stages-h"><div class="wrap rv"><header class="sh"><p class="eb">Behaviour change</p><h2 id="stages-h">Segregating Waste Correctly</h2></header><p class="lead"><strong>Introducing New Behaviour:</strong> Segregate recyclables, compostables, &amp; general waste daily.</p><ol class="stages"><li><img src="shrunkhala/ph1.webp" alt="A person stands puzzled beside a heap of mixed waste." width="1100" height="394" loading="lazy" decoding="async"><div class="sb"><h3>Unaware</h3><p>“What is waste segregation, and why should I care?”</p></div></li><li><img src="shrunkhala/ph2.webp" alt="A person stands beside an overflowing bin and a pile of waste." width="1100" height="394" loading="lazy" decoding="async"><div class="sb"><h3>Unengaged</h3><p>“My mixed trash is creating problems right now.”</p></div></li><li><img src="shrunkhala/ph3.webp" alt="A person looks puzzled in front of three separate bins." width="1100" height="394" loading="lazy" decoding="async"><div class="sb"><h3>Undecided</h3><p>“I agree it’s a problem, but I don’t know the rules or the first step.”</p></div></li><li><img src="shrunkhala/ph4.webp" alt="A hand drops a banana peel into a compost bin beside two other bins." width="1100" height="394" loading="lazy" decoding="async"><div class="sb"><h3>Prepare To Perform</h3><p>“I have the knowledge, now I need the physical system to make it easy.”</p></div></li><li><img src="shrunkhala/ph5.webp" alt="A man sorts a bag into the blue bin, with a tick mark and a reminder note." width="1100" height="395" loading="lazy" decoding="async"><div class="sb"><h3>Perform Once</h3><p>“I did it! That was easy. Now I just need to remember to do it again.”</p></div></li><li><img src="shrunkhala/ph6.webp" alt="A family stands around three bins." width="1100" height="431" loading="lazy" decoding="async"><div class="sb"><h3>Maintain</h3><p>“This is now a part of my routine, and I feel good about contributing.”</p></div></li><li><img src="shrunkhala/ph7.webp" alt="Two people tend a raised-bed garden under a clear sky." width="512" height="512" loading="lazy" decoding="async"><div class="sb"><h3>Sustain</h3><p>“My effort creates visible, long-term benefits for my community and the environment.”</p></div></li><li><img src="shrunkhala/ph8.webp" alt="Two people stand beside three bins, one of them holding a bottle." width="512" height="512" loading="lazy" decoding="async"><div class="sb"><h3>Advocate</h3><p>“This is too important to keep quiet about. I must inspire others to join.”</p></div></li></ol></div></section>
+<section class="sec tint" id="aware" aria-labelledby="aware-h"><div class="wrap rv"><header class="sh"><p class="eb">Awareness</p><h2 id="aware-h">Awareness</h2></header><p class="chw"><span class="c1">CHOOSE</span> <span class="c2">YOUR</span> <span class="c3">COLOUR</span> <span class="c4">WISELY</span></p><p class="lead">Awareness is the first step towards behaviour change.</p><div class="split"><div><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/bins.webp" aria-label="Enlarge image: Four colour-coded waste bins: blue for plastic, green for organic, yellow for paper and re"><img src="shrunkhala/bins.webp" alt="Four colour-coded waste bins: blue for plastic, green for organic, yellow for paper and red for hazardous waste." width="1560" height="780" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure><ul class="binleg"><li><i style="background:#1c5fc4"></i><span><strong>Plastic</strong> (e.g., plastic bottles, plastic bags)</span></li><li><i style="background:#2f7d46"></i><span><strong>Organic</strong> (e.g., fruit, leaves, food scraps)</span></li><li><i style="background:#f1c40f"></i><span><strong>Paper</strong> (e.g., newspapers, cardboard, packaging)</span></li><li><i style="background:#d12b2b"></i><span><strong>Hazardous</strong> (e.g., syringes, batteries, specific chemical containers)</span></li></ul></div><div><h3 style="margin-bottom:1rem">Measuring the behavioural change</h3><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/measure.webp" aria-label="Enlarge image: An illustration of fruit, leaves and newspapers falling into open blue, green and yellow b"><img src="shrunkhala/measure.webp" alt="An illustration of fruit, leaves and newspapers falling into open blue, green and yellow bins." width="640" height="480" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure></div></div></div></section>
+<section class="sec light" id="leaflet" aria-labelledby="leaflet-h"><div class="wrap rv"><header class="sh"><p class="eb">Guidelines leaflet</p><h2 id="leaflet-h">Guidelines Leaflet</h2></header><h3 style="margin-bottom:1rem">Structural organization</h3><ol class="pyr"><li><span>Founder</span></li><li><span>Project Coordinators</span></li><li><span>Volunteers</span></li></ol><div style="margin-top:2.6rem"><figure class="fg wide"><button class="zm" type="button" data-full="shrunkhala/leaf-en.webp" aria-label="Enlarge image: The guidelines leaflet in English: Shrunkhala projects (Dream Weaver, Ankur, Zero Waste, K"><img src="shrunkhala/leaf-en.webp" alt="The guidelines leaflet in English: Shrunkhala projects (Dream Weaver, Ankur, Zero Waste, Kavach, Champ), how you can contribute as a volunteer, and about Shrunkhala." width="1600" height="1132" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button><figcaption>English version. Select the image to enlarge it.</figcaption></figure></div><div style="margin-top:2.4rem"><figure class="fg wide"><button class="zm" type="button" data-full="shrunkhala/leaf-mr.webp" aria-label="Enlarge image: The same guidelines leaflet in Marathi."><img src="shrunkhala/leaf-mr.webp" alt="The same guidelines leaflet in Marathi." width="1800" height="1273" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button><figcaption>Marathi version. Select the image to enlarge it.</figcaption></figure></div></div></section>
+<section class="sec dark" id="team" aria-labelledby="team-h"><div class="wrap rv"><header class="sh"><p class="eb">Thank you</p><h2 id="team-h">Thank you</h2></header><div class="gal "><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/end-group.webp" aria-label="Enlarge image: A group of adults and children posing on the steps of a building under a sign that reads L"><img src="shrunkhala/end-group.webp" alt="A group of adults and children posing on the steps of a building under a sign that reads LOVE ALL SERVE ALL." width="1200" height="863" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure><figure class="fg "><button class="zm" type="button" data-full="shrunkhala/end-flowers.webp" aria-label="Enlarge image: A group of adults and children holding potted plants in front of a red backdrop."><img src="shrunkhala/end-flowers.webp" alt="A group of adults and children holding potted plants in front of a red backdrop." width="820" height="579" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Enlarge</span></button></figure></div></div></section>
+</main>
+<footer class="end"><div class="wrap"><h2>Shrunkhala · System Thinking</h2><p>Thank you for reading.</p><div class="nav"><a class="btn o" href="index.html#gal">Back to the exhibition</a><a class="btn o" href="#pagetop">Back to the top</a></div></div></footer>
+<dialog id="lb" aria-label="Enlarged image"><div class="in"><button type="button">Close</button><img alt=""><p></p></div></dialog>
+<script>
 (function(){
-var d=document,B=d.body,$=function(i){return d.getElementById(i)},qa=function(s,r){return[].slice.call((r||d).querySelectorAll(s))};
-var mq=matchMedia('(prefers-reduced-motion: reduce)');function calm(){return B.classList.contains('calm')||mq.matches}
-/* impact counters */
-var cio=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;cio.unobserve(en.target);var el=en.target,to=+el.dataset.to,fin=el.textContent;if(calm())return;var t0=performance.now(),dur=1400;
- var suf=fin.indexOf('+')>-1?'+':'';(function f(t){var k=Math.min(1,(t-t0)/dur),v=Math.round(to*(1-Math.pow(1-k,3)));el.textContent=v.toLocaleString('en-US')+(k<1?'':suf);if(k<1)requestAnimationFrame(f);else el.textContent=fin})(t0)})},{threshold:.6});
-qa('.cnt').forEach(function(c){cio.observe(c)});
-/* iceberg */
-qa('.ice').forEach(function(ice){qa('.ibc',ice).forEach(function(b){b.addEventListener('click',function(){var i=b.parentNode.dataset.i,on=ice.getAttribute('data-focus')===i;ice.setAttribute('data-focus',on?'':i);qa('.ibc',ice).forEach(function(x){x.setAttribute('aria-pressed',!on&&x===b?'true':'false')})})})});
-/* verbatim filter */
-(function(){var wrap=qa('.vcs')[0];if(!wrap)return;qa('.chip').forEach(function(c){c.addEventListener('click',function(){var on=wrap.getAttribute('data-sp')===c.dataset.sp;if(on)wrap.removeAttribute('data-sp');else wrap.setAttribute('data-sp',c.dataset.sp);qa('.chip').forEach(function(x){x.setAttribute('aria-pressed',!on&&x===c?'true':'false')})})})})();
-/* behavioural stages */
-(function(){var li=qa('.sg');if(!li.length)return;var cur=0,tm=null,play=$('sgplay');
- function set(i,user){cur=(i+li.length)%li.length;li.forEach(function(x,k){x.classList.toggle('on',k===cur);x.firstChild.setAttribute('aria-pressed',k===cur)});$('sgfill').style.width=((cur+1)/li.length*100)+'%'}
- function stop(){if(tm){clearInterval(tm);tm=null}play.firstChild.textContent='Play the journey'}
- play.addEventListener('click',function(){if(tm){stop();return}play.firstChild.textContent='Pause';if(cur===li.length-1)set(0);tm=setInterval(function(){if(cur>=li.length-1){stop();return}set(cur+1)},calm()?2600:2200)});
- $('sgprev').addEventListener('click',function(){stop();set(cur-1)});$('sgnext').addEventListener('click',function(){stop();set(cur+1)});
- li.forEach(function(x,k){x.firstChild.addEventListener('click',function(){stop();set(k)})});set(0)})();
-/* waste segregation */
-(function(){var bs=$('bs');if(!bs)return;var tray=$('btray'),st=$('bst'),root=bs.parentNode,items=qa('.it').map(function(s){return{el:s,bin:s.dataset.b,name:s.textContent.replace(/[,)]+$/,'')}}),chips=[],busy=false,auto=false,names={plastic:'PLASTIC',organic:'ORGANIC',paper:'PAPER',hazardous:'HAZARDOUS'};
- function say(t){st.textContent=t}
- function build(){tray.textContent='';chips=items.map(function(it,i){var b=d.createElement('button');b.type='button';b.className='chp';b.textContent=it.name;b.setAttribute('aria-label',it.name+'. Sort into the bin');b.addEventListener('click',function(){if(!busy)sort(i)});tray.appendChild(b);return b})}
- function left(){return items.map(function(_,i){return i}).filter(function(i){return !chips[i].hidden&&!items[i].done})}
- function sort(i){if(busy||items[i].done)return Promise.resolve();busy=true;var it=items[i],chip=chips[i],bin=bs.querySelector('.bin.b-'+it.bin),cr=chip.getBoundingClientRect(),rr=root.getBoundingClientRect(),br=bin.getBoundingClientRect();
-  qa('.lg,.it').forEach(function(x){x.classList.remove('on')});var lg=d.querySelector('.lg-'+it.bin);if(lg)lg.classList.add('on');it.el.classList.add('on');
-  function land(){var li=d.createElement('li');li.textContent=it.name;bin.querySelector('.got').appendChild(li);bin.classList.add('hit');setTimeout(function(){bin.classList.remove('open')},calm()?0:350);setTimeout(function(){bin.classList.remove('hit')},900);it.done=true;chip.hidden=true;busy=false;say(it.name+' goes into the '+names[it.bin]+' bin.')}
-  if(calm()){land();return Promise.resolve()}
-  var f=d.createElement('span');f.className='fly';f.textContent=it.name;f.style.left=(cr.left-rr.left)+'px';f.style.top=(cr.top-rr.top)+'px';root.appendChild(f);chip.style.visibility='hidden';bin.classList.add('open');
-  var dx=br.left+br.width/2-cr.left-cr.width/2,dy=br.top-cr.top-10;
-  return new Promise(function(res){var a=f.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:'translate('+dx*.55+'px,'+(dy-90)+'px) rotate(-6deg)',opacity:1,offset:.45},{transform:'translate('+dx+'px,'+(dy+30)+'px) rotate(4deg) scale(.7)',opacity:.1}],{duration:900,easing:'cubic-bezier(.4,.1,.3,1)'});a.onfinish=function(){f.remove();chip.style.visibility='';land();res()}})}
- function next(){var l=left();return l.length?sort(l[0]):Promise.resolve()}
- async function all(){if(auto)return;auto=true;$('bplay').disabled=true;$('bstep').disabled=true;while(auto&&left().length){await next();await new Promise(function(r){setTimeout(r,calm()?250:250)})}auto=false;$('bplay').disabled=false;$('bstep').disabled=false;if(!left().length)say('All items are sorted. Select Start again to replay.')}
- function reset(){auto=false;busy=false;qa('.fly',root).forEach(function(x){x.remove()});items.forEach(function(it){it.done=false});qa('.got').forEach(function(u){u.textContent=''});qa('.lg,.it').forEach(function(x){x.classList.remove('on')});qa('.bin').forEach(function(b){b.classList.remove('open','hit')});build();$('bplay').disabled=false;$('bstep').disabled=false;say('')}
- $('bplay').addEventListener('click',all);$('bstep').addEventListener('click',function(){if(!auto){next();if(left().length===0)say('All items are sorted. Select Start again to replay.')}});$('breset').addEventListener('click',reset);
- build();say('Select an item, or use the controls below, to see which bin it goes into.');
- var io=new IntersectionObserver(function(es){if(!es[0].isIntersecting&&auto){auto=false}},{threshold:0});io.observe(root)})();
-/* leaflets */
-qa('.lfx').forEach(function(x){var whole=x.querySelector('.lfwhole'),pan=x.querySelector('.lfpanel'),pns=qa('.pn',x),bt=qa('.lfc button',x);
- pns.forEach(function(p){p.style.setProperty('--x',p.dataset.x);p.style.setProperty('--w',p.dataset.w);pan.appendChild(p)});
- bt.forEach(function(b){b.addEventListener('click',function(){var v=b.dataset.v;bt.forEach(function(o){var on=o===b;o.classList.toggle('on',on);o.setAttribute('aria-pressed',on)});
-  if(v==='all'){whole.hidden=false;pan.hidden=true;pns.forEach(function(p){p.hidden=true})}else{whole.hidden=true;pan.hidden=false;pns.forEach(function(p,i){p.hidden=i!==+v})}})})});
+var d=document;d.documentElement.classList.add('js');
+try{
+var pr=d.getElementById('prog');
+function sc(){var h=d.documentElement.scrollHeight-innerHeight;pr.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')'}
+addEventListener('scroll',sc,{passive:true});sc();
+}catch(e){}
+var rv=[].slice.call(d.querySelectorAll('.rv'));
+if('IntersectionObserver' in window){
+ var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -5% 0px'});
+ rv.forEach(function(n){o.observe(n)});
+}else rv.forEach(function(n){n.classList.add('in')});
+var lb=d.getElementById('lb');
+if(lb&&lb.showModal){
+ var li=lb.querySelector('img'),lc=lb.querySelector('p'),last=null;
+ d.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.zm');
+  if(!b)return;
+  last=b;var im=b.querySelector('img');
+  li.src=b.getAttribute('data-full');li.alt=im?im.alt:'';
+  var fc=b.parentNode.querySelector('figcaption');lc.textContent=fc?fc.textContent:(im?im.alt:'');
+  lb.showModal();
+ });
+ lb.addEventListener('click',function(e){if(e.target===lb||e.target.closest('.in')&&e.target.tagName!=='IMG'&&e.target.tagName!=='BUTTON'&&e.target.tagName!=='P')lb.close()});
+ lb.querySelector('button').addEventListener('click',function(){lb.close()});
+ lb.addEventListener('close',function(){if(last)last.focus()});
+}else{
+ d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.zm');if(b)window.open(b.getAttribute('data-full'),'_blank')});
+}
 })();
-
-(function(){var bs=document.getElementById('bs'),bp=document.getElementById('bplay');if(!bs||!bp||!('IntersectionObserver' in window))return;var mq=matchMedia('(prefers-reduced-motion: reduce)'),o=new IntersectionObserver(function(es){if(es[0].isIntersecting){o.disconnect();if(!document.body.classList.contains('calm')&&!mq.matches)setTimeout(function(){bp.click()},700)}},{threshold:.7});o.observe(bs)})();</script>
+</script>
 </body></html>
