@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sahaay Care System | Anamika Shrivastava</title>
+<meta name="description" content="Sahaay Care System: a service design project for St. Jude India ChildCare Centres, by Anamika Shrivastava.">
+<meta name="theme-color" content="#0d1914">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317231f'/%3E%3Cpath d='M16 50 32 14l16 36M23 38h18' fill='none' stroke='%23f6f3ed' stroke-width='5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..700&family=Instrument+Sans:wght@400;600&display=swap">
+<style>:root{--ink:#17231f;--green:#2c5b49;--bg:#0d1914;--cream:#fcf9f0;--or:#b84f00;--orb:#ff7d00;--gr:#237744;--lt:#f1ede4;--ring:#ffd9a0;box-sizing:border-box}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{margin:0;background:var(--bg);color:var(--lt);font-family:'Instrument Sans',system-ui,sans-serif;line-height:1.5}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--ring);outline-offset:4px}
+.paper :focus-visible{outline-color:var(--or)}
+.skip{position:absolute;left:1rem;top:-4rem;background:var(--lt);color:var(--ink);padding:.6rem 1rem;z-index:30;font-weight:600}
+.skip:focus{top:1rem}
+.prog{position:fixed;left:0;top:0;height:3px;width:100%;background:var(--ring);transform-origin:0 50%;transform:scaleX(0);z-index:20}
+.top{position:fixed;left:0;right:0;top:0;z-index:15;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.9rem clamp(1rem,3vw,2rem);background:linear-gradient(to bottom,rgba(13,25,20,.94),rgba(13,25,20,0))}
+.btn{white-space:nowrap;font:600 .8rem 'Instrument Sans',system-ui,sans-serif;color:var(--lt);background:rgba(13,25,20,.7);border:1px solid rgba(241,237,228,.55);padding:.5rem .85rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
+.btn:hover{background:var(--lt);color:var(--ink)}
+.btn[aria-pressed="true"],.btn[aria-expanded="true"]{background:var(--lt);color:var(--ink)}
+.btn svg{width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tr{display:flex;gap:.6rem}
+.intro{min-height:62vh;min-height:62svh;display:flex;flex-direction:column;justify-content:flex-end;gap:1rem;padding:7rem clamp(1rem,4vw,3rem) 3rem;max-width:1320px;margin:0 auto}
+.intro h1{margin:0;font:250 clamp(3rem,9vw,8.5rem)/.88 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 78;letter-spacing:-.035em}
+.intro .tag{margin:0;font-size:clamp(1.05rem,1.8vw,1.5rem);max-width:40rem;color:#f3e3c3}
+.intro .hint{margin:0;font-size:.82rem;color:#cdd9d1;letter-spacing:.03em}
+.intro kbd{font:600 .72rem 'Instrument Sans',system-ui,sans-serif;border:1px solid rgba(241,237,228,.5);padding:.05rem .35rem}
+main{max-width:1320px;margin:0 auto;padding:0 clamp(1rem,4vw,3rem) 9rem}
+.sl{position:relative;margin:0 0 clamp(4rem,11vh,8rem);scroll-margin-top:3.5rem}
+.sl:focus{outline:none}
+.sl:focus-visible .fr{outline:3px solid var(--ring);outline-offset:6px}
+.sn{display:flex;align-items:baseline;gap:.5rem;margin:0 0 .7rem;font:600 .78rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#cdd9d1}
+.sn b{font:300 1.6rem 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.02em;color:var(--lt)}
+.fr{position:relative;background:var(--cream);box-shadow:0 30px 80px -20px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.04);border-radius:4px;overflow:hidden}
+.fr button.z{all:unset;display:block;position:relative;width:100%;cursor:zoom-in}
+.fr button.z:focus-visible{outline:3px solid var(--ring);outline-offset:-3px}
+.fr img.pg{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--cream)}
+.zb{position:absolute;right:.8rem;bottom:.8rem;font:600 .75rem 'Instrument Sans',system-ui,sans-serif;background:rgba(13,25,20,.86);color:var(--lt);padding:.35rem .7rem;opacity:0;transform:translateY(4px);transition:opacity .25s,transform .25s;pointer-events:none}
+.fr:hover .zb,.fr button.z:focus-visible .zb{opacity:1;transform:none}
+@media (hover:none){.zb{opacity:1;transform:none}}
+/* reveal */
+.js .sl .fr{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .sl.in .fr{opacity:1;transform:none}
+.js .sl .sn{opacity:0;transition:opacity .6s .1s}.js .sl.in .sn{opacity:1}
+.js .sl .stg>*{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.js .sl.in .stg>*{opacity:1;transform:none;transition-delay:calc(var(--i,0)*70ms + .25s)}
+.calm .sl .fr,.calm .sl .sn,.calm .sl .stg>*{opacity:1!important;transform:none!important;transition:none!important}
+.calm html,html:has(.calm){scroll-behavior:auto}
+/* rail */
+.rail{position:fixed;left:.9rem;top:50%;transform:translateY(-50%);z-index:12;display:none}
+.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+.rail a{display:block;width:14px;height:3px;background:rgba(241,237,228,.35);border-radius:2px;transition:width .2s,background .2s}
+.rail a:hover,.rail a:focus-visible,.rail a[aria-current="true"]{width:30px;background:var(--lt)}
+.rail a[aria-current="true"]{background:var(--ring)}
+@media (min-width:1180px) and (min-height:760px){.rail{display:block}}
+/* bottom pager */
+.pager{position:fixed;right:clamp(.6rem,2vw,1.4rem);bottom:clamp(.6rem,2vw,1.4rem);z-index:14;display:flex;align-items:center;background:rgba(13,25,20,.9);border:1px solid rgba(241,237,228,.5);backdrop-filter:blur(6px)}
+.pager button{all:unset;cursor:pointer;display:grid;place-items:center;width:2.8rem;height:2.6rem;color:var(--lt)}
+.pager button:hover{background:var(--lt);color:var(--ink)}
+.pager button:focus-visible{outline:3px solid var(--ring);outline-offset:-3px}
+.pager svg{width:1.1rem;height:1.1rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pager output{min-width:5.4rem;text-align:center;font:600 .85rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.06em}
+/* menu */
+.menu{position:fixed;inset:0;z-index:25;background:rgba(7,13,10,.94);overflow:auto;padding:5rem clamp(1rem,4vw,3rem) 3rem}
+.menu[hidden]{display:none}
+.menu h2{margin:0 0 1.2rem;font:250 clamp(2rem,5vw,3.6rem)/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 78;letter-spacing:-.03em}
+.menu ol{list-style:none;margin:0 auto;padding:0;max-width:1100px;columns:3 18rem;column-gap:2.5rem}
+.menu li{break-inside:avoid}
+.menu a{display:flex;gap:.9rem;padding:.55rem 0;border-top:1px solid rgba(241,237,228,.2);color:var(--lt);text-decoration:none;font-size:.92rem}
+.menu a:hover{color:var(--ring)}
+.menu a b{font:300 1.05rem 'Bricolage Grotesque',system-ui,sans-serif;min-width:2rem;color:#cdd9d1}
+.menu .x{position:fixed;top:1rem;right:clamp(1rem,3vw,2rem)}
+/* zoom viewer */
+.zm{position:fixed;inset:0;z-index:40;background:#050a08;display:flex;flex-direction:column}
+.zm[hidden]{display:none}
+.zbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 1rem;background:#0b1511;border-bottom:1px solid rgba(241,237,228,.15)}
+.zbar .t{font:600 .85rem 'Instrument Sans',system-ui,sans-serif;color:#cdd9d1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.zbar .g{display:flex;gap:.4rem;flex:none}
+.zst{position:relative;flex:1;overflow:hidden;touch-action:none;cursor:grab;outline:none}
+.zst.dragging{cursor:grabbing}
+.zst img{position:absolute;left:50%;top:50%;max-width:none;user-select:none;-webkit-user-drag:none;transform-origin:50% 50%;will-change:transform;background:var(--cream)}
+.zh{position:absolute;left:50%;bottom:1rem;transform:translateX(-50%);font-size:.78rem;color:#cdd9d1;background:rgba(7,13,10,.8);padding:.3rem .7rem;pointer-events:none;white-space:nowrap}
+.calm .zst img{transition:none}
+/* ===== native slides ===== */
+.paper{padding:clamp(1.1rem,3.4vw,3.2rem);color:#1a1a19;font-size:clamp(.92rem,1.25vw,1.12rem);line-height:1.5}
+.paper h2.pt{margin:0 0 clamp(1.2rem,3vw,2.4rem);padding-bottom:.5rem;font:400 clamp(1.7rem,3.6vw,2.9rem)/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 75;text-transform:uppercase;letter-spacing:.01em;color:var(--or);border-bottom:2px solid var(--orb);display:inline-block;padding-right:3rem}
+.paper h3{margin:0 0 .6rem;font:700 1.05em 'Instrument Sans',system-ui,sans-serif;color:var(--gr)}
+.paper p{margin:0 0 .8em}.paper p:last-child{margin-bottom:0}
+.paper ul{margin:0;padding-left:1.15em}.paper li{margin:0 0 .45em}
+.card{border:1.5px solid var(--gr);border-radius:22px;padding:1.2rem 1.4rem;background:rgba(255,255,255,.4)}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:clamp(1.2rem,3vw,2.4rem)}
+.hd .pt{margin:0;order:2}.brand{margin:0;font:600 .9rem/1.2 'Instrument Sans',system-ui,sans-serif;color:var(--or)}
+.ov{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(1.2rem,4vw,3.5rem);align-items:start}
+.eyebrow{font:700 .85rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.08em;margin:0 0 .5rem;padding-left:.8rem;border-left:2px solid var(--gr);color:var(--gr)}
+.lead{font-size:1.12em;max-width:34rem}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem 2rem;margin:1.6rem 0 0;padding-top:1.3rem;border-top:1px solid rgba(26,26,25,.3)}
+.facts dt{font:700 .78rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.1em;color:var(--gr);margin-bottom:.2rem}.facts dd{margin:0}
+.ov-r{margin:0}.ov-r img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 40%;border-radius:18px;border:3px solid var(--gr)}
+.ov-r figcaption{margin-top:.8rem;font:700 clamp(1.3rem,2.4vw,2rem)/1.05 'Instrument Sans',system-ui,sans-serif;color:var(--gr)}
+.pd{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"why init" "why nat" "hmw hmw";gap:1.1rem clamp(1rem,4vw,3rem)}
+.c-why{grid-area:why;align-self:center}.c-init{grid-area:init}.c-nat{grid-area:nat}
+.hmw{grid-area:hmw;margin:1rem 0 0;padding-top:1.1rem;border-top:1px solid rgba(26,26,25,.3);display:flex;gap:1.5rem;flex-wrap:wrap}
+.hmw span{font:700 .85rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.08em;color:var(--or)}.hmw strong{flex:1;min-width:16rem}
+.sr3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.src{display:flex;flex-direction:column;gap:.8rem}.src h3{text-align:center;font-size:1.08em}
+.src .sb{flex:1;font-size:.95em}.src .sb p.lb{font-weight:700;color:var(--gr)}
+.lnk{align-self:flex-start;color:var(--gr);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.lnk:hover{color:var(--or)}
+.notes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem}
+.note{background:#fdeeb0;padding:1rem 1rem 1.6rem;box-shadow:0 8px 18px -8px rgba(0,0,0,.35);transition:transform .25s,box-shadow .25s;position:relative;clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%)}
+.note.hot{background:#ff9aa0}
+.note h3{color:#1a1a19;font-size:.98em}.note p{font-size:.92em}
+.note:hover{transform:translateY(-4px) rotate(-.6deg);box-shadow:0 16px 28px -10px rgba(0,0,0,.4)}
+.mos{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.mo{background:#e4f1e8;padding:0 1.2rem 1.4rem;box-shadow:0 8px 18px -10px rgba(0,0,0,.4)}
+.mo h3{margin:0 0 1rem;display:flex;justify-content:center;transform:translateY(-1.6rem);margin-bottom:-.2rem}
+.mo h3 span{display:grid;place-items:center;width:4.4rem;height:4.4rem;border-radius:50%;background:var(--gr);color:#fff;font:600 1.9rem 'Bricolage Grotesque',system-ui,sans-serif}
+.mo{margin-top:2rem}
+.mx{display:grid;grid-template-columns:auto 1fr 1fr auto;grid-template-rows:auto 1fr 1fr auto;gap:1rem;align-items:stretch}
+.ax{font:700 .9rem 'Instrument Sans',system-ui,sans-serif;letter-spacing:.06em;color:#1a1a19}
+.a-t{grid-column:2/4;grid-row:1;text-align:center}.a-b{grid-column:2/4;grid-row:4;text-align:center}
+.a-l{grid-column:1;grid-row:2/4;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;align-self:center}
+.a-r{grid-column:4;grid-row:2/4;writing-mode:vertical-rl;text-align:center;align-self:center}
+.q{background:#e4f1e8;padding:1.2rem 1.4rem;box-shadow:0 8px 18px -10px rgba(0,0,0,.4)}
+.q1{grid-column:2;grid-row:2}.q2{grid-column:3;grid-row:2}.q3{grid-column:2;grid-row:3}.q4{grid-column:3;grid-row:3}
+.sf{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(1rem,3vw,2.5rem);align-items:center}
+.sf-i{width:clamp(5rem,12vw,11rem);height:auto}
+.fail{border-color:#d63a3a}.fail h3{color:#d63a3a;text-align:center}.fail li{color:#c42f2f}
+.rec h3{text-align:center}
+.imp{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.ic{padding:1.3rem 1.4rem;box-shadow:0 8px 18px -10px rgba(0,0,0,.4)}
+.ic h3{color:#1a1a19;font-size:1.1em;margin-bottom:.8rem}
+.ic-a{background:#f9b27c}.ic-b{background:#d5e6da}.ic-c{background:#f6e57d}
+.fs .ic{border-radius:22px}.fs .ic-a{background:#d5e6da}.fs .ic-b{background:#faeec2}.fs .ic-c{background:#f9b27c}
+.ic{transition:transform .25s}.ic:hover{transform:translateY(-4px)}
+@media (max-width:900px){
+ .ov,.pd,.sf{grid-template-columns:1fr}.pd{grid-template-areas:"init" "nat" "why" "hmw"}.c-why{align-self:stretch}
+ .sr3,.imp{grid-template-columns:1fr}.notes{grid-template-columns:1fr 1fr}.mos{grid-template-columns:1fr 1fr;gap:2.6rem 1rem}
+ .sf-i{margin:0 auto}.facts{grid-template-columns:1fr}
+}
+@media (max-width:560px){.btn{font-size:.72rem;padding:.45rem .6rem}.top{padding:.6rem .7rem}.tr{gap:.4rem}.notes,.mos{grid-template-columns:1fr}.mx{gap:.6rem}.ax{font-size:.72rem}.q{padding:.8rem .9rem;font-size:.85rem}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .sl .fr,.js .sl .sn,.js .sl .stg>*{opacity:1;transform:none;transition:none}.note,.ic,.zb{transition:none}}
+</style></head>
+<body>
+<a class="skip" href="#main">Skip to the slides</a>
+<div class="prog" id="prog" aria-hidden="true"></div>
+<header class="top"><a class="btn" href="index.html#gal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 12H6M11 7l-5 5 5 5"/></svg><span>Back to the exhibition</span></a>
+<div class="tr"><button class="btn" id="menub" type="button" aria-expanded="false" aria-controls="menu">All slides</button><button class="btn" id="mot" type="button" aria-pressed="false">Reduce motion</button></div></header>
+<nav class="rail" aria-label="Slide marks"><ol><li><a href="#s01" aria-label="Slide 1: St. Jude India ChildCare Centres" title="Slide 1: St. Jude India ChildCare Centres"></a></li><li><a href="#s02" aria-label="Slide 2: PROJECT OVERVIEW" title="Slide 2: PROJECT OVERVIEW"></a></li><li><a href="#s03" aria-label="Slide 3: PROBLEM DISCOVERY" title="Slide 3: PROBLEM DISCOVERY"></a></li><li><a href="#s04" aria-label="Slide 4: Secondary Research" title="Slide 4: Secondary Research"></a></li><li><a href="#s05" aria-label="Slide 5: Secondary Research" title="Slide 5: Secondary Research"></a></li><li><a href="#s06" aria-label="Slide 6: USER INTERVIEWS" title="Slide 6: USER INTERVIEWS"></a></li><li><a href="#s07" aria-label="Slide 7: VERBATIMS" title="Slide 7: VERBATIMS"></a></li><li><a href="#s08" aria-label="Slide 8: STAKEHOLDER MAPPING" title="Slide 8: STAKEHOLDER MAPPING"></a></li><li><a href="#s09" aria-label="Slide 9: MIND MAP" title="Slide 9: MIND MAP"></a></li><li><a href="#s10" aria-label="Slide 10: STAKEHOLDER ECOSYSTEM MAP" title="Slide 10: STAKEHOLDER ECOSYSTEM MAP"></a></li><li><a href="#s11" aria-label="Slide 11: EMPATHY SQUARE" title="Slide 11: EMPATHY SQUARE"></a></li><li><a href="#s12" aria-label="Slide 12" title="Slide 12"></a></li><li><a href="#s13" aria-label="Slide 13: UNDERSTANDING USER PERSPECTIVE IN CONTNUOUS CARE SYSTEMS" title="Slide 13: UNDERSTANDING USER PERSPECTIVE IN CONTNUOUS CARE SYSTEMS"></a></li><li><a href="#s14" aria-label="Slide 14: INSIGHTS CLUSTERING" title="Slide 14: INSIGHTS CLUSTERING"></a></li><li><a href="#s15" aria-label="Slide 15: PROBLEM SYNTHESIS" title="Slide 15: PROBLEM SYNTHESIS"></a></li><li><a href="#s16" aria-label="Slide 16: VALUE CREATION MAP IN CONTNUOUS CARE SYSTEMS" title="Slide 16: VALUE CREATION MAP IN CONTNUOUS CARE SYSTEMS"></a></li><li><a href="#s17" aria-label="Slide 17: VALUE UNDERSTANDING" title="Slide 17: VALUE UNDERSTANDING"></a></li><li><a href="#s18" aria-label="Slide 18: VALUE CO-CREATION" title="Slide 18: VALUE CO-CREATION"></a></li><li><a href="#s19" aria-label="Slide 19: VALUE FLOW DIAGRAM" title="Slide 19: VALUE FLOW DIAGRAM"></a></li><li><a href="#s20" aria-label="Slide 20: PROBLEM IDENTIFICATION" title="Slide 20: PROBLEM IDENTIFICATION"></a></li><li><a href="#s21" aria-label="Slide 21: USER PERSONA 1: STAFF GROUP" title="Slide 21: USER PERSONA 1: STAFF GROUP"></a></li><li><a href="#s22" aria-label="Slide 22: STORYBOARDING" title="Slide 22: STORYBOARDING"></a></li><li><a href="#s23" aria-label="Slide 23: MOSCOW METHOD" title="Slide 23: MOSCOW METHOD"></a></li><li><a href="#s24" aria-label="Slide 24: SOLUTION BRAINSTORMING" title="Slide 24: SOLUTION BRAINSTORMING"></a></li><li><a href="#s25" aria-label="Slide 25: OPERATION STAFF JORUNEY" title="Slide 25: OPERATION STAFF JORUNEY"></a></li><li><a href="#s26" aria-label="Slide 26: OPERATION STAFF- DAILY JOURNEY MAP" title="Slide 26: OPERATION STAFF- DAILY JOURNEY MAP"></a></li><li><a href="#s27" aria-label="Slide 27: INSIGHTS" title="Slide 27: INSIGHTS"></a></li><li><a href="#s28" aria-label="Slide 28: FAMILY JOURNEY MAP" title="Slide 28: FAMILY JOURNEY MAP"></a></li><li><a href="#s29" aria-label="Slide 29: INSIGHTS" title="Slide 29: INSIGHTS"></a></li><li><a href="#s30" aria-label="Slide 30: CONTRIBUTOR JOURNEY" title="Slide 30: CONTRIBUTOR JOURNEY"></a></li><li><a href="#s31" aria-label="Slide 31: EXISTING SERVICE BLUEPRINT" title="Slide 31: EXISTING SERVICE BLUEPRINT"></a></li><li><a href="#s32" aria-label="Slide 32: SAHAAY CARE SYSTEM" title="Slide 32: SAHAAY CARE SYSTEM"></a></li><li><a href="#s33" aria-label="Slide 33: From Fragmented Care to Continuous Support" title="Slide 33: From Fragmented Care to Continuous Support"></a></li><li><a href="#s34" aria-label="Slide 34: INTRODUCTION TO SAHAAY" title="Slide 34: INTRODUCTION TO SAHAAY"></a></li><li><a href="#s35" aria-label="Slide 35: CORE FEATURES" title="Slide 35: CORE FEATURES"></a></li><li><a href="#s36" aria-label="Slide 36: IMPACT VS FEASIBILITY MATRIX" title="Slide 36: IMPACT VS FEASIBILITY MATRIX"></a></li><li><a href="#s37" aria-label="Slide 37: VALUE FLOW DIAGRAM" title="Slide 37: VALUE FLOW DIAGRAM"></a></li><li><a href="#s38" aria-label="Slide 38: STORYBOARDING" title="Slide 38: STORYBOARDING"></a></li><li><a href="#s39" aria-label="Slide 39: PROPOSED SERVICE BLUEPRINT" title="Slide 39: PROPOSED SERVICE BLUEPRINT"></a></li><li><a href="#s40" aria-label="Slide 40: SERVICE FAILURE" title="Slide 40: SERVICE FAILURE"></a></li><li><a href="#s41" aria-label="Slide 41: VALUE PROPOSITION" title="Slide 41: VALUE PROPOSITION"></a></li><li><a href="#s42" aria-label="Slide 42: IMPACT" title="Slide 42: IMPACT"></a></li><li><a href="#s43" aria-label="Slide 43: FUTURE SCOPE" title="Slide 43: FUTURE SCOPE"></a></li><li><a href="#s44" aria-label="Slide 44: BEHIND THE SCENES" title="Slide 44: BEHIND THE SCENES"></a></li><li><a href="#s45" aria-label="Slide 45: Thank You" title="Slide 45: Thank You"></a></li></ol></nav>
+<div class="intro"><h1>Sahaay Care System</h1><p class="tag">A Continuous Care Support System for St. Jude ChildCare Centres</p>
+<p class="hint">45 slides. Scroll, or press <kbd>←</kbd> <kbd>→</kbd>. Select a slide to zoom.</p></div>
+<main id="main" aria-label="Slides"><section class="sl" id="s01" tabindex="-1" aria-label="Slide 1: St. Jude India ChildCare Centres of 45"><p class="sn"><b>01</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s01.webp" alt="Slide 1: St. Jude India ChildCare Centres" width="2000" height="1125"  decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div></section>
+<section class="sl" id="s02" tabindex="-1" aria-label="Slide 2: PROJECT OVERVIEW of 45"><p class="sn"><b>02</b><span aria-hidden="true">/ 45</span></p><div class="fr paper"><h2 class="pt">PROJECT OVERVIEW</h2><div class="ov"><div class="ov-l"><p class="eyebrow">OVERVIEW</p><p class="lead">This project explores care delivery at St. Jude ChildCare Centres through the perspective of staff responsible for monitoing, coordination and ensuring safety.</p><dl class="facts"><div><dt>DURATION</dt><dd>4 months<br>(Field Visits &amp; Research</dd></div><div><dt>DOMAIN</dt><dd>Service Design</dd></div><div><dt>FOCUS AREA</dt><dd>Staff Perspective</dd></div><div><dt>METHODS</dt><dd>Field Visits, Observations,<br>Stakeholder Interactions</dd></div><div><dt>OBJECTIVE</dt><dd>To identify gaps in coordination and propose a structured service to support staff more effectively.</dd></div><div><dt>OUTCOME</dt><dd>System Intervention</dd></div></dl></div><figure class="ov-r"><img src="sahaay/photo02.webp" alt="" width="566" height="647" loading="lazy"><figcaption>St. Jude India ChildCare Centres</figcaption></figure></div></div></section>
+<section class="sl" id="s03" tabindex="-1" aria-label="Slide 3: PROBLEM DISCOVERY of 45"><p class="sn"><b>03</b><span aria-hidden="true">/ 45</span></p><div class="fr paper"><h2 class="pt">PROBLEM DISCOVERY</h2><div class="pd stg"><section class="card c-why"><h3>Why This Matters</h3><p>This gap leads to inconsistent care practices, delayed responses, and high dependence on manual monitoring.</p><p>Staff effort increases while system reliability decreases, directly affecting child safety.</p></section><section class="card c-init"><h3>Initial Problem</h3><p>Staff are accountable for maintaining care quality, but do not have direct control over how care is executed daily.</p><p>This creates a gap between responsibility and action.</p></section><section class="card c-nat"><h3>Nature of the Problem</h3><p>The problem is systemic and coordination-driven.</p><p>It involves multiple stakeholders with no structured flow of information.</p><p>It is a breakdown in continuity, communication, and timely response.</p></section><p class="hmw"><span>HOW MIGHT WE:</span> <strong>How might we enable staff to ensure consistent, timely and reliable care without increasing manual workload or dependency on informal coordination?</strong></p></div></div></section>
+<section class="sl" id="s04" tabindex="-1" aria-label="Slide 4: Secondary Research of 45"><p class="sn"><b>04</b><span aria-hidden="true">/ 45</span></p><div class="fr paper"><div class="hd"><p class="brand">St. Jude India<br>ChildCare Centres</p><h2 class="pt">Secondary Research</h2></div><div class="sr3 stg"><section class="card src"><h3 id="t40">NGO–Government Collaboration in Healthcare – 2025 Study</h3><div class="sb"><p class="lb">System Fragmentation:</p><p>Absence of integrated platforms causes poor coordination, delayed responses, and difficulty in tracking patient data across stakeholders</p></div><a class="lnk" href="https://www.sciencedirect.com/science/article/pii/S2590291125002864" target="_blank" rel="noopener" aria-describedby="t40">Click here for link<span class="sr" data-ui> (opens in a new tab)</span></a></section><section class="card src"><h3 id="t41">Existential issues among health care staff in surgical cancer care – Discussions in supervision sessions</h3><div class="sb"><p>Healthcare professionals face moral distress when treatments are limited, leading to burnout, emotional fatigue, and questioning of professional purpose.</p></div><a class="lnk" href="https://doi.org/10.1016/j.ejon.2010.11.010" target="_blank" rel="noopener" aria-describedby="t41">Click here for link<span class="sr" data-ui> (opens in a new tab)</span></a></section><section class="card src"><h3 id="t42">Oncology Residency–a Burning Issue, Results of a Questionnaire-Based Survey on Psychological Well-being of Oncology Residents</h3><div class="sb"><p class="lb">Patient-Related Distress:</p><p>Limited ability to prolong life for many patients, leading to feelings of helplessness and powerlessness</p></div><a class="lnk" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7501383/" target="_blank" rel="noopener" aria-describedby="t42">Click here for link<span class="sr" data-ui> (opens in a new tab)</span></a></section></div></div></section>
+<section class="sl" id="s05" tabindex="-1" aria-label="Slide 5: Secondary Research of 45"><p class="sn"><b>05</b><span aria-hidden="true">/ 45</span></p><div class="fr paper"><div class="hd"><p class="brand">St. Jude India<br>ChildCare Centres</p><h2 class="pt">Secondary Research</h2></div><div class="sr3 stg"><section class="card src"><h3 id="t50">Health Information Management in Low-Resource Settings – Case Review</h3><div class="sb"><p class="lb">Data Management Gap:</p><p>The study highlights that healthcare systems in low-resource settings heavily rely on paper-based records, which often leads to data loss, duplication, and human errors. It also makes it difficult for staff to quickly access patient history, especially during emergencies, delaying timely care and decision-making.</p></div><a class="lnk" href="https://www.sciencedirect.com/science/article/pii/S2590291125002864" target="_blank" rel="noopener" aria-describedby="t50">Click here for link<span class="sr" data-ui> (opens in a new tab)</span></a></section><section class="card src"><h3 id="t51">Level of Motivation Amongst Health Personnel</h3><div class="sb"><p>A cross-sectional study of 200 healthcare workers in a Delhi government hospital examined five motivation factors: drive, control, challenge, relationships, and rewards. It found that different roles value different factors. Doctors and technicians prioritize relationships, while nurses and support staff value autonomy and recognition.</p><p>The study highlights that a supportive work environment is essential for improving productivity in public healthcare systems.</p></div><a class="lnk" href="https://journals.lww.com/ijcm/fulltext/2014/39040/level_of_motivation_amongst_health_personnel.10.aspx" target="_blank" rel="noopener" aria-describedby="t51">Click here for link<span class="sr" data-ui> (opens in a new tab)</span></a></section><section class="card src"><h3 id="t52">Challenges and opportunities for future health policy</h3><div class="sb"><p class="lb">Resource Limitation Impact:</p><p>Healthcare staff in NGO-based systems often operate with limited infrastructure and support.</p><p>This restricts access to timely information and structured tools, forcing staff to rely on personal judgment and experience.</p><p>Such conditions increase stress levels and can affect consistency and accuracy in care-related decisions.</p></div></section></div></div></section>
+<section class="sl" id="s06" tabindex="-1" aria-label="Slide 6: USER INTERVIEWS of 45"><p class="sn"><b>06</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s06.webp" alt="Slide 6: USER INTERVIEWS" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>USER INTERVIEWS
+Daily care workflows and
+responsibilities
+Night-time support and
+emergency handling
+Communication methods
+(staff ↔ parents ↔ centre)
+Documentation and tracking
+practices
+Challenges in coordination
+and response
+Method
+Semi-structured interviews
+Supported by observational
+notes
+Fly on the wall
+Centre Officer
+Daily operations, parent
+coordination, emergency handling
+Centre Lead
+Center management, system
+coordination, decision-making
+2. Communication &amp; Coordination
+How do you communicate
+with parents during the day?
+What tools or methods are
+used (calls, WhatsApp,
+verbal)?
+How is information shared
+between staff members?
+3. Night-Time &amp; Emergencies
+What happens after staff
+hours?
+How are emergencies
+handled at night?
+Who takes responsibility in
+urgent situations?
+What challenges do parents
+face during emergencies?
+4. Challenges &amp; Gaps
+What are the biggest
+difficulties in managing
+care?
+Where do delays or
+confusion usually happen?
+What would make the
+system easier for you?
+1. Daily Care Workflow
+How does a typical day at
+the centre operate?
+What are your key
+responsibilities throughout
+the day?
+How do you track a child’s
+health and routine?</p></div></section>
+<section class="sl" id="s07" tabindex="-1" aria-label="Slide 7: VERBATIMS of 45"><p class="sn"><b>07</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s07.webp" alt="Slide 7: VERBATIMS" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>“Madam log bahut supportive
+hain, kuch bhi chahiye ho toh
+bol sakte hain.” -Parent
+“Yahan activities aur dance se
+thoda emotional support milta
+hai.” -Parent
+“Rules ke hisaab se sab karna
+mushkil hota hai, par manage ho
+jata hai.”
+-Parent
+“Routine humare achhe ke liye
+banaya gaya hai.”
+-Parent
+“Yahan stitching, weaving aur
+mobile repairing ka training
+milta hai.” -Parent
+“We maintain temperature sheets and
+records, but everything is mostly
+manual.” -Staff
+“After staff hours, it becomes difficult
+to monitor everything continuously.”
+-Staff
+“We explain everything to parents, but
+in stressful situations they still get
+confused.” -Staff
+“Sometimes the same information has
+to be repeated to different people.”
+-Staff
+VERBATIMS</p></div></section>
+<section class="sl" id="s08" tabindex="-1" aria-label="Slide 8: STAKEHOLDER MAPPING of 45"><p class="sn"><b>08</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s08.webp" alt="Slide 8: STAKEHOLDER MAPPING" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>core
+involved
+informed
+Patient
+CareGiver
+Staff
+Educators
+Donors &amp;
+Funding
+Partners
+Volunteers
+Cleaning
+staff
+Transport
+staff
+Counsellors
+Anchor Stakeholder-
+Operational Staff
+Audit Staff
+Hospitals Hospitals
+HR
+Data &amp;
+Reporting
+Systems
+STAKEHOLDER MAPPING</p></div></section>
+<section class="sl" id="s09" tabindex="-1" aria-label="Slide 9: MIND MAP of 45"><p class="sn"><b>09</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s09.webp" alt="Slide 9: MIND MAP" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>MIND MAP</p></div></section>
+<section class="sl" id="s10" tabindex="-1" aria-label="Slide 10: STAKEHOLDER ECOSYSTEM MAP of 45"><p class="sn"><b>10</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s10.webp" alt="Slide 10: STAKEHOLDER ECOSYSTEM MAP" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>STAKEHOLDER ECOSYSTEM MAP</p></div></section>
+<section class="sl" id="s11" tabindex="-1" aria-label="Slide 11: EMPATHY SQUARE of 45"><p class="sn"><b>11</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s11.webp" alt="Slide 11: EMPATHY SQUARE" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>Operations Corporates Affiliates
+Donors
+Volunteers
+Children Parents
+St. Judes Facilities
+TATA Memorial
+Campus ACTREC
+Community of St.
+Judes (Judians)
+Society at Residency
+Anchor node
+Empathy
+Square
+Service Provider Organisation
+Environment,
+society &amp;
+Governance
+Service users
+Human
+Touchpoints
+(service staffs)
+EMPATHY SQUARE</p></div></section>
+<section class="sl" id="s12" tabindex="-1" aria-label="Slide 12 of 45"><p class="sn"><b>12</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s12.webp" alt="Slide 12" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>St. Jude India
+ChildCare Centres
+Operations Program Lead Centre Lead Centre Officer
+Maintainance &amp;
+Cleaning Staffs
+Security Gurads
+Intent
+Concern
+Constraints
+Expectations
+Resources
+To supervise operations
+across centres
+To manage
+operations
+To assist Families,
+record keeping
+To keep the
+facility hygenic
+To regulate entry
+&amp; exits
+Limited visibility, manual
+reporting, coordination
+overload, compliance
+management.
+Standardized operations,
+timely escalation, cross-
+functional coordination,
+optimal resource utilization.
+MIS reporting, centre-led
+execution, funding
+frameworks, SOP compliance
+Operational breakdowns,
+family complaints, staff
+inefficiency, emergency
+management.
+Limited staffing, budget
+constraints, vendor
+dependency, empathy-rule
+balance.
+Centre staff, vendor
+support, operational
+budget, program
+guidelines.
+Emotional strain,
+documentation errors,
+language barriers,
+multitasking pressure.
+Clear task allocation,
+efficient record-keeping,
+leadership support,
+cooperative families.
+Digital records,
+communication channels,
+family management
+guidelines, support staff.
+Infection risks, supply
+shortages, heavy
+workload, low recognition.
+fixed schedules;
+procurement delays; low
+specialized training
+Clear protocols; adequate
+supplies; respectful
+environment; defined roles
+Cleaning tools;
+SOPs/checklists;
+supervision; basic training
+Unauthorized access,
+visitor conflicts, unclear
+protocols, fatigue.
+limited authority; lack
+of training; long shifts
+Regulate entry &amp; exits,
+Clear policies; admin
+support; structured shifts;
+basic facilities
+Entry registers; ID
+systems; communication
+with staff; security
+agency</p></div></section>
+<section class="sl" id="s13" tabindex="-1" aria-label="Slide 13: UNDERSTANDING USER PERSPECTIVE IN CONTNUOUS CARE SYSTEMS of 45"><p class="sn"><b>13</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s13.webp" alt="Slide 13: UNDERSTANDING USER PERSPECTIVE IN CONTNUOUS CARE SYSTEMS" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>I N C O N T N U O U S C A R E S Y S T E M S
+UNDERSTANDING USER PERSPECTIVE</p></div></section>
+<section class="sl" id="s14" tabindex="-1" aria-label="Slide 14: INSIGHTS CLUSTERING of 45"><p class="sn"><b>14</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s14.webp" alt="Slide 14: INSIGHTS CLUSTERING" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>INSIGHTS CLUSTERING</p></div></section>
+<section class="sl" id="s15" tabindex="-1" aria-label="Slide 15: PROBLEM SYNTHESIS of 45"><p class="sn"><b>15</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s15.webp" alt="Slide 15: PROBLEM SYNTHESIS" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>PROBLEM SYNTHESIS</p></div></section>
+<section class="sl" id="s16" tabindex="-1" aria-label="Slide 16: VALUE CREATION MAP IN CONTNUOUS CARE SYSTEMS of 45"><p class="sn"><b>16</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s16.webp" alt="Slide 16: VALUE CREATION MAP IN CONTNUOUS CARE SYSTEMS" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>I N C O N T N U O U S C A R E S Y S T E M S
+VALUE CREATION MAP</p></div></section>
+<section class="sl" id="s17" tabindex="-1" aria-label="Slide 17: VALUE UNDERSTANDING of 45"><p class="sn"><b>17</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s17.webp" alt="Slide 17: VALUE UNDERSTANDING" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>VALUE UNDERSTANDING</p></div></section>
+<section class="sl" id="s18" tabindex="-1" aria-label="Slide 18: VALUE CO-CREATION of 45"><p class="sn"><b>18</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s18.webp" alt="Slide 18: VALUE CO-CREATION" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>VALUE CO-CREATION</p></div></section>
+<section class="sl" id="s19" tabindex="-1" aria-label="Slide 19: VALUE FLOW DIAGRAM of 45"><p class="sn"><b>19</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s19.webp" alt="Slide 19: VALUE FLOW DIAGRAM" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>VALUE FLOW DIAGRAM</p></div></section>
+<section class="sl" id="s20" tabindex="-1" aria-label="Slide 20: PROBLEM IDENTIFICATION of 45"><p class="sn"><b>20</b><span aria-hidden="true">/ 45</span></p><div class="fr paper"><h2 class="pt">PROBLEM IDENTIFICATION</h2><ol class="notes stg"><li class="note"><h3>1. Lack of Continuity</h3><p>Care is continuous</p><p>Support is time-bound</p></li><li class="note"><h3>2. Informal Communication</h3><p>Reliance on WhatsApp / verbal updates</p><p>No structured escalation</p></li><li class="note"><h3>3. High Staff Dependency</h3><p>All decisions route through staff</p><p>Creates overload</p></li><li class="note hot"><h3>4. Night-Time Visibility Gap</h3><p>No staff presence</p><p>Limited monitoring at night</p></li><li class="note"><h3>5. Parent Capability Variability</h3><p>Different parents have different skills</p></li><li class="note"><h3>6. Lack of Accountability Structure</h3><p>Tasks are shared</p><p>But responsibility is unclear</p></li><li class="note"><h3>7. Manual Data Dependency</h3><p>Paper logs and manual entry</p><p>Prone to errors and delays</p></li><li class="note"><h3>8. Fragmented System</h3><p>Multiple touchpoints</p><p>No unified system</p></li><li class="note hot"><h3>9. Emotional Burden on Staff</h3><p>Staff handles coordination and emotional support</p><p>Leads to fatigue and burnout</p></li><li class="note hot"><h3>10. Lack of Standardized Emergency Protocols</h3><p>Leads to inconsistent and delayed responses</p></li></ol></div></section>
+<section class="sl" id="s21" tabindex="-1" aria-label="Slide 21: USER PERSONA 1: STAFF GROUP of 45"><p class="sn"><b>21</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s21.webp" alt="Slide 21: USER PERSONA 1: STAFF GROUP" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>USER PERSONA 1:
+STAFF GROUP
+ROLES
+Monitor parents and
+children
+Ensure hygiene and
+compliance
+Handle coordination and
+emergencies
+GOALS
+Maintain safe and
+consistent care
+Ensure parents follow
+protocols
+Respond quickly to risks
+PAIN POINTS
+\ High workload and
+responsibility
+No visibility during night
+Dependence on manual tracking
+Informal communication
+channels
+Risk prioritization
+Clear escalation flow Reduced cognitive load
+NEEDS
+“We are responsible for everything, but we don’t always have visibility or control.”
+Center Lead +
+Center Officers
+Center Lead (1)
+Center Officers
+(2)
+Structured system for monitoring
+USER PERSONA 2:
+FAMILY GROUP
+ROLES
+Perform daily care tasks
+Monitor child’s health
+Follow center guidelines
+GOALS
+Keep child safe and stable
+Follow correct care practices
+Get timely help when needed
+PAIN POINTS
+\
+Confusion during emergencies
+Lack of guidance at night
+Emotional stress and anxiety
+Different understanding of care
+practices
+Clear instructions Reassurance and confidence
+Immediate support access Simple communication channel
+NEEDS
+Parents + Child
+(Care Unit)
+GROUP
+COMPOSITION
+Mother
+(Primary
+Caregiver)
+Father
+(Support Role)
+Child (Patient)
+“We try our best, but we don’t always know what to do in critical moments.”</p></div></section>
+<section class="sl" id="s22" tabindex="-1" aria-label="Slide 22: STORYBOARDING of 45"><p class="sn"><b>22</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s22.webp" alt="Slide 22: STORYBOARDING" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>STORYBOARDING</p></div></section>
+<section class="sl" id="s23" tabindex="-1" aria-label="Slide 23: MOSCOW METHOD of 45"><p class="sn"><b>23</b><span aria-hidden="true">/ 45</span></p><div class="fr paper"><h2 class="pt">MOSCOW METHOD</h2><div class="mos stg"><section class="mo"><h3><span>Mo</span></h3><ul><li>Night-time alert system</li><li>Structured escalation flow</li><li>Staff dashboard (basic)</li><li>Emergency response protocol</li></ul></section><section class="mo"><h3><span>S</span></h3><ul><li>Risk-based prioritization</li><li>Parent guidance system</li><li>Centralized communication channel</li></ul></section><section class="mo"><h3><span>Co</span></h3><ul><li>Behaviour tracking over time</li><li>Automated reminders</li><li>Incident history visualization</li></ul></section><section class="mo"><h3><span>W</span></h3><ul><li>Full hospital integration</li><li>AI-based predictions</li><li>Complex analytics system</li></ul></section></div></div></section>
+<section class="sl" id="s24" tabindex="-1" aria-label="Slide 24: SOLUTION BRAINSTORMING of 45"><p class="sn"><b>24</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s24.webp" alt="Slide 24: SOLUTION BRAINSTORMING" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>Continuous Care
+Support System
+Enable support
+beyond staff hours
+Ensure care continuity
+Centralized Care
+System
+One unfed platform
+All data &amp; actions in
+one place
+Standardized
+Emergency Protocols
+Clear step-by-step
+responses
+Consistent actions
+across users
+Structured
+Communication System
+Defined alert &amp; escalation
+flow
+Reduce dependency on
+informal channels
+Night-time Monitoring
+Support
+Dedicated support at
+night
+Quick responses to
+emergencies
+Staff Dashboard &amp;
+Priortization
+Identify high-risk families
+Enable faster decision
+making
+Automated Data Logging
+Reduce manual work
+Minimize errors &amp; delays
+Task &amp; Responsibility
+Mapping
+Clear role allocation
+Improved accountability
+Guided Parent
+Support System
+Simple instructions for
+daily care
+Reduce confusion &amp;
+dependency
+Emotional Support for
+Staff
+Reduce cognitive load
+Support better
+decision-making
+Training &amp; Awareness
+Modules
+Standardise
+understanding
+Improve parent
+capability
+SYSTEM-LEVEL SOLUTIONS
+OPERATIONS SOLUTIONS
+HUMAN-CENTERED SOLUTIONS
+Continuous Support
+System
+Staff-centered
+coordnation
+Structured
+communication
+| |
+FOCUSED DIRECTION
+SOLUTION BRAINSTORMING</p></div></section>
+<section class="sl" id="s25" tabindex="-1" aria-label="Slide 25: OPERATION STAFF JORUNEY of 45"><p class="sn"><b>25</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s25.webp" alt="Slide 25: OPERATION STAFF JORUNEY" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>Daily
+Weekly
+Monthly
+Initial Mid End
+OPERATION STAFF JORUNEY</p></div></section>
+<section class="sl" id="s26" tabindex="-1" aria-label="Slide 26: OPERATION STAFF- DAILY JOURNEY MAP of 45"><p class="sn"><b>26</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s26.webp" alt="Slide 26: OPERATION STAFF- DAILY JOURNEY MAP" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>Feelings
+and
+thoughts
+Operations Associate
+Age: 30
+Location: Kharghar Centre
+Experience: 2+ years
+Operations Associate
+Managing centre operations, monitoring,
+hospital coordination, and reporting for
+families during treatment stay.
+Expectations
+Smooth centre
+functioning
+Emotional and
+operational availability
+Accurate records with
+timely escalations
+Minimal disruption during
+high occupancy
+Morning Compliance Attendance Scan Daily Activities Social Touchpoints Issue Resolution Health Logging Treatment Logging End of the day
+Start of the day
+Actions
+Technological
+assistance
+Pain
+Points
+😌
+🙂
+😐
+😫
+Satisfaction
+Positive
+Neutral
+Low
+Need to stay alert
+and updated
+Planning tasks for
+the day
+Catching up on
+pending issues
+Responsible for
+hygiene and safety
+Need to ensure
+everyone follows
+rules
+Constant
+monitoring
+required
+Busy managing
+multiple families
+Handling queries
+and delays
+Ensuring accuracy
+Sense of purpose
+Supporting
+emotional well-
+being
+Managing
+coordination
+Building trust with
+families
+Providing
+emotional comfort
+Listening to
+concerns
+Alert and slightly
+stressed
+Need to manage
+conflict calmly
+Pressure to
+resolve quickly
+Tired from
+repetitive tasks
+Time pressure
+Need for accuracy
+Concern for family
+well-being
+Responsibility for
+follow-ups
+Dependence on
+staff guidance
+Physically and
+mentally
+exhausted
+Need to wrap up
+tasks
+Hoping next shift
+continues
+smoothly
+Arrive at centre
+Check schedule
+Recall pending
+issues
+Take handover
+from previous
+shift
+Hygiene checks
+(kitchen, rooms,
+washrooms)
+Verify task
+completion
+Remind parents
+about routines
+Scan parent QR
+Scan child QR
+Mark attendance
+Resolve scanning
+issues
+Oversee activities
+Send children to
+classes
+Support
+prayer/events
+Coordinate
+volunteers
+Informal
+conversations (tea
+time)
+Listen and support
+families
+Share important
+updates
+Build relationships
+Identify
+issue/conflict
+Talk and resolve
+Escalate to centre
+lead if needed
+Log informally
+Collect
+temperature
+sheets
+Verify entries
+Enter data into
+MIS
+Record
+observations
+Check treatment
+adherence
+Follow up with
+families
+Remind for
+medication/hospit
+al visits
+Update MIS
+Review pending
+issues
+Share updates
+with next shift
+Handover notes
+End of day wrap-
+up
+WhatsApp
+communication
+QR attendance
+system
+Temperature
+sheets (paper-
+based)
+MIS system
+Cryodes
+Security desk
+coordination
+Opportunities
+Digital checklist with
+pending tasks
+Automated reminders
+for compliance
+Integrated issue
+tracking system
+Auto MIS data entry
+integration
+Shift handover
+dashboard
+Centralized
+communication system
+No centralized view of
+pending work
+Heavy reliance on
+verbal communication
+Manual and repetitive
+processes
+Duplicate data entry
+(paper → MIS)
+Informal issue tracking
+Staff fatigue and
+burnout
+OPERATION STAFF- DAILY JOURNEY MAP</p></div></section>
+<section class="sl" id="s27" tabindex="-1" aria-label="Slide 27: INSIGHTS of 45"><p class="sn"><b>27</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s27.webp" alt="Slide 27: INSIGHTS" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>Insights
+Findings
+Operations staff simultaneously perform three roles :
+1.Operations Manager (Scheduling, compliance,
+coordination
+2. Emotional Support Worker (Logging, MIS entry,
+reporting)
+3.Data Administrator (Scheduling, compliance,
+coordination
+This overlap creates congnitive load + operational
+fatigue.
+Staff workload shifts from human care to
+administrative burden post mid-day
+Critical processes rely heavily on informal
+communication system
+Emotional interactions like tea build trust and
+stability for families
+High human dependency and low system support
+might be causing operational inefficiency.
+INSIGHTS</p></div></section>
+<section class="sl" id="s28" tabindex="-1" aria-label="Slide 28: FAMILY JOURNEY MAP of 45"><p class="sn"><b>28</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s28.webp" alt="Slide 28: FAMILY JOURNEY MAP" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>Feelings
+and
+Actions
+Primary Caregiver
+Age: 22–45
+Location: Pan-India
+Socio-economic: BPL
+Context: Staying 3–6 months
+Operations Associate
+Managing centre operations, monitoring,
+hospital coordination, and reporting for
+families during treatment stay.
+Expectations
+Clean accommodation
+near hospital
+Clear guidance for the
+period.
+Emotional reassurance
+and community support
+Reliable access to food,
+resources, and emergency
+help
+SETTLEMENT DAILY ROUTINE
+NIGHT GAP
+(CRITICAL PHASE)
+CONTINUOUS
+CYCLE
+ADMISSION &amp;
+ORIENTATION
+Touchpoints
+Pain
+Points
+Staff
+Role
+Feelings:
+😟Anxiety → 😣Overwhelm
+Actions:
+Arrives at centre after hospital
+referral
+Completes admission formalities
+Receives hygiene + monitoring
+training
+Reception staff
+Orientation session
+Printed instructions / verbal
+guidance
+Information overload
+Complex medical + hygiene
+instructions
+No reinforcement after session
+Provide orientation
+Explain protocols
+Offer visual guides / digital
+support
+Feelings:
+😐Confusion → 😟Stress
+Actions:
+Moves into assigned unit
+Starts cleaning and organizing
+Begins maintaining child health
+logs
+Room/unit
+Cleaning supplies
+Log sheets
+No clear benchmark of “clean”
+Inconsistent understanding
+across families
+Fear of doing something wrong
+Provide standardized guidelines
+Enable real-time feedback
+system
+Feelings:
+😐Routine → 😫Fatigue
+Actions:
+Cleans unit
+Prepares food
+Logs child temperature/health
+Attends hospital visits
+Kitchen
+Log sheets
+Staff rounds
+Repetitive manual logging
+Delayed feedback from staff
+No prioritization of issues
+Morning rounds
+Verifying logs
+Giving corrections
+Feelings:
+😟Fear → 😨Uncertainty
+Actions:
+Parent monitors child alone
+Responds to symptoms
+Calls staff if needed
+Phone calls
+Personal judgment
+No real-time support
+Delayed response
+High dependency on parent
+awareness
+Remote support (if contacted)
+Feelings:
+😫😣(Fatigue + stress
+accumulation)
+Actions:
+Repeats daily routine
+Adjusts based on feedback
+Reuse previous systems with
+small additions
+Accumulated fatigue
+No system-level improvement
+FAMILY JOURNEY MAP</p></div></section>
+<section class="sl" id="s29" tabindex="-1" aria-label="Slide 29: INSIGHTS of 45"><p class="sn"><b>29</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s29.webp" alt="Slide 29: INSIGHTS" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>Insights
+Findings
+Critical processes rely heavily on parent awareness and
+proactive response
+End-of-day fatigue increases risk of care errors and
+incomplete routines
+Families navigate complex operational &amp; care processes,
+shifting from high-touch human care (onboarding) to high-
+effort self-administration.
+System support must shift from episodic verification →
+continuous proactive monitoring.
+Monitoring is episodic, not continuous
+System becomes reactive, not proactive
+Opportunities
+Digital guides
+Automated prompts
+Real-time feedback
+Proactive support
+Care consistency
+INSIGHTS</p></div></section>
+<section class="sl" id="s30" tabindex="-1" aria-label="Slide 30: CONTRIBUTOR JOURNEY of 45"><p class="sn"><b>30</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s30.webp" alt="Slide 30: CONTRIBUTOR JOURNEY" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>No clear next step
+No structured
+entry point
+No official channel
+Delayed or no
+response
+Feels informal /
+unreliable
+No visibility of
+available slots
+No clarity on
+allowed timings
+Back-and-forth
+communication
+Repetitive
+paperwork
+No saved profile /
+history
+Manual process
+every time
+Entry issues at
+security
+Name not
+registered
+If late → entry
+denied
+(Rule is valid, but
+system support is
+missing)
+No structured
+feedback
+No documentation
+of contribution
+No follow-up
+No re-engagement
+No relationship
+building
+NIFT Student
+(Design Student)
+Intent:
+Conduct workshop / volunteer
+Visit based on college
+schedule
+Expectations
+Good cooperation
+and inviting
+people.
+Occasionally
+contribute skills or
+time
+Feelings
+and
+thoughts
+Contact Attempt Planning Visit Pre-Visit
+Requirements Visit Day Contribution Post-Visit
+Intent formation
+Student wants to
+visit / contribute
+after attending a
+program
+Emotion:
+😕Confused but
+motivated
+Reaches out via
+WhatsApp (if number
+exists)
+Emotion:
+😐Uncertain
+Tries to align college
+permission
+Emotion:
+😣Frustrated
+Needs to:
+Inform centre in
+advance
+Fill forms
+Get approvals
+Emotion:
+😓Burdened
+Reaches
+centreProviding
+emotional comfort
+Emotion:
+😬Anxious
+Conducts workshop /
+activity
+Emotion:
+🙂Satisfied
+😶Detached
+Pain
+Points
+Touchpoints
+Word of mouth WhatsApp
+Back and
+forth
+Paperwork
+Security desk
+coordination
+Interaction
+CONTRIBUTOR JOURNEY</p></div></section>
+<section class="sl" id="s31" tabindex="-1" aria-label="Slide 31: EXISTING SERVICE BLUEPRINT of 45"><p class="sn"><b>31</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s31.webp" alt="Slide 31: EXISTING SERVICE BLUEPRINT" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>Customer Actions
+Line of Interaction
+On-stage
+Employee
+Line of Visibility
+Backstage
+Employee Actions
+Line of internal Interaction
+Support
+processes
+Intake staff
+Availability
+checked
+Admin
+Operations Staff
+Central Lead
+Operations Staff
+Central Officer
+Operations Staff
+Educators
+Operations Staff
+Counsellors
+Eligibility
+validation, Queue
+prioritization,
+room allocation
+decision
+Room
+readiness
+confirmed,
+records
+created
+Daily
+schedule
+mapping
+for new
+family
+Activity
+schedules
+maintained
+Attendance
+stored,
+compliance
+tracked
+Health logs
+updated,
+risk flagged
+Review
+escalated
+Conflicts
+MIS
+Cryodes
+Temperature Sheet
+QR
+attendance
+system
+Transport
+Hospital
+EXISTING SERVICE BLUEPRINT</p></div></section>
+<section class="sl" id="s32" tabindex="-1" aria-label="Slide 32: SAHAAY CARE SYSTEM of 45"><p class="sn"><b>32</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s32.webp" alt="Slide 32: SAHAAY CARE SYSTEM" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div></section>
+<section class="sl" id="s33" tabindex="-1" aria-label="Slide 33: From Fragmented Care to Continuous Support of 45"><p class="sn"><b>33</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s33.webp" alt="Slide 33: From Fragmented Care to Continuous Support" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div></section>
+<section class="sl" id="s34" tabindex="-1" aria-label="Slide 34: INTRODUCTION TO SAHAAY of 45"><p class="sn"><b>34</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s34.webp" alt="Slide 34: INTRODUCTION TO SAHAAY" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>INTRODUCTION TO SAHAAY
+Sahaay is a care coordination system designed for pediatric support centres, where parents manage daily care and
+staff oversees multiple families.
+It ensures care continues seamlessly beyond staff hours through structured communication and timely response.</p></div></section>
+<section class="sl" id="s35" tabindex="-1" aria-label="Slide 35: CORE FEATURES of 45"><p class="sn"><b>35</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s35.webp" alt="Slide 35: CORE FEATURES" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>CORE FEATURES</p></div></section>
+<section class="sl" id="s36" tabindex="-1" aria-label="Slide 36: IMPACT VS FEASIBILITY MATRIX of 45"><p class="sn"><b>36</b><span aria-hidden="true">/ 45</span></p><div class="fr paper"><h2 class="pt">IMPACT VS FEASIBILITY MATRIX</h2><div class="mx stg"><span class="ax a-t">HIGH IMPACT</span><span class="ax a-l">LOW FEASIBILITY</span><span class="ax a-r">HIGH FEASIBILITY</span><span class="ax a-b">LOW IMPACT</span><section class="q q1"><ul><li>Centralized care system</li><li>Full data integration</li><li>Cross-center coordination</li></ul></section><section class="q q2"><ul><li>Night-time alert system</li><li>Structured communication flow</li><li>Staff dashboard</li><li>Emergency protocols</li></ul></section><section class="q q3"><ul><li>Advanced analytics</li><li>AI predictions</li><li>Complex automation</li></ul></section><section class="q q4"><ul><li>Basic parent instructions</li><li>Manual tracking improvements</li><li>Simple checklists</li></ul></section></div></div></section>
+<section class="sl" id="s37" tabindex="-1" aria-label="Slide 37: VALUE FLOW DIAGRAM of 45"><p class="sn"><b>37</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s37.webp" alt="Slide 37: VALUE FLOW DIAGRAM" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>VALUE FLOW DIAGRAM</p></div></section>
+<section class="sl" id="s38" tabindex="-1" aria-label="Slide 38: STORYBOARDING of 45"><p class="sn"><b>38</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s38.webp" alt="Slide 38: STORYBOARDING" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>STORYBOARDING</p></div></section>
+<section class="sl" id="s39" tabindex="-1" aria-label="Slide 39: PROPOSED SERVICE BLUEPRINT of 45"><p class="sn"><b>39</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s39.webp" alt="Slide 39: PROPOSED SERVICE BLUEPRINT" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>Customer Actions
+Line of Ineteraction
+On-stage
+Employee
+Line of Visibility
+Backstage
+Employee Actions
+Line of internal Interaction
+Support
+processes
+Intake staff
+Availability
+checked
+Admin
+Operations Staff
+Central Lead
+Operations Staff
+Central Officer
+Operations Staff
+Educators
+Operations Staff
+Counsellors
+Eligibility
+validation, Queue
+prioritization,
+room allocation
+decision
+Room
+readiness
+confirmed,
+records
+created
+Daily
+schedule
+mapping
+Activity
+schedules
+maintained
+Attendance
+stored,
+compliance
+tracked
+Health logs
+updated,
+risk flagged
+Review
+escalated
+Conflicts
+MIS
+Cryodes
+QR
+attendance
+system
+Transport
+Hospital
+Sahaay
+PROPOSED SERVICE BLUEPRINT</p></div></section>
+<section class="sl" id="s40" tabindex="-1" aria-label="Slide 40: SERVICE FAILURE of 45"><p class="sn"><b>40</b><span aria-hidden="true">/ 45</span></p><div class="fr paper"><h2 class="pt">SERVICE FAILURE</h2><div class="sf"><section class="card fail"><h3>Failure Points</h3><ul><li>Lack of continuity during night-time</li><li>Delayed response due to unclear communication</li><li>No structured escalation pathway</li><li>Staff overload leading to missed signals</li><li>Parents unsure about immediate actions</li><li>Fragmented systems across multiple apps</li><li>Incidents not tracked or repeated patterns missed</li></ul></section><img class="sf-i" src="sahaay/icon40.png" alt="" width="519" height="457" loading="lazy"><section class="card rec"><h3>Recovery Mechanisms</h3><ul><li>Continuous care support beyond staff hours</li><li>Structured alert flow across roles</li><li>Clear escalation protocols at each level</li><li>Guided instructions for parents during emergencies</li><li>Centralized dashboard for real-time visibility</li><li>System-based tracking of high-risk cases</li><li>Automated logging to reduce manual errors</li></ul></section></div></div></section>
+<section class="sl" id="s41" tabindex="-1" aria-label="Slide 41: VALUE PROPOSITION of 45"><p class="sn"><b>41</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s41.webp" alt="Slide 41: VALUE PROPOSITION" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>Staff
+Night-Time
+Support System
+Staff Dashboard
+&amp; Prioritization
+Guided Care
+System (Parent
+Support)
+System Memory
+&amp; Tracking
+Kindness Crew
+Integration
+Alert &amp; Escalation
+System
+Child
+Gets timely
+alerts
+Reduces
+dependency on
+informal
+communication
+Reduces
+pressure of
+being always
+available
+Ensures
+continuity
+Clear visibility
+Faster
+decision-
+making
+Reduced
+cognitive load
+Reduces
+repeated
+guidance
+Less
+dependency
+Identifies
+high-risk
+patterns
+Better
+long-term
+decisions
+Reduces
+workload
+Extra support
+during
+emergencies
+Parents
+Easy way to
+ask for help
+No confusion
+during
+emergencies
+Feel
+supported
+at night
+Less
+anxiety
+Get timely
+attention if
+high-risk
+Clear
+instruction
+s
+Increased
+confidence
+Improved
+follow-ups
+Accountabi
+lity
+Immediate
+help
+availability
+Faster
+response to
+critical
+situations
+Continuous
+care and
+safety
+Prioritized
+care
+More
+consistent
+care
+Safer, data-
+backed care
+Faster care
+support
+VALUE PROPOSITION</p></div></section>
+<section class="sl" id="s42" tabindex="-1" aria-label="Slide 42: IMPACT of 45"><p class="sn"><b>42</b><span aria-hidden="true">/ 45</span></p><div class="fr paper"><h2 class="pt">IMPACT</h2><div class="imp stg"><section class="ic ic-a"><h3>System Impact</h3><ul><li>Shift from fragmented to integrated care system</li><li>Seamless information flow across stakeholders</li><li>Real-time tracking of care activities</li><li>Stronger system accountability</li></ul></section><section class="ic ic-b"><h3>Operational Impact</h3><ul><li>Faster response time during emergencies</li><li>Reduced communication gaps</li><li>Better shift handovers (day to night)</li><li>Efficient resource allocation based on risk</li></ul></section><section class="ic ic-c"><h3>Behavioral Impact</h3><ul><li>Staff becomes more proactive than reactive</li><li>Parents feel empowered instead of dependent</li><li>Reduced panic in emergency situations</li><li>Increased trust in system-led care</li></ul></section></div></div></section>
+<section class="sl" id="s43" tabindex="-1" aria-label="Slide 43: FUTURE SCOPE of 45"><p class="sn"><b>43</b><span aria-hidden="true">/ 45</span></p><div class="fr paper"><h2 class="pt">FUTURE SCOPE</h2><div class="imp fs stg"><section class="ic ic-a"><h3>Scalability</h3><ul><li>Can be implemented across multiple centres</li><li>Adaptable to different healthcare contexts</li><li>Supports growing number of families and staff</li></ul></section><section class="ic ic-b"><h3>System Expansion</h3><ul><li>Integration with volunteer &amp; contributor system</li><li>Linking with hospital data systems</li><li>Adding predictive alerts for high-risk cases</li><li>Inclusion of remote medical consultation</li></ul></section><section class="ic ic-c"><h3>Long-term Integration</h3><ul><li>Builds a data-driven care ecosystem</li><li>Enables continuous improvement through insights</li><li>Supports policy-level standardization</li><li>Evolves into a comprehensive care coordination platform</li></ul></section></div></div></section>
+<section class="sl" id="s44" tabindex="-1" aria-label="Slide 44: BEHIND THE SCENES of 45"><p class="sn"><b>44</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s44.webp" alt="Slide 44: BEHIND THE SCENES" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>BEHIND THE SCENES</p></div></section>
+<section class="sl" id="s45" tabindex="-1" aria-label="Slide 45: Thank You of 45"><p class="sn"><b>45</b><span aria-hidden="true">/ 45</span></p><div class="fr"><button class="z" type="button"><img class="pg" src="sahaay/s45.webp" alt="Slide 45: Thank You" width="2000" height="1125" loading="lazy" decoding="async"><span class="zb" aria-hidden="true">Zoom</span></button></div><div class="sr"><p>Text on this slide, in the order it is stored in the file:</p><p>Thank You</p></div></section></main>
+<div class="pager" role="group" aria-label="Slide controls"><button id="prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><output id="pgo" aria-live="off">1 / 45</output><button id="next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
+<div class="menu" id="menu" hidden role="dialog" aria-modal="true" aria-labelledby="mh"><h2 id="mh">All slides</h2><button class="btn x" id="menux" type="button">Close</button><ol><li><a href="#s01" data-go="0"><b>01</b><span>St. Jude India ChildCare Centres</span></a></li><li><a href="#s02" data-go="1"><b>02</b><span>PROJECT OVERVIEW</span></a></li><li><a href="#s03" data-go="2"><b>03</b><span>PROBLEM DISCOVERY</span></a></li><li><a href="#s04" data-go="3"><b>04</b><span>Secondary Research</span></a></li><li><a href="#s05" data-go="4"><b>05</b><span>Secondary Research</span></a></li><li><a href="#s06" data-go="5"><b>06</b><span>USER INTERVIEWS</span></a></li><li><a href="#s07" data-go="6"><b>07</b><span>VERBATIMS</span></a></li><li><a href="#s08" data-go="7"><b>08</b><span>STAKEHOLDER MAPPING</span></a></li><li><a href="#s09" data-go="8"><b>09</b><span>MIND MAP</span></a></li><li><a href="#s10" data-go="9"><b>10</b><span>STAKEHOLDER ECOSYSTEM MAP</span></a></li><li><a href="#s11" data-go="10"><b>11</b><span>EMPATHY SQUARE</span></a></li><li><a href="#s12" data-go="11"><b>12</b><span>Slide 12</span></a></li><li><a href="#s13" data-go="12"><b>13</b><span>UNDERSTANDING USER PERSPECTIVE IN CONTNUOUS CARE SYSTEMS</span></a></li><li><a href="#s14" data-go="13"><b>14</b><span>INSIGHTS CLUSTERING</span></a></li><li><a href="#s15" data-go="14"><b>15</b><span>PROBLEM SYNTHESIS</span></a></li><li><a href="#s16" data-go="15"><b>16</b><span>VALUE CREATION MAP IN CONTNUOUS CARE SYSTEMS</span></a></li><li><a href="#s17" data-go="16"><b>17</b><span>VALUE UNDERSTANDING</span></a></li><li><a href="#s18" data-go="17"><b>18</b><span>VALUE CO-CREATION</span></a></li><li><a href="#s19" data-go="18"><b>19</b><span>VALUE FLOW DIAGRAM</span></a></li><li><a href="#s20" data-go="19"><b>20</b><span>PROBLEM IDENTIFICATION</span></a></li><li><a href="#s21" data-go="20"><b>21</b><span>USER PERSONA 1: STAFF GROUP</span></a></li><li><a href="#s22" data-go="21"><b>22</b><span>STORYBOARDING</span></a></li><li><a href="#s23" data-go="22"><b>23</b><span>MOSCOW METHOD</span></a></li><li><a href="#s24" data-go="23"><b>24</b><span>SOLUTION BRAINSTORMING</span></a></li><li><a href="#s25" data-go="24"><b>25</b><span>OPERATION STAFF JORUNEY</span></a></li><li><a href="#s26" data-go="25"><b>26</b><span>OPERATION STAFF- DAILY JOURNEY MAP</span></a></li><li><a href="#s27" data-go="26"><b>27</b><span>INSIGHTS</span></a></li><li><a href="#s28" data-go="27"><b>28</b><span>FAMILY JOURNEY MAP</span></a></li><li><a href="#s29" data-go="28"><b>29</b><span>INSIGHTS</span></a></li><li><a href="#s30" data-go="29"><b>30</b><span>CONTRIBUTOR JOURNEY</span></a></li><li><a href="#s31" data-go="30"><b>31</b><span>EXISTING SERVICE BLUEPRINT</span></a></li><li><a href="#s32" data-go="31"><b>32</b><span>SAHAAY CARE SYSTEM</span></a></li><li><a href="#s33" data-go="32"><b>33</b><span>From Fragmented Care to Continuous Support</span></a></li><li><a href="#s34" data-go="33"><b>34</b><span>INTRODUCTION TO SAHAAY</span></a></li><li><a href="#s35" data-go="34"><b>35</b><span>CORE FEATURES</span></a></li><li><a href="#s36" data-go="35"><b>36</b><span>IMPACT VS FEASIBILITY MATRIX</span></a></li><li><a href="#s37" data-go="36"><b>37</b><span>VALUE FLOW DIAGRAM</span></a></li><li><a href="#s38" data-go="37"><b>38</b><span>STORYBOARDING</span></a></li><li><a href="#s39" data-go="38"><b>39</b><span>PROPOSED SERVICE BLUEPRINT</span></a></li><li><a href="#s40" data-go="39"><b>40</b><span>SERVICE FAILURE</span></a></li><li><a href="#s41" data-go="40"><b>41</b><span>VALUE PROPOSITION</span></a></li><li><a href="#s42" data-go="41"><b>42</b><span>IMPACT</span></a></li><li><a href="#s43" data-go="42"><b>43</b><span>FUTURE SCOPE</span></a></li><li><a href="#s44" data-go="43"><b>44</b><span>BEHIND THE SCENES</span></a></li><li><a href="#s45" data-go="44"><b>45</b><span>Thank You</span></a></li></ol></div>
+<div class="zm" id="zm" hidden role="dialog" aria-modal="true" aria-label="Zoomed slide"><div class="zbar"><span class="t" id="zt"></span><div class="g"><button class="btn" id="zp" type="button" aria-label="Previous slide">Prev</button><button class="btn" id="zn" type="button" aria-label="Next slide">Next</button><button class="btn" id="zout" type="button" aria-label="Zoom out">−</button><button class="btn" id="zin" type="button" aria-label="Zoom in">+</button><button class="btn" id="zfit" type="button">Fit</button><button class="btn" id="zx" type="button">Close</button></div></div>
+<div class="zst" id="zst"><img id="zimg" alt=""><p class="zh" aria-hidden="true">Scroll or pinch to zoom · drag to pan · double-click to zoom in or out · Esc to close</p></div></div>
+<script>(function(){
+var d=document,B=d.body,$=function(i){return d.getElementById(i)},slides=[].slice.call(d.querySelectorAll('.sl')),N=slides.length,
+ mq=matchMedia('(prefers-reduced-motion: reduce)'),cur=0,railA=[].slice.call(d.querySelectorAll('.rail a'));
+function calm(){return B.classList.contains('calm')||mq.matches}
+B.classList.add('js');
+d.querySelectorAll('.stg').forEach(function(g){[].slice.call(g.children).forEach(function(c,i){c.style.setProperty('--i',i)})});
+/* motion toggle */
+var mot=$('mot');mot.addEventListener('click',function(){var on=!B.classList.contains('calm');B.classList.toggle('calm',on);mot.setAttribute('aria-pressed',on)});
+/* reveal once */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px',threshold:.05});
+slides.forEach(function(s){io.observe(s)});
+/* current slide */
+var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cur=slides.indexOf(e.target);paint()}})},{rootMargin:'-45% 0px -45% 0px'});
+slides.forEach(function(s){io2.observe(s)});
+function paint(){$('pgo').value=(cur+1)+' / '+N;railA.forEach(function(a,i){if(i===cur)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}
+function go(i,focus){i=Math.max(0,Math.min(N-1,i));slides[i].scrollIntoView({behavior:calm()?'auto':'smooth',block:'center'});if(focus!==false)slides[i].focus({preventScroll:true});cur=i;paint()}
+$('prev').addEventListener('click',function(){go(cur-1)});$('next').addEventListener('click',function(){go(cur+1)});
+/* progress */
+var pr=$('prog'),tick=0;addEventListener('scroll',function(){if(tick)return;tick=requestAnimationFrame(function(){tick=0;var h=d.documentElement.scrollHeight-innerHeight;pr.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')'})},{passive:true});
+/* menu */
+var menu=$('menu'),mb=$('menub');
+function menuOpen(on){menu.hidden=!on;mb.setAttribute('aria-expanded',on);B.style.overflow=on?'hidden':'';if(on){$('menux').focus()}else mb.focus()}
+mb.addEventListener('click',function(){menuOpen(menu.hidden)});$('menux').addEventListener('click',function(){menuOpen(false)});
+menu.addEventListener('click',function(e){var a=e.target.closest('a[data-go]');if(a){e.preventDefault();menuOpen(false);go(+a.getAttribute('data-go'))}});
+/* zoom viewer */
+var zm=$('zm'),zs=$('zst'),zi=$('zimg'),zt=$('zt'),zl=[],zk=0,S=1,X=0,Y=0,FW=0,opener=null,ptrs={},lastD=0,drag=null;
+slides.forEach(function(s,i){if(s.querySelector('button.z'))zl.push(i)});
+function fit(){var W=zs.clientWidth,H=zs.clientHeight;FW=Math.min(W*.98,H*.98*16/9);zi.style.width=FW+'px';zi.style.height=(FW*9/16)+'px';zi.style.marginLeft=(-FW/2)+'px';zi.style.marginTop=(-FW*9/32)+'px'}
+function clamp(){var W=zs.clientWidth,H=zs.clientHeight,sw=FW*S,sh=FW*9/16*S,mx=Math.max(0,(sw-W)/2),my=Math.max(0,(sh-H)/2);X=Math.max(-mx,Math.min(mx,X));Y=Math.max(-my,Math.min(my,Y))}
+function apply(){clamp();zi.style.transform='translate('+X.toFixed(1)+'px,'+Y.toFixed(1)+'px) scale('+S.toFixed(3)+')'}
+function zoomAt(f,px,py){var n=Math.max(1,Math.min(3.5,S*f)),k=n/S;X=px-(px-X)*k;Y=py-(py-Y)*k;S=n;apply()}
+function center(){var r=zs.getBoundingClientRect();return[r.width/2-r.width/2,0]}
+function load(k){zk=(k+zl.length)%zl.length;var s=slides[zl[zk]],img=s.querySelector('img.pg');zi.src=img.currentSrc||img.src;zi.alt=img.alt;zt.textContent=img.alt;S=1;X=0;Y=0;fit();apply()}
+function zOpen(i){opener=d.activeElement;zm.hidden=false;B.style.overflow='hidden';zk=Math.max(0,zl.indexOf(i));load(zk);$('zx').focus()}
+function zClose(){zm.hidden=true;B.style.overflow='';var i=zl[zk];go(i,false);if(opener&&opener.focus)opener.focus({preventScroll:true})}
+slides.forEach(function(s,i){var b=s.querySelector('button.z');if(b)b.addEventListener('click',function(){zOpen(i)})});
+$('zx').addEventListener('click',zClose);$('zp').addEventListener('click',function(){load(zk-1)});$('zn').addEventListener('click',function(){load(zk+1)});
+$('zin').addEventListener('click',function(){zoomAt(1.5,0,0)});$('zout').addEventListener('click',function(){zoomAt(1/1.5,0,0)});$('zfit').addEventListener('click',function(){S=1;X=0;Y=0;apply()});
+zs.addEventListener('wheel',function(e){e.preventDefault();var r=zs.getBoundingClientRect();zoomAt(e.deltaY<0?1.15:1/1.15,e.clientX-r.left-r.width/2,e.clientY-r.top-r.height/2)},{passive:false});
+zs.addEventListener('dblclick',function(e){var r=zs.getBoundingClientRect();if(S>1.2){S=1;X=0;Y=0;apply()}else zoomAt(2.5,e.clientX-r.left-r.width/2,e.clientY-r.top-r.height/2)});
+zs.addEventListener('pointerdown',function(e){zs.setPointerCapture(e.pointerId);ptrs[e.pointerId]={x:e.clientX,y:e.clientY};zs.classList.add('dragging');lastD=0});
+zs.addEventListener('pointermove',function(e){var p=ptrs[e.pointerId];if(!p)return;var ids=Object.keys(ptrs);
+ if(ids.length===2){var o=ptrs[ids.filter(function(k){return +k!==e.pointerId})[0]],nd=Math.hypot(e.clientX-o.x,e.clientY-o.y);if(lastD){var r=zs.getBoundingClientRect();zoomAt(nd/lastD,(e.clientX+o.x)/2-r.left-r.width/2,(e.clientY+o.y)/2-r.top-r.height/2)}lastD=nd}
+ else{X+=e.clientX-p.x;Y+=e.clientY-p.y;apply()}
+ p.x=e.clientX;p.y=e.clientY});
+function pend(e){delete ptrs[e.pointerId];lastD=0;if(!Object.keys(ptrs).length)zs.classList.remove('dragging')}
+zs.addEventListener('pointerup',pend);zs.addEventListener('pointercancel',pend);
+addEventListener('resize',function(){if(!zm.hidden){fit();apply()}});
+/* keyboard */
+addEventListener('keydown',function(e){
+ if(e.altKey||e.ctrlKey||e.metaKey)return;
+ if(!zm.hidden){
+  if(e.key==='Escape'){zClose();e.preventDefault()}
+  else if(e.key==='+'||e.key==='='){zoomAt(1.3,0,0)}else if(e.key==='-'){zoomAt(1/1.3,0,0)}else if(e.key==='0'){S=1;X=0;Y=0;apply()}
+  else if(e.key==='ArrowLeft'&&S<=1.01){load(zk-1);e.preventDefault()}else if(e.key==='ArrowRight'&&S<=1.01){load(zk+1);e.preventDefault()}
+  else if(e.key.indexOf('Arrow')===0&&S>1.01){var k=60;if(e.key==='ArrowLeft')X+=k;if(e.key==='ArrowRight')X-=k;if(e.key==='ArrowUp')Y+=k;if(e.key==='ArrowDown')Y-=k;apply();e.preventDefault()}
+  else if(e.key==='Tab'){var f=[].slice.call(zm.querySelectorAll('button')),a=f[0],z=f[f.length-1];if(e.shiftKey&&d.activeElement===a){z.focus();e.preventDefault()}else if(!e.shiftKey&&d.activeElement===z){a.focus();e.preventDefault()}}
+  return}
+ if(!menu.hidden){if(e.key==='Escape')menuOpen(false);return}
+ var t=e.target;if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'))return;
+ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var m=t&&t.closest&&t.closest('.rail, .menu');if(m)return;e.preventDefault();go(cur+(e.key==='ArrowRight'?1:-1))}
+});
+paint();
+if(location.hash){var h=d.getElementById(location.hash.slice(1));if(h&&h.classList.contains('sl'))setTimeout(function(){go(slides.indexOf(h),false)},50)}
+})();
+</script>
+</body></html>
