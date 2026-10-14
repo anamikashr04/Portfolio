@@ -164,7 +164,11 @@ body.diving .copy,body.diving .acts,body.diving .mot{opacity:0;transition:opacit
 .ghh.off{opacity:0}
 .gjoy{position:absolute;left:1.4rem;bottom:2rem;width:7.5rem;height:7.5rem;border-radius:50%;border:1px solid rgba(241,237,228,.55);background:rgba(7,13,10,.4);touch-action:none;display:none}
 .gjoy i{position:absolute;left:50%;top:50%;width:3rem;height:3rem;margin:-1.5rem;border-radius:50%;background:rgba(241,237,228,.8)}
-.touch .gjoy{display:block}.touch .ghh{left:1.2rem;right:auto;top:4.2rem;bottom:auto;text-align:left}
+.ghgt{position:absolute;right:1.4rem;bottom:2rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:.5rem;border:1px solid rgba(241,237,228,.55);background:rgba(7,13,10,.55);border-radius:10px;color:#f1ede4;font:600 .75rem 'Instrument Sans',system-ui,sans-serif;touch-action:none}
+.ghgt button{min-width:44px;min-height:44px;display:grid;place-items:center;border:1px solid rgba(241,237,228,.55);border-radius:8px;background:rgba(7,13,10,.6);color:#f1ede4;font:600 .78rem 'Instrument Sans',system-ui,sans-serif;cursor:pointer;touch-action:none;padding:0 .5rem}
+.ghgt button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ghgt button:hover:not(:disabled){background:rgba(241,237,228,.2)}.ghgt button:disabled{opacity:.4;cursor:default}.ghgt button:focus-visible{outline:2px solid #f3e3c3;outline-offset:2px}
+.touch .gjoy{display:block}.touch .gcap{bottom:11.5rem}.touch .ghh{left:1.2rem;right:auto;top:4.2rem;bottom:auto;text-align:left}
 .gpause,.glist,.gpv{position:absolute;inset:0;z-index:5}
 .gpause{display:grid;place-content:center;gap:1.2rem;padding:2rem;background:rgba(7,13,10,.72)}
 .gpause h3{margin:0;font:250 clamp(2rem,5vw,3.6rem)/1 'Bricolage Grotesque',system-ui,sans-serif;font-variation-settings:'wdth' 78;letter-spacing:-.03em}
@@ -487,6 +491,7 @@ body.diving .copy,body.diving .acts,body.diving .mot{opacity:0;transition:opacit
   <div class="gcap" id="gcap" aria-hidden="true"></div>
   <p class="ghh" id="ghh"></p>
   <div class="gjoy" id="gjoy" aria-hidden="true"><i id="gknob"></i></div>
+  <div class="ghgt" role="group" aria-label="Eye height"><button id="ghu" type="button" aria-label="Move up (R)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button><span id="ghv" aria-hidden="true">155 cm</span><button id="ghd" type="button" aria-label="Move down (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button id="ghr" type="button">Reset</button></div>
  </div>
  <div class="gpause" id="gpause" hidden>
   <h3 id="gpt" tabindex="-1">Paused</h3>
@@ -625,7 +630,7 @@ var PROJECTS=[
 ];
 
 /* ---------- scene constants (centimetres) ---------- */
-var EYE=165,CEIL=355,X0=-800,X1=800,Z0=-1600,Z1=600,PW=260,PH=300,PR=35,PLAT={x:0,z:-720,a:260,b:160},PTOP=EYE-70-PH;
+var EYE=165,CEIL=355,X0=-800,X1=800,Z0=-1600,Z1=600,PW=260,PH=300,PR=35,PLAT={x:0,z:-720,a:260,b:160},PTOP=EYE-20-PH,EH0=155,EHMIN=90,EHMAX=240;
 var P=1000,els=[],PN=[];
 function mk(cls,parent,css,html){var d=document.createElement('div');d.className=cls;if(css)d.style.cssText=css;if(html)d.innerHTML=html;(parent||gw).appendChild(d);return d}
 function plane(cls,w,h,cx,cy,cz,rot){return mk('p '+cls,gw,'width:'+w+'px;height:'+h+'px;left:'+(-w/2)+'px;top:'+(-h/2)+'px;transform:translate3d('+cx+'px,'+cy+'px,'+cz+'px) '+rot)}
@@ -657,10 +662,10 @@ function build(){
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 
 /* ---------- state ---------- */
-var cx=0,cz=380,yaw=0,pitch=0,vx=0,vz=0,turnV=0,py=0,pp=0,mx=.5,my=.5,keys={},joy={x:0,y:0},
+var EH=EH0,cx=0,cz=380,yaw=0,pitch=0,vx=0,vz=0,turnV=0,py=0,pp=0,mx=.5,my=.5,keys={},joy={x:0,y:0},
  active=false,lockMode=false,pvOpen=false,listOn=false,target=-1,dragMoved=false,last=0,raf=0,visible=false,lastFocus=null,lockAt=0;
 function size(){var w=gv.clientWidth,h=gv.clientHeight;P=Math.max(w*.58,h*.5);gv.style.perspective=P+'px'}
-function render(){gw.style.transform='translateZ('+P+'px) rotateX('+(pitch*57.2958).toFixed(3)+'deg) rotateY('+(yaw*57.2958).toFixed(3)+'deg) translate3d('+(-cx).toFixed(1)+'px,0,'+(-cz).toFixed(1)+'px)'}
+function render(){gw.style.transform='translateZ('+P+'px) rotateX('+(pitch*57.2958).toFixed(3)+'deg) rotateY('+(yaw*57.2958).toFixed(3)+'deg) translate3d('+(-cx).toFixed(1)+'px,'+(EH-EYE).toFixed(1)+'px,'+(-cz).toFixed(1)+'px)'}
 function collide(){
  cx=C(cx,X0+PR+10,X1-PR-10);cz=C(cz,Z0+PR+10,Z1-PR-10);
  PN.forEach(function(n){var p=n.p,dx=cx-p.x,dz=cz-p.z,s=Math.sin(n.r),c=Math.cos(n.r),lx=dx*c-dz*s,lz=dx*s+dz*c,hx=PW/2+22+PR,hz=14+PR;
@@ -679,6 +684,7 @@ function frame(now){
    tx=(sn*iz+cs*ix)*S,tz=(-cs*iz+sn*ix)*S,k=1-Math.exp(-dt*(m>0?6:9));
   vx+=(tx-vx)*k;vz+=(tz-vz)*k;
   var tt=((keys.tr?1:0)-(keys.tl?1:0))*1.4;turnV+=(tt-turnV)*(1-Math.exp(-dt*8));yaw+=turnV*dt;
+  var dh=((keys.u?1:0)-(keys.dn?1:0));if(dh){setEH(EH+dh*(calm?60:95)*dt)}
   cx+=vx*dt;cz+=vz*dt;collide();pitch=C(pitch,-.7,.7);near()}
  else if(!active){
   var kk=1-Math.exp(-dt*3);
@@ -688,7 +694,7 @@ function frame(now){
 function near(){
  var best=-1,bd=0,fx=Math.sin(yaw)*Math.cos(pitch),fz=-Math.cos(yaw)*Math.cos(pitch),fy=-Math.sin(pitch);
  PN.forEach(function(n,i){var p=n.p,dx=p.x-cx,dz=p.z-cz,d=Math.hypot(dx,dz),front=((cx-p.x)*Math.sin(n.r)+(cz-p.z)*Math.cos(n.r))>0,
-  dot=(dx*fx+dz*fz+(-55)*fy)/Math.hypot(dx,dz,55);
+  cyr=(PTOP+PH/2)-(EYE-EH),dot=(dx*fx+dz*fz+cyr*fy)/Math.hypot(dx,dz,cyr);
   n.d=d;if(front&&d<760&&dot>.86&&dot>bd){bd=dot;best=i}});
  if(best!==target){target=best;PN.forEach(function(n,i){n.g.classList.toggle('near',i===best)});
   var c=$('gcap');if(best>=0){var p=PROJECTS[best];c.innerHTML='<b>'+esc(p.title)+'</b>'+(coarse?'Tap the panel to open':'Click or press Enter to open');c.classList.add('on');$('gstat').textContent=p.title+'. Press Enter to open.'}else{c.classList.remove('on')}}
@@ -742,13 +748,13 @@ window.__enterGallery=function(){window.__glide(($('portal')||gal).offsetTop,200
 function setActive(on){
  active=on;gal.classList.toggle('is-active',on);$('ghud').hidden=!on;document.documentElement.style.overflow=on?'hidden':'';foot.inert=on;
  if(on){scrollTo(0,gal.offsetTop);keys={};vx=vz=turnV=0;if(!lockMode)lockMode=false;
-  $('ghh').innerHTML=coarse?'<b>Controls</b>Drag to look<br>Use the stick to move<br>Tap a panel to open it':'<b>Controls</b><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or <kbd>↑</kbd><kbd>↓</kbd> move<br><kbd>←</kbd><kbd>→</kbd> turn · mouse to look<br>Click a panel to open it<br><kbd>L</kbd> view projects as a list<br><kbd>Esc</kbd> leave the room';
+  $('ghh').innerHTML=coarse?'<b>Controls</b>Drag to look<br>Use the stick to move<br>Use the arrows at the right to go up or down<br>Tap a panel to open it':'<b>Controls</b><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or <kbd>↑</kbd><kbd>↓</kbd> move<br><kbd>←</kbd><kbd>→</kbd> turn · mouse to look<br><kbd>R</kbd><kbd>F</kbd> or <kbd>PgUp</kbd><kbd>PgDn</kbd> move up / down<br>Click a panel to open it<br><kbd>L</kbd> view projects as a list<br><kbd>Esc</kbd> leave the room';
   $('ghh').classList.remove('off')}
  else{$('gpause').hidden=true;gal.classList.remove('lockon');lockMode=false;exitLock();target=-1;PN.forEach(function(n){n.g.classList.remove('near')});$('gcap').classList.remove('on')}
  onScroll()}
 function exitLock(){try{if(document.pointerLockElement)document.exitPointerLock()}catch(e){}}
 function lock(){if(coarse||!gv.requestPointerLock)return;try{var r=gv.requestPointerLock();if(r&&r.catch)r.catch(function(){})}catch(e){}}
-function enter(){setActive(true);gal.classList.toggle('touch',coarse);lock();gv.setAttribute('tabindex','-1');gv.focus({preventScroll:true})}
+function enter(){setEH(EH0);pitch=0;setActive(true);gal.classList.toggle('touch',coarse);lock();gv.setAttribute('tabindex','-1');gv.focus({preventScroll:true})}
 function leave(){setActive(false);yaw=py;pitch=pp;cx=cx;$('genter').focus({preventScroll:true})}
 document.addEventListener('pointerlockchange',function(){var l=document.pointerLockElement===gv;
  if(l){lockAt=performance.now();lockMode=true;gal.classList.add('lockon');$('gpause').hidden=true}
@@ -782,7 +788,7 @@ jo.addEventListener('pointerup',jend);jo.addEventListener('pointercancel',jend);
 gv.addEventListener('wheel',function(e){if(active)e.preventDefault()},{passive:false});
 
 /* keyboard */
-var MAP={KeyW:'f',ArrowUp:'f',KeyS:'b',ArrowDown:'b',KeyA:'l',KeyD:'r',ArrowLeft:'tl',ArrowRight:'tr',KeyQ:'tl',KeyE:'tr'};
+var MAP={KeyW:'f',ArrowUp:'f',KeyS:'b',ArrowDown:'b',KeyA:'l',KeyD:'r',ArrowLeft:'tl',ArrowRight:'tr',KeyQ:'tl',KeyE:'tr',KeyR:'u',PageUp:'u',KeyF:'dn',PageDown:'dn'};
 addEventListener('keydown',function(e){
  if(e.key==='Escape'){if(pvOpen){closePV();e.preventDefault();return}if(listOn){listShow(false);e.preventDefault();return}if(active){leave();e.preventDefault()}return}
  if(!active||pvOpen)return;
@@ -792,6 +798,15 @@ addEventListener('keydown',function(e){
  if((e.key==='Enter'||e.key===' ')&&target>=0){var a=document.activeElement;if(a&&a.tagName==='BUTTON')return;e.preventDefault();openProject(target)}});
 addEventListener('keyup',function(e){var k=MAP[e.code];if(k)keys[k]=false});
 addEventListener('blur',function(){keys={}});
+/* ---------- eye height ---------- */
+function setEH(v){EH=C(v,EHMIN,EHMAX);var t=Math.round(EH)+' cm';$('ghv').textContent=t;$('ghu').disabled=EH>=EHMAX;$('ghd').disabled=EH<=EHMIN;
+ if(Math.round(EH)!==setEH.last){setEH.last=Math.round(EH);clearTimeout(setEH.t);setEH.t=setTimeout(function(){$('gstat').textContent='Eye height '+setEH.last+' centimetres.'},400)}}
+function hold(id,k,step){var b=$(id);
+ b.addEventListener('pointerdown',function(e){e.preventDefault();keys[k]=true;try{b.setPointerCapture(e.pointerId)}catch(x){}});
+ ['pointerup','pointercancel','lostpointercapture'].forEach(function(n){b.addEventListener(n,function(){keys[k]=false})});
+ b.addEventListener('click',function(e){if(e.detail===0)setEH(EH+step)})}
+hold('ghu','u',10);hold('ghd','dn',-10);
+$('ghr').addEventListener('click',function(){setEH(EH0)});
 
 /* ---------- open a project straight from its panel ---------- */
 var going=false;
