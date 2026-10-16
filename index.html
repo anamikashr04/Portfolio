@@ -737,7 +737,7 @@ function cineFx(p,ptl){
  window.__lidP=p;
  if(p<.002){cineOff();heroReset();if(ptl)ptl.style.opacity='';return}
  var W=innerWidth,H=innerHeight,zw=zm.offsetWidth,zh=zm.offsetHeight,sr=stage.getBoundingClientRect(),zl=sr.left+zm.offsetLeft,zt=sr.top+zm.offsetTop,
-  s1=ss(.04,.12,p),s2=ss(.16,.26,p),s3=ss(.30,.40,p),k3=ss(.38,.42,p),pp=ss(.28,.32,p),pan=ss(.04,.30,p),z=ss(.36,.97,p),o=ss(.5,1,p),h=1-ss(0,.2,p),
+  s1=ss(.04,.12,p),s2=ss(.16,.26,p),s3=ss(.30,.40,p),k3=ss(.38,.42,p),pp=ss(.28,.32,p),pan=ss(.04,.30,p),z=coarse?ss(.46,.9,p):ss(.36,.97,p),o=coarse?ss(.84,.97,p):ss(.5,1,p),h=1-ss(0,.2,p),
   pn=(W<=820?.17:.085)*(zh/1.2324)*pan,Cx=SC.x*zw,Cy=SC.y*zh,Send=Math.max(W/(SC.w*zw),H/(SC.h*zh))*1.02,S=lerp(1,Send,z),
   Tx=(W/2-(zl+Cx))*z,Ty=(H/2-(zt+Cy-pn))*z-pn;
  oldset.style.opacity=(1-s1).toFixed(3);st1.style.opacity=(s1*(1-k3)).toFixed(3);st2.style.opacity=(s2*(1-k3)).toFixed(3);st3.style.opacity=s3.toFixed(3);pscr.style.opacity=pp.toFixed(3);
@@ -750,7 +750,7 @@ function onScroll(){if(sq)return;sq=requestAnimationFrame(function(){sq=0;var H=
  pT=C((scrollY-(pt-H))/H,0,1);p2T=C((scrollY-(gal.offsetTop-H))/H,0,1);
  var calm=isCalm(),fx=!calm&&!active&&ptl&&ptl.classList.contains('live');
  /* in motion mode the two journeys glide toward the scroll position, so a quick wheel flick never snaps */
- if(pD===null||!fx){pD=pT;p2D=p2T}else{pD+=(pT-pD)*.1;p2D+=(p2T-p2D)*.1;if(Math.abs(pT-pD)<.002)pD=pT;if(Math.abs(p2T-p2D)<.002)p2D=p2T}
+ if(pD===null||!fx||coarse){pD=pT;p2D=p2T}else{pD+=(pT-pD)*.1;p2D+=(p2T-p2D)*.1;if(Math.abs(pT-pD)<.002)pD=pT;if(Math.abs(p2T-p2D)<.002)p2D=p2T}
  window.__pD=fx?pD:null;window.__p2D=fx?p2D:null;
  var p=pD,p2=p2D;
  if(!fx){dim.style.background='';cineOff();heroReset();if(ptl){ptl.style.opacity='';ptl.style.transform='';ptl.style.pointerEvents='';ptl.style.removeProperty('--px');ptl.style.removeProperty('--pr')}
@@ -761,10 +761,11 @@ function onScroll(){if(sq)return;sq=requestAnimationFrame(function(){sq=0;var H=
  else{stage.style.transform='';dim.style.background='';dim.style.opacity=0;
   ptl.style.removeProperty('--px');ptl.style.removeProperty('--pr');cineFx(p,ptl);
   /* the tunnel dissolves in over the zoomed laptop screen instead of sliding up over it */
+  if(coarse){ptl.style.transform='';ptl.style.pointerEvents='';gal.style.transform='';gal.style.opacity='';gal.style.pointerEvents=''}else{
   ptl.style.transform=(p>.002&&p<.995)?'translateY('+(-(1-p)*H).toFixed(1)+'px)':'';ptl.style.pointerEvents=p<.9?'none':'';
   /* the exhibition dissolves out of the warm light at the end of the tunnel instead of rising from below */
-  var go=ss(.3,.95,p2);gal.style.transform=(p2>.001&&p2<.999)?'translateY('+(-(1-p2)*H).toFixed(1)+'px)':'';gal.style.opacity=p2>=.999?'':go.toFixed(3);gal.style.pointerEvents=p2<.95?'none':'';
-  gal.style.setProperty('--cx',((1-ss(.2,1,p2))*(coarse?12:26)).toFixed(2)+'%');gal.style.setProperty('--cr',((1-ss(.2,1,p2))*70).toFixed(1)+'px')}
+  var go=ss(.3,.95,p2);gal.style.transform=(p2>.001&&p2<.999)?'translateY('+(-(1-p2)*H).toFixed(1)+'px)':'';gal.style.opacity=p2>=.999?'':go.toFixed(3);gal.style.pointerEvents=p2<.95?'none':''}
+  gal.style.setProperty('--cx',((1-(coarse?p2:ss(.2,1,p2)))*(coarse?12:26)).toFixed(2)+'%');gal.style.setProperty('--cr',((1-(coarse?p2:ss(.2,1,p2)))*70).toFixed(1)+'px')}
  var hid=p>=.985;window.__stageHidden=hid;stage.inert=hid||active;if(hid)B.classList.remove('diving');
  if(fx&&(pD!==pT||p2D!==p2T))onScroll()})}
 addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',function(){size();onScroll()});
@@ -1086,8 +1087,9 @@ B.classList.add('jr-ok');
 window.__portal={state:function(){return{live:live,ok3d:ok3d,active:active,s:sS,p1:p1,p2:p2,cur:cur,tgt:tgt,czs:czAt(sS),ribs:ribs.length,stations:stns.length,R:R()}},goTo:goTo};
 
 /* start */
+var ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 tryBuild();
-setMode(!calm()&&ok3d,false);
+setMode(!calm()&&ok3d&&!ios,false);
 jUpdate();
 })();
 </script>
