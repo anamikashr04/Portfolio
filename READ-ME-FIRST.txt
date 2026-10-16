@@ -1,0 +1,10 @@
+DEAR POSTCARD - FINAL FILES (by Anamika Shrivastava)
+
+ar-website/  -> everything for GitHub (dear-postcard-ar repository).
+                Your targets.mind is already on GitHub - keep it. Rebuild it only if you change a card image.
+print/cards/ -> postcard fronts and backs, 300 dpi, A6 + 3 mm bleed on every side (154 x 111 mm).
+                Use 00-back-landscape for landscape cards and 00-back-portrait for the two portrait cards (Moon, Torii portrait).
+print/Dear-Postcard-cards-with-bleed.pdf -> all fronts + both backs in one PDF for the printer.
+print/stickers/ -> 75 mm stickers with transparent background. Ask the printer for a die-cut along the white border.
+
+Live site: https://anamikashr04.github.io/dear-postcard-ar/
